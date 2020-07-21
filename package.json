@@ -18,9 +18,13 @@
     "gatsby": "^2.23.12",
     "gatsby-alias-imports": "^1.0.4",
     "gatsby-plugin-styled-components": "^3.3.10",
+    "gatsby-plugin-typography": "^2.5.10",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "styled-components": "^5.1.1"
+    "react-typography": "^0.16.19",
+    "styled-components": "^5.1.1",
+    "typography": "^0.16.19",
+    "typography-theme-github": "^0.16.19"
   },
   "devDependencies": {
     "eslint": "^7.5.0",
