@@ -1,10 +1,5 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
+/* eslint-disable no-undef */
 
 module.exports = {
-  /* Your site config here */
-  plugins: [],
-}
+  plugins: [`gatsby-plugin-styled-components`, `gatsby-alias-imports`],
+};
