@@ -3,6 +3,8 @@
 module.exports = {
   siteMetadata: {
     title: `My Gatsby Blog GraphQL`,
+    description: `My Blog...`,
+    author: `Sungik Choi`,
   },
   plugins: [
     `gatsby-plugin-styled-components`,
@@ -21,5 +23,19 @@ module.exports = {
         pathToConfigModule: `src/styles/typography`,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `GatsbyJS`,
+        short_name: `GatsbyJS`,
+        start_url: `/`,
+        background_color: `#6b37bf`,
+        theme_color: `#6b37bf`,
+        display: `standalone`,
+        icon: `src/images/icon.png`,
+      },
+    },
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-react-helmet`,
   ],
 };
