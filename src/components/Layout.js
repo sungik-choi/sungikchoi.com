@@ -1,10 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import { useStaticQuery, graphql } from "gatsby";
 
 const Layout = ({ children }) => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  );
+
   return (
     <Container>
-      <h3>My Blog</h3>
+      <h3>{data.site.siteMetadata.title}</h3>
       {children}
     </Container>
   );
