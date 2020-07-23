@@ -1,13 +1,10 @@
-import React from "react";
-import { Link, graphql } from "gatsby";
-import Layout from "components/Layout";
-import Header from "components/Header";
+import React from 'react';
+import { Link, graphql } from 'gatsby';
+import Layout from 'components/layout/layout';
 
 const Home = ({ data }) => {
   return (
     <Layout>
-      <Header text="title" />
-      <Link to="/contact/">Contact</Link>
       <p>Hello World</p>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <div key={node.id}>

@@ -2,8 +2,8 @@
 
 module.exports = {
   siteMetadata: {
-    title: `My Gatsby Blog GraphQL`,
-    description: `My Blog...`,
+    title: `Sungik Choi`,
+    description: `Sungik Choi's Dev Blog`,
     author: `Sungik Choi`,
   },
   plugins: [
