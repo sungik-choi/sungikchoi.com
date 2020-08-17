@@ -19,12 +19,12 @@ const NavBar = ({ title }) => {
   ];
 
   return (
-    <Nav>
+    <Nav role="navigation" aria-label="네비게이션">
       <Background />
       <Content>
-        <Link to="/">
-          <Title>{title}</Title>
-        </Link>
+        <Title>
+          <Link to="/">{title}</Link>
+        </Title>
         <LinkList>
           {data.map(({ linkTo, text }) => (
             <li key={text}>
