@@ -3,7 +3,7 @@ title: "자바스크립트 Closure"
 tag: "JavaScript"
 date: "2020-08-10 15:00:00 +09:00"
 desc: "자바스크립트 클로저에 대해서 알아보자"
-thumbnail: "http://placehold.it/1920x1080"
+thumbnail: "http://placehold.it/1280x720"
 ---
 
 ## 자바스크립트 클로저
