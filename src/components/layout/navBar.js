@@ -62,11 +62,12 @@ const Background = styled.div`
 `;
 
 const Content = styled.div`
+  box-sizing: content-box;
   position: relative;
   margin: 0 auto;
   max-width: 980px;
-  height: 100%;
   padding: 0 22px;
+  height: 100%;
   z-index: 2;
   display: flex;
   justify-content: space-between;
