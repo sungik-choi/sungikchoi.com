@@ -19,7 +19,7 @@ const NavBar = ({ title }) => {
   ];
 
   return (
-    <Nav role="navigation" aria-label="네비게이션">
+    <Nav aria-label="네비게이션">
       <Background />
       <Content>
         <Title>
@@ -45,6 +45,7 @@ const Nav = styled.nav`
   left: 0;
   width: 100%;
   height: 4rem;
+  z-index: 1;
   & a:hover {
     text-decoration: none;
   }
