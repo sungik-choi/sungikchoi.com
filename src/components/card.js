@@ -109,8 +109,13 @@ const Tag = styled.span`
 
 const Desc = styled.p`
   line-height: 1.5;
-  font-size: 1.0625rem;
   margin-top: 0.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const DateTime = styled.time`
