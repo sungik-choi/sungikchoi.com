@@ -32,6 +32,9 @@ const Wrapper = styled.article`
   border-bottom: 1px solid ${({ theme }) => theme.color.shadow};
   background-color: ${({ theme }) => theme.color.white};
 
+  /* Fix Safari overflow:hidden with border radius not working error */
+  transform: translateZ(0);
+
   @media (min-width: ${({ theme }) => theme.device.lg}) {
     border-radius: ${({ theme }) => theme.text.md};
   }
