@@ -12,9 +12,11 @@ const Card = ({ thumbnail, tag, title, desc, date, korDate }) => {
         </Thumbnail>
       </ThumbnailWrapper>
       <Text>
-        <Tag>{tag}</Tag>
-        <Title>{title}</Title>
-        <Desc>{desc}</Desc>
+        <div>
+          <Tag>{tag}</Tag>
+          <Title>{title}</Title>
+        </div>
+        {/* <Desc>{desc}</Desc> */}
         <DateTime dateTime={date}>{korDate}</DateTime>
       </Text>
     </Wrapper>
@@ -22,9 +24,12 @@ const Card = ({ thumbnail, tag, title, desc, date, korDate }) => {
 };
 
 const Wrapper = styled.article`
-  background-color: ${({ theme }) => theme.color.white};
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  height: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.color.shadow};
+  background-color: ${({ theme }) => theme.color.white};
 
   @media (min-width: ${({ theme }) => theme.device.lg}) {
     border-radius: ${({ theme }) => theme.text.md};
@@ -57,6 +62,10 @@ const Image = styled.img`
 `;
 
 const Text = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  justify-content: space-between;
   padding: ${({ theme }) => theme.sizing.base};
 
   & > * {
@@ -72,7 +81,7 @@ const Text = styled.div`
 const Title = styled.h2`
   margin-top: ${({ theme }) => theme.sizing.sm};
   padding: 0;
-  font-size: ${({ theme }) => theme.text.base};
+  font-size: ${({ theme }) => theme.text.md};
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   line-height: 1.3;
 

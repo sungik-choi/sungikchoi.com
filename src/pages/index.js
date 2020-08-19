@@ -53,7 +53,6 @@ const Home = ({ data }) => {
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.color.gray1};
-  /* padding-top: ${({ theme }) => theme.sizing.lg}; */
   height: 100%;
 `;
 
@@ -74,7 +73,6 @@ const Grid = styled.ul`
   display: grid;
   grid-gap: ${({ theme }) => theme.gridGap.sm};
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: auto;
   list-style: none;
   margin: 0;
   padding: 0;
