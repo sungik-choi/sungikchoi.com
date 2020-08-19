@@ -44,10 +44,15 @@ const Nav = styled.nav`
   top: 0;
   left: 0;
   width: 100%;
-  height: 4rem;
+  height: ${({ theme }) => theme.navHeight.sm};
   z-index: 1;
+
   & a:hover {
     text-decoration: none;
+  }
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    height: ${({ theme }) => theme.navHeight.lg};
   }
 `;
 
@@ -59,43 +64,50 @@ const Background = styled.div`
   height: 100%;
   z-index: 1;
   backdrop-filter: saturate(180%) blur(20px);
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: ${({ theme }) => theme.color.transparent};
 `;
 
 const Content = styled.div`
   box-sizing: content-box;
   position: relative;
   margin: 0 auto;
-  max-width: 980px;
-  padding: 0 22px;
+  max-width: ${({ theme }) => theme.width};
+  padding: 0 ${({ theme }) => theme.padding.sm};
   height: 100%;
   z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   & * {
     margin: 0;
     list-style-type: none;
+  }
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    padding: 0 ${({ theme }) => theme.padding.lg};
   }
 `;
 
 const Title = styled.h1`
   padding: 0;
   border: none;
-  font-size: 21px;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.text.title};
+  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   color: ${({ theme }) => theme.color.text};
 `;
 
 const LinkList = styled.ul`
   display: flex;
+
   & > li + li {
-    margin-left: 30px;
+    margin-left: 1.875rem;
   }
 `;
 
 const LinkText = styled.span`
-  font-weight: 400;
+  font-weight: ${({ theme }) => theme.fontWeight.regular};
+
   &:hover {
     color: ${({ theme }) => theme.color.hover};
   }

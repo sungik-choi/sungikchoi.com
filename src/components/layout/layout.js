@@ -25,13 +25,21 @@ const Layout = ({ children }) => {
       <Container>
         <NavBar title={data.site.siteMetadata.title} />
         {children}
+        <Footer></Footer>
       </Container>
     </ThemeProvider>
   );
 };
 
 const Container = styled.div`
-  height: 3000px;
+  /* height: 3000px; */
+`;
+
+// ! footer 디자인 필요
+
+const Footer = styled.footer`
+  height: 400px;
+  background-color: ${({ theme }) => theme.color.gray1};
 `;
 
 export default Layout;

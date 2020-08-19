@@ -53,32 +53,48 @@ const Home = ({ data }) => {
 
 const Background = styled.div`
   background-color: ${({ theme }) => theme.color.gray1};
+  /* padding-top: ${({ theme }) => theme.sizing.lg}; */
   height: 100%;
 `;
 
 const Post = styled.main`
-  padding-top: ${({ theme }) => theme.sizing.lg};
-  max-width: 980px;
+  box-sizing: content-box;
+  padding-top: ${({ theme }) => theme.sizing.base};
+  max-width: ${({ theme }) => theme.width};
   margin: 0 auto;
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    padding-top: ${({ theme }) => theme.sizing.lg};
+  }
 `;
 
 const Content = styled.div``;
 
 const Grid = styled.ul`
   display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(12, 1fr);
+  grid-gap: ${({ theme }) => theme.gridGap.sm};
+  grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: auto;
   list-style: none;
   margin: 0;
   padding: 0;
+
   & > li {
     margin-bottom: 0;
+  }
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    grid-gap: ${({ theme }) => theme.gridGap.lg};
   }
 `;
 
 const List = styled.li`
-  grid-column: span 6;
+  box-sizing: border-box;
+  grid-column: span 2;
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    grid-column: span 1;
+  }
 `;
 
 export const query = graphql`

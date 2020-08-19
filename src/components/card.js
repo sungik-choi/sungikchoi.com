@@ -22,10 +22,13 @@ const Card = ({ thumbnail, tag, title, desc, date, korDate }) => {
 };
 
 const Wrapper = styled.article`
-  background-color: #fff;
-  border-radius: 18px;
+  background-color: ${({ theme }) => theme.color.white};
   overflow: hidden;
   border-bottom: 1px solid ${({ theme }) => theme.color.shadow};
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    border-radius: ${({ theme }) => theme.text.md};
+  }
 `;
 
 const ThumbnailWrapper = styled.div`
@@ -54,35 +57,45 @@ const Image = styled.img`
 `;
 
 const Text = styled.div`
-  padding: 24px;
+  padding: ${({ theme }) => theme.sizing.base};
+
   & > * {
     display: block;
     margin-bottom: 0;
   }
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    padding: ${({ theme }) => theme.sizing.md};
+  }
 `;
 
 const Title = styled.h2`
-  margin-top: 8px;
+  margin-top: ${({ theme }) => theme.sizing.sm};
   padding: 0;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.text.base};
+  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   line-height: 1.3;
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    font-size: ${({ theme }) => theme.text.lg};
+    border-radius: ${({ theme }) => theme.text.md};
+  }
 `;
 
 const Tag = styled.span`
   display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: #e94256;
+  font-size: ${({ theme }) => theme.text.sm};
+  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+  color: ${({ theme }) => theme.color.pink};
 `;
 
 const Desc = styled.p`
-  margin-top: 18px;
+  margin-top: 1.125rem;
 `;
 
 const DateTime = styled.time`
-  margin-top: 24px;
-  font-size: 12px;
+  margin-top: ${({ theme }) => theme.sizing.md};
+  font-size: ${({ theme }) => theme.text.sm};
   color: ${({ theme }) => theme.color.gray2};
 `;
 
