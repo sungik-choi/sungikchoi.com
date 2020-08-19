@@ -15,16 +15,13 @@ const Card = ({ thumbnail, tag, title, desc, date, korDate }) => {
         <Tag>{tag}</Tag>
         <Title>{title}</Title>
         <Desc>{desc}</Desc>
-        <DateTime role="text" dateTime={date}>
-          {korDate}
-        </DateTime>
+        <DateTime dateTime={date}>{korDate}</DateTime>
       </Text>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.article`
-  /* height: 100%; */
   background-color: #fff;
   border-radius: 18px;
   overflow: hidden;

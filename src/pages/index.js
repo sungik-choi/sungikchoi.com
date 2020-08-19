@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
+
 import Layout from 'components/layout/layout';
+import SEO from 'components/seo';
 import Card from 'components/card';
+
 import convertToKorDate from 'utils/convertToKorDate';
 
 const Home = ({ data }) => {
   return (
     <Layout>
+      <SEO />
       <Background>
         <Post>
           <section>
@@ -79,7 +83,7 @@ const List = styled.li`
 
 export const query = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
       totalCount
       edges {
         node {
