@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Layout from 'components/layout/layout';
 import SEO from 'components/seo';
-import Card from 'components/card';
+import Card, { Image, ThumbnailWrapper } from 'components/card';
 
 import convertToKorDate from 'utils/convertToKorDate';
 
@@ -89,9 +89,34 @@ const Grid = styled.ul`
 const List = styled.li`
   box-sizing: border-box;
   grid-column: span 2;
+  border-radius: ${({ theme }) => theme.text.md};
 
   @media (min-width: ${({ theme }) => theme.device.lg}) {
     grid-column: span 1;
+    border-radius: ${({ theme }) => theme.text.md};
+    transition: opacity 250ms ease-out, transform 250ms ease-out,
+      box-shadow 200ms ease;
+
+    &:hover {
+      box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.04),
+        -10px 0 20px 0px rgba(0, 0, 0, 0.04);
+      z-index: 1;
+    }
+
+    &:hover ${ThumbnailWrapper}::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: ${({ theme }) => theme.color.dimmed};
+    }
+
+    &:hover ${Image} {
+      transform: translate(-50%, -50%) scale(1.05);
+    }
   }
 `;
 

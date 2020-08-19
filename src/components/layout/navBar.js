@@ -45,7 +45,7 @@ const Nav = styled.nav`
   left: 0;
   width: 100%;
   height: ${({ theme }) => theme.navHeight.sm};
-  z-index: 1;
+  z-index: 10;
 
   & a:hover {
     text-decoration: none;

@@ -7,6 +7,7 @@ const color = {
   gray2: '#B2B2B2',
   transparent: 'rgba(255, 255, 255, 0.7)',
   shadow: '#d2d2d7',
+  dimmed: 'rgba(0, 0, 0, 0.15)',
   text: '#1d1d1f',
   hover: '#06c',
   pink: '#e94256',
