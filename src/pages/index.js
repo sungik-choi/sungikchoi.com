@@ -11,7 +11,7 @@ import convertToKorDate from 'utils/convertToKorDate';
 const Home = ({ data }) => {
   return (
     <Layout>
-      <SEO />
+      <SEO title="Home" />
       <Background>
         <Post>
           <section>
