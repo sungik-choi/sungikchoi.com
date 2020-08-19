@@ -4,14 +4,20 @@ import Layout from 'components/layout/layout';
 import SEO from 'components/seo';
 
 const BlogPost = ({ data }) => {
-  const post = data.markdownRemark;
+  const {
+    markdownRemark: {
+      frontmatter: { title, desc, date, tag, thumbnail },
+      html,
+    },
+  } = data;
 
   return (
     <Layout>
-      <SEO title={post.frontmatter.title} description={post.excerpt} />
+      <SEO title={title} description={desc} />
       <div>
-        <h1>{post.frontmatter.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <h1>{title}</h1>
+        <h2>{desc}</h2>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     </Layout>
   );
@@ -23,6 +29,10 @@ export const query = graphql`
       html
       frontmatter {
         title
+        desc
+        date
+        tag
+        thumbnail
       }
       excerpt
     }
