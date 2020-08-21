@@ -1,8 +1,8 @@
 ---
-title: "자바스크립트 Closure"
+title: "마크다운 테스트"
 tag: "JavaScript"
 date: "2020-08-02 15:00:00 +09:00"
-desc: "자바스크립트 클로저에 대해서 알아보자"
+desc: "여러가지 마크다운 형식 테스트 문서"
 thumbnail: "http://placehold.it/1280x720"
 ---
 
@@ -43,18 +43,12 @@ thumbnail: "http://placehold.it/1280x720"
     =============
     ```
 
-This is an H1
-    =============
-
 * 작은제목: 문서 부제목
 
     ```
     This is an H2
     -------------
     ```
-
-This is an H2
-    -------------
 
 * 글머리: 1~6까지만 지원
 
@@ -237,30 +231,6 @@ public class BootSpringBootApplication {
 </code>
 </pre>
 ```
-
-<pre>
-<code>
-public class BootSpringBootApplication {
-  public static void main(String[] args) {
-    System.out.println("Hello, Honeymon");
-  }
-}
-</code>
-</pre>
-
-* 코드블럭코드("\```") 을 이용하는 방법
-
-<pre>
-<code>
-```
-public class BootSpringBootApplication {
-  public static void main(String[] args) {
-    System.out.println("Hello, Honeymon");
-  }
-}
-```
-</code>
-</pre>
 
 ```
 public class BootSpringBootApplication {
