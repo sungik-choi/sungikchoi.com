@@ -39,9 +39,18 @@ const Markdown = styled.div`
     margin-top: ${({ rhythm }) => rhythm(1.5)};
   }
 
+  h4,
+  h5,
+  h6 {
+    margin-bottom: ${({ rhythm }) => rhythm(0.5)};
+    margin-top: ${({ rhythm }) => rhythm(1)};
+  }
+
   ul,
   ol {
     /* margin-left: 1.17647em; */
+    margin-top: ${({ rhythm }) => rhythm(0.75)};
+    margin-bottom: ${({ rhythm }) => rhythm(0.75)};
     margin-left: ${({ rhythm }) => rhythm(1.25)};
   }
 
@@ -72,6 +81,29 @@ const Markdown = styled.div`
   hr {
     margin-top: 40px;
     margin-bottom: 40px;
+  }
+
+  blockquote {
+    border-left: 0.25rem solid #dfe2e5;
+    padding-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    * {
+      color: #6a737d;
+    }
+  }
+
+  pre,
+  code {
+    font-family: -apple-system-mono, monospace !important;
+  }
+
+  code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 6px;
   }
 `;
 
