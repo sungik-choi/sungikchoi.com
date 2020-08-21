@@ -48,7 +48,6 @@ const Text = styled.div`
 
   & > * {
     display: block;
-    margin-bottom: 0;
   }
 
   @media (min-width: ${({ theme }) => theme.device.lg}) {
@@ -57,9 +56,7 @@ const Text = styled.div`
 `;
 
 const Title = styled.h2`
-  margin-bottom: 0;
   margin-top: ${({ theme }) => theme.sizing.sm};
-  padding: 0;
   font-size: ${({ theme }) => theme.text.md};
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   line-height: 1.3;

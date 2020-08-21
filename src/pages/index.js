@@ -64,8 +64,6 @@ const Grid = styled.ul`
   grid-gap: ${({ theme }) => theme.gridGap.sm};
   grid-template-columns: repeat(2, 1fr);
   list-style: none;
-  margin: 0;
-  padding: 0;
 
   & > li {
     margin-bottom: 0;

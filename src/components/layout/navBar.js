@@ -47,13 +47,13 @@ const Nav = styled.nav`
   height: ${({ theme }) => theme.navHeight.sm};
   z-index: 10;
 
-  & a:hover {
+  a:hover {
     text-decoration: none;
   }
-
+/* 
   @media (min-width: ${({ theme }) => theme.device.lg}) {
     height: ${({ theme }) => theme.navHeight.lg};
-  }
+  } */
 `;
 
 const Background = styled.div`
@@ -79,7 +79,7 @@ const Content = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  & * {
+  * {
     margin: 0;
     list-style-type: none;
   }
@@ -95,13 +95,17 @@ const Title = styled.h1`
   font-size: ${({ theme }) => theme.text.title};
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   color: ${({ theme }) => theme.color.text};
+
+  a {
+    color: inherit;
+  }
 `;
 
 const LinkList = styled.ul`
   display: flex;
 
   & > li + li {
-    margin-left: 1.875rem;
+    margin-left: 2rem;
   }
 `;
 
