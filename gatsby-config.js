@@ -8,7 +8,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-styled-components`,
-    `gatsby-transformer-remark`,
     `gatsby-alias-imports`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -21,6 +20,20 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/styles/typography`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-highlight-code`,
+            options: {
+              // terminal: `none`,
+              theme: `material`,
+            },
+          },
+        ],
       },
     },
     {
