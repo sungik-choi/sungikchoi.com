@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import CenteredImg from 'components/centeredImg';
+
+import Tag from 'styles/tag';
+import DateTime from 'styles/dateTime';
+
 const Card = ({ thumbnail, tag, title, desc, date, korDate }) => {
   return (
     <Wrapper>
-      <ThumbnailWrapper>
-        <Thumbnail>
-          <ThumbnailCentered>
-            <Image src={thumbnail} />
-          </ThumbnailCentered>
-        </Thumbnail>
-      </ThumbnailWrapper>
+      <CenteredImg src={thumbnail} />
       <Text>
         <div>
           <Tag>{tag}</Tag>
@@ -38,36 +37,6 @@ const Wrapper = styled.article`
   @media (min-width: ${({ theme }) => theme.device.lg}) {
     border-radius: ${({ theme }) => theme.text.md};
   }
-`;
-
-export const ThumbnailWrapper = styled.div`
-  position: relative;
-  width: 100%;
-
-  &::after {
-    background-color: transparent;
-    transition: background-color 250ms ease;
-  }
-`;
-
-const ThumbnailCentered = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transform: translate(50%, 50%);
-`;
-
-const Thumbnail = styled.div`
-  position: relative;
-  padding-top: 56.25%;
-  overflow: hidden;
-`;
-
-export const Image = styled.img`
-  transform: translate(-50%, -50%);
-  transition: opacity 1s ease-out, transform 250ms ease;
 `;
 
 const Text = styled.div`
@@ -100,13 +69,6 @@ const Title = styled.h2`
   }
 `;
 
-const Tag = styled.span`
-  display: block;
-  font-size: ${({ theme }) => theme.text.sm};
-  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
-  color: ${({ theme }) => theme.color.pink};
-`;
-
 const Desc = styled.p`
   line-height: 1.5;
   margin-top: 0.8rem;
@@ -116,12 +78,6 @@ const Desc = styled.p`
   word-break: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
-`;
-
-const DateTime = styled.time`
-  margin-top: ${({ theme }) => theme.sizing.md};
-  font-size: ${({ theme }) => theme.text.sm};
-  color: ${({ theme }) => theme.color.gray2};
 `;
 
 export default Card;

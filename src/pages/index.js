@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 import Layout from 'components/layout/layout';
 import SEO from 'components/seo';
-import Card, { Image, ThumbnailWrapper } from 'components/card';
+import Card from 'components/card';
+import { Image, ThumbnailWrapper } from 'components/centeredImg';
 
 import convertToKorDate from 'utils/convertToKorDate';
 
@@ -12,51 +13,42 @@ const Home = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Background>
-        <Post>
-          <section>
-            <Content>
-              <Grid>
-                {data.allMarkdownRemark.edges.map(({ node }) => {
-                  const {
-                    title,
-                    desc,
-                    date,
-                    tag,
-                    thumbnail,
-                  } = node.frontmatter;
-                  const korDate = convertToKorDate(date);
-                  const ariaLabel = `${title} - ${tag} - Posted on ${korDate}`;
-                  return (
-                    <List key={node.id}>
-                      <Link to={node.fields.slug} aria-label={ariaLabel}>
-                        <Card
-                          thumbnail={thumbnail}
-                          tag={tag}
-                          title={title}
-                          desc={desc}
-                          date={date}
-                          korDate={korDate}
-                        />
-                      </Link>
-                    </List>
-                  );
-                })}
-              </Grid>
-            </Content>
-          </section>
-        </Post>
-      </Background>
+      <Main>
+        <section>
+          <Content>
+            <Grid>
+              {data.allMarkdownRemark.edges.map(({ node }) => {
+                const { title, desc, date, tag, thumbnail } = node.frontmatter;
+                const korDate = convertToKorDate(date);
+                const ariaLabel = `${title} - ${tag} - Posted on ${korDate}`;
+                return (
+                  <List key={node.id}>
+                    <Link to={node.fields.slug} aria-label={ariaLabel}>
+                      <Card
+                        thumbnail={thumbnail}
+                        tag={tag}
+                        title={title}
+                        desc={desc}
+                        date={date}
+                        korDate={korDate}
+                      />
+                    </Link>
+                  </List>
+                );
+              })}
+            </Grid>
+          </Content>
+        </section>
+      </Main>
     </Layout>
   );
 };
 
-const Background = styled.div`
+const Main = styled.main`
   background-color: ${({ theme }) => theme.color.gray1};
-  height: 100%;
 `;
 
-const Post = styled.main`
+const Content = styled.div`
   box-sizing: content-box;
   padding-top: ${({ theme }) => theme.sizing.base};
   max-width: ${({ theme }) => theme.width};
@@ -66,8 +58,6 @@ const Post = styled.main`
     padding-top: ${({ theme }) => theme.sizing.lg};
   }
 `;
-
-const Content = styled.div``;
 
 const Grid = styled.ul`
   display: grid;

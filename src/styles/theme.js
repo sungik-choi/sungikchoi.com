@@ -4,7 +4,7 @@ const color = {
   black: '#000',
   white: '#fff',
   gray1: '#f5f5f7',
-  gray2: '#B2B2B2',
+  gray2: '#86868b',
   transparent: 'rgba(255, 255, 255, 0.7)',
   shadow: '#d2d2d7',
   dimmed: 'rgba(0, 0, 0, 0.15)',
