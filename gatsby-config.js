@@ -27,10 +27,9 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-highlight-code`,
+            resolve: `gatsby-remark-shiki`,
             options: {
-              // terminal: `none`,
-              theme: `material`,
+              theme: 'min-light',
             },
           },
         ],
