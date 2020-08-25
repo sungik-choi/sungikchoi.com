@@ -1,16 +1,23 @@
 ---
 title: "콜 스택, 콜백 큐, 이벤트 루프"
 tag: "JavaScript"
-date: "2020-08-10 15:00:00 +09:00"
+date: "2020-08-11 15:00:00 +09:00"
 desc: "비동기 프로그래밍의 기초에 대해 간단하게 정리해봅니다."
-thumbnail: "http://placehold.it/1920x1080"
+thumbnail: "https://i1.wp.com/9to5mac.com/wp-content/uploads/sites/6/2020/06/Appearance.png?w=663&h=663&crop=1&quality=82&strip=all&ssl=1"
 ---
+
+---
+
+| 값         |                  의미                  |   기본값 |
+| ---------- | :------------------------------------: | -------: |
+| `static`   |     유형(기준) 없음 / 배치 불가능      | `static` |
+| `relative` |       요소 자신을 기준으로 배치        |          |
+| `absolute` | 위치 상 부모(조상)요소를 기준으로 배치 |          |
+| `fixed`    |      브라우저 창을 기준으로 배치       |          |
 
 ## 자바스크립트는 싱글 스레드 언어
 
 ![Javascript Event Loop Visual Representation](https://img.velog.io/post-images/jakeseo_me/37657cb0-4975-11e9-b570-3dfe666b85e0/JavascriptEventLoop1.png?w=1024)
-
-> Javascript Event Loop Visual Representation
 
 자바스크립트는 1개의 스레드로 동작한다. 즉, 1개의 `Call Stack`을 가지고 있다. 스택이 1개만 있기 때문에, 1번에 1개의 작업만 실행할 수 있다. 이러한 특성때문에, 실행 시간이 오래 걸리는 작업이 있다면 다음 작업의 실행이 지연되는 `blocking`이 발생할 수 있다.
 
@@ -34,8 +41,6 @@ thumbnail: "http://placehold.it/1920x1080"
 4. 스택이 할당된 공간보다 많은 공간을 차지하면 `stack overflow` 에러가 발생합니다.
 
 ![Error Stack Trace](https://img.velog.io/post-images/jakeseo_me/ce05cad0-472c-11e9-b667-3db1122c69c1/failedStack.png?w=1024)
-
->Error Stack Trace (credits[<https://www.youtube.com/watch?v=8aGhZQkoFbQ])>
 
 ### Stack overflow
 
@@ -61,7 +66,7 @@ thumbnail: "http://placehold.it/1920x1080"
 
 > `Event loop`는 그 구현 방식 때문에 붙은 이름이며 보통 다음과 유사합니다 :
 
-```JavaScript
+```js
 while(queue.waitForMessage()){
   queue.processNextMessage();
 }
