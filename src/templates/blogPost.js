@@ -96,6 +96,8 @@ const Title = styled.h1`
 const ImgWrap = styled.div`
   margin-top: ${({ theme }) => theme.sizing.lg};
   margin-bottom: ${({ theme }) => theme.sizing.xl};
+  border-radius: ${({ theme }) => theme.borderRadius.md};
+  overflow: hidden;
 `;
 
 export const query = graphql`
