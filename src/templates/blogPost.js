@@ -107,7 +107,7 @@ export const query = graphql`
       frontmatter {
         title
         desc
-        date
+        date(formatString: "YYYY-MM-DD")
         tag
         thumbnail
       }
