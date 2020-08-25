@@ -3,12 +3,16 @@ const calcRem = (size) => `${size / 16}rem`;
 const color = {
   black: '#000',
   white: '#fff',
-  gray1: '#f5f5f7',
-  gray2: '#86868b',
+  gray1: '#f5f5f5',
+  gray2: '#fafafa',
+  gray3: '#e0e0e0',
+  gray4: '#d6d6d6',
+  gray5: '#6e6e6e',
+  gray6: '#868686',
   transparent: 'rgba(255, 255, 255, 0.7)',
-  shadow: '#d2d2d7',
+  shadow: '#d2d2d2',
   dimmed: 'rgba(0, 0, 0, 0.15)',
-  text: '#1d1d1f',
+  text: '#1d1d1d',
   hover: '#06c',
   pink: '#e94256',
 };
@@ -33,7 +37,8 @@ const padding = {
 };
 
 const borderRadius = {
-  md: calcRem(16),
+  sm: '6px',
+  md: '16px',
 };
 
 const sizing = {

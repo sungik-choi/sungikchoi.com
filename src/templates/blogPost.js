@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import Layout from 'components/layout/layout';
 import SEO from 'components/seo';
-import CenteredImg from 'components/centeredImg';
 
 import { rhythm } from 'styles/typography';
 import Tag from 'styles/tag';
@@ -16,7 +15,7 @@ import convertToKorDate from 'utils/convertToKorDate';
 const BlogPost = ({ data }) => {
   const {
     markdownRemark: {
-      frontmatter: { title, desc, date, tag, thumbnail },
+      frontmatter: { title, desc, date, tag },
       html,
     },
   } = data;
@@ -37,13 +36,10 @@ const BlogPost = ({ data }) => {
               <div>
                 <Title>{title}</Title>
               </div>
-              <Divider />
               <div>
                 <Desc>{desc}</Desc>
               </div>
-              <ImgWrap>
-                <CenteredImg src={thumbnail} />
-              </ImgWrap>
+              <Divider />
               <Markdown
                 dangerouslySetInnerHTML={{ __html: html }}
                 rhythm={rhythm}
@@ -75,6 +71,7 @@ const Time = styled(DateTime)`
 `;
 
 const Desc = styled.p`
+  margin-top: ${({ theme }) => theme.sizing.lg};
   line-height: 1.5;
   font-size: ${({ theme }) => theme.text.lg};
 `;
@@ -93,13 +90,6 @@ const Title = styled.h1`
   font-size: ${({ theme }) => theme.text.xl};
 `;
 
-const ImgWrap = styled.div`
-  margin-top: ${({ theme }) => theme.sizing.lg};
-  margin-bottom: ${({ theme }) => theme.sizing.xl};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
-  overflow: hidden;
-`;
-
 export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -109,7 +99,6 @@ export const query = graphql`
         desc
         date(formatString: "YYYY-MM-DD")
         tag
-        thumbnail
       }
       excerpt
     }
