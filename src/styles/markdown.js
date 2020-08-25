@@ -87,6 +87,7 @@ const Markdown = styled.div`
   }
 
   img {
+    display: block;
     border-radius: ${({ theme }) => theme.borderRadius.md};
   }
 
@@ -99,6 +100,7 @@ const Markdown = styled.div`
   code {
     padding: 0.2rem 0.4rem;
     margin: 0;
+    font-size: 0.875rem;
     border-radius: 3px;
   }
 
