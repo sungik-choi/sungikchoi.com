@@ -14,7 +14,6 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "@deckdeckgo/highlight-code": "^1.1.4",
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.23.12",
     "gatsby-alias-imports": "^1.0.4",
@@ -23,11 +22,9 @@
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-plugin-typography": "^2.5.10",
-    "gatsby-remark-highlight-code": "^1.4.7",
-    "gatsby-remark-prismjs": "^3.5.10",
+    "gatsby-remark-shiki": "^0.1.2",
     "gatsby-source-filesystem": "^2.3.20",
     "gatsby-transformer-remark": "^2.8.28",
-    "prismjs": "^1.21.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
