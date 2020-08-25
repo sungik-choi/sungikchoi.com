@@ -16,7 +16,6 @@ const CenteredImg = ({ src }) => {
 export const ThumbnailWrapper = styled.div`
   position: relative;
   width: 100%;
-
   &::after {
     background-color: transparent;
     transition: background-color 250ms ease;

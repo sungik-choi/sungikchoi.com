@@ -30,8 +30,8 @@ const Markdown = styled.div`
 
   h2 {
     font-size: 24px;
-    margin-bottom: ${({ rhythm }) => rhythm(0.7)}; /* 52 */
-    margin-top: ${({ rhythm }) => rhythm(2.25)}; /* 16 */
+    margin-bottom: ${({ rhythm }) => rhythm(1)};
+    margin-top: ${({ rhythm }) => rhythm(2.25)};
   }
 
   h3 {
@@ -48,9 +48,7 @@ const Markdown = styled.div`
 
   ul,
   ol {
-    /* margin-left: 1.17647em; */
-    margin-top: ${({ rhythm }) => rhythm(0.75)};
-    margin-bottom: ${({ rhythm }) => rhythm(0.75)};
+    margin: ${({ rhythm }) => rhythm(1)} 0;
     margin-left: ${({ rhythm }) => rhythm(1.25)};
   }
 
@@ -71,39 +69,52 @@ const Markdown = styled.div`
 
   p {
     line-height: 1.7;
-  }
-
-  img {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 1.5rem;
   }
 
   hr {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 40px 0;
+    background: #d2d2d7;
   }
 
   blockquote {
     border-left: 0.25rem solid #dfe2e5;
     padding-left: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1.5rem 0;
     * {
       color: #6a737d;
     }
   }
 
+  img {
+    border-radius: ${({ theme }) => theme.borderRadius.md};
+  }
+
   pre,
   code {
-    font-family: -apple-system-mono, monospace !important;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+    background-color: #f5f5f7 !important;
   }
 
   code {
-    padding: 0.2em 0.4em;
+    padding: 0.2rem 0.4rem;
     margin: 0;
-    font-size: 85%;
-    background-color: rgba(27, 31, 35, 0.05);
-    border-radius: 6px;
+    border-radius: 3px;
+  }
+
+  pre.shiki,
+  pre.shiki-unknown {
+    overflow: auto;
+    overflow-wrap: break-word;
+    padding: 1rem;
+    margin: 1rem 0;
+    white-space: pre-wrap;
+    border-radius: 8px;
+    code {
+      padding: 0;
+      margin: 0;
+      border-radius: 0;
+    }
   }
 `;
 
