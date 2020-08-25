@@ -6,9 +6,11 @@ desc: "자바스크립트 클로저에 대해서 알아보자"
 thumbnail: "http://placehold.it/1600x900"
 ---
 
-`inline code`
+## React JSX with line highlighting
 
-React JSX with line highlighting
+### Inline Code `Inline`
+
+`Inline`
 
 ```jsx
 var ProfileLink = React.createClass({
@@ -22,7 +24,7 @@ var ProfileLink = React.createClass({
 });
 ```
 
-Javascript
+## Javascript
 
 ```js
 import {x, y} as p from 'point';
@@ -65,7 +67,7 @@ function $initHighlight(block, flags) {
 export  $initHighlight;
 ```
 
-HTML
+## HTML
 
 ```html
 <!DOCTYPE html>
@@ -85,7 +87,7 @@ HTML
 </html>
 ```
 
-CSS
+## CSS
 
 ```css
 /*********************************************************
