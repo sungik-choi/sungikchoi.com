@@ -32,6 +32,10 @@ const padding = {
   lg: calcRem(22),
 };
 
+const borderRadius = {
+  md: calcRem(16),
+};
+
 const sizing = {
   xs: calcRem(4),
   sm: calcRem(8),
@@ -68,6 +72,7 @@ const theme = {
   text,
   width,
   postWidth,
+  borderRadius,
   sizing,
   gridGap,
   padding,
