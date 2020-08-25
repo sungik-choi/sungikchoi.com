@@ -48,8 +48,19 @@ const Markdown = styled.div`
 
   ul,
   ol {
-    margin: ${({ rhythm }) => rhythm(1)} 0;
+    margin-top: ${({ rhythm }) => rhythm(1)};
+    margin-bottom: ${({ rhythm }) => rhythm(1)};
     margin-left: ${({ rhythm }) => rhythm(1.25)};
+  }
+
+  li > ul,
+  li > ol {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  li > p {
+    margin-bottom: 0;
   }
 
   li > ol,
