@@ -46,6 +46,8 @@ const Home = ({ data }) => {
 
 const Main = styled.main`
   min-width: ${({ theme }) => theme.minWidth};
+  ${({ theme }) =>
+    `min-height: calc(100vh - ${theme.navHeight} - ${theme.footerHeight})`};
   background-color: ${({ theme }) => theme.color.gray1};
 `;
 

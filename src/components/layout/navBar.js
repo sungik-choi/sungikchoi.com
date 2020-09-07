@@ -45,16 +45,12 @@ const Nav = styled.nav`
   top: 0;
   left: 0;
   width: 100%;
-  height: ${({ theme }) => theme.navHeight.sm};
+  height: ${({ theme }) => theme.navHeight};
   z-index: 10;
 
   a:hover {
     text-decoration: none;
   }
-/* 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    height: ${({ theme }) => theme.navHeight.lg};
-  } */
 `;
 
 const Background = styled.div`
@@ -93,12 +89,16 @@ const Content = styled.div`
 const Title = styled.h1`
   padding: 0;
   border: none;
-  font-size: ${({ theme }) => theme.text.title};
+  font-size: ${({ theme }) => theme.text.md};
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   color: ${({ theme }) => theme.color.text};
 
   a {
     color: inherit;
+  }
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    font-size: ${({ theme }) => theme.text.title};
   }
 `;
 

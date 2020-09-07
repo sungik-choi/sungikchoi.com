@@ -67,7 +67,7 @@ const Article = styled.article`
 `;
 
 const CommentWrap = styled.div`
-  margin-bottom: ${({ theme }) => theme.sizing.lg};
+  margin-bottom: ${({ theme }) => theme.sizing.xl};
 `;
 
 const Info = styled.div`

@@ -18,13 +18,14 @@ const color = {
 };
 
 const minWidth = calcRem(320);
+
 const width = calcRem(980);
+
 const postWidth = calcRem(653);
 
-const navHeight = {
-  sm: calcRem(56),
-  lg: calcRem(64),
-};
+const navHeight = calcRem(54);
+
+const footerHeight = calcRem(48);
 
 const gridGap = {
   sm: calcRem(10),
@@ -58,7 +59,7 @@ const text = {
   md: calcRem(18),
   lg: calcRem(24),
   xl: calcRem(48),
-  title: calcRem(21),
+  title: calcRem(20),
 };
 
 const fontWeight = {
@@ -87,6 +88,7 @@ const theme = {
   device,
   navHeight,
   fontWeight,
+  footerHeight,
 };
 
 export default theme;

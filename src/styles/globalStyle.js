@@ -27,6 +27,10 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.color.text};
   }
 
+  html, body, #___gatsby, #gatsby-focus-wrapper {
+    min-height: 100vh;
+  }
+
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   }
