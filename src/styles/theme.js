@@ -17,8 +17,8 @@ const color = {
   pink: '#e94256',
 };
 
+const minWidth = calcRem(320);
 const width = calcRem(980);
-
 const postWidth = calcRem(653);
 
 const navHeight = {
@@ -28,7 +28,8 @@ const navHeight = {
 
 const gridGap = {
   sm: calcRem(10),
-  lg: calcRem(20),
+  lg: calcRem(24),
+  xl: calcRem(36),
 };
 
 const padding = {
@@ -64,6 +65,7 @@ const fontWeight = {
   regular: 400,
   semiBold: 600,
   bold: 700,
+  extraBold: 800,
 };
 
 // ! 중간 디바이스 (태블릿) 설정 필요
@@ -75,6 +77,7 @@ const device = {
 const theme = {
   color,
   text,
+  minWidth,
   width,
   postWidth,
   borderRadius,

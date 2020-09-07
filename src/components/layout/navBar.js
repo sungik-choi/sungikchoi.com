@@ -40,6 +40,7 @@ const NavBar = ({ title }) => {
 };
 
 const Nav = styled.nav`
+  min-width: ${({ theme }) => theme.minWidth};
   position: sticky;
   top: 0;
   left: 0;

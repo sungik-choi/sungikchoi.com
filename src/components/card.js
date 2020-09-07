@@ -28,15 +28,11 @@ const Wrapper = styled.article`
   flex-direction: column;
   overflow: hidden;
   height: 100%;
-  border-bottom: 1px solid ${({ theme }) => theme.color.shadow};
+  border-radius: ${({ theme }) => theme.sizing.sm};
   background-color: ${({ theme }) => theme.color.white};
 
   /* Fix Safari overflow:hidden with border radius not working error */
   transform: translateZ(0);
-
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    border-radius: ${({ theme }) => theme.text.md};
-  }
 `;
 
 const Text = styled.div`
@@ -44,7 +40,7 @@ const Text = styled.div`
   flex-direction: column;
   flex: 1 1 auto;
   justify-content: space-between;
-  padding: ${({ theme }) => theme.sizing.base};
+  padding: ${({ theme }) => theme.sizing.md};
 
   & > * {
     display: block;
@@ -58,7 +54,7 @@ const Text = styled.div`
 const Title = styled.h2`
   margin-top: ${({ theme }) => theme.sizing.sm};
   font-size: ${({ theme }) => theme.text.md};
-  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
   line-height: 1.3;
 
   @media (min-width: ${({ theme }) => theme.device.lg}) {

@@ -48,7 +48,9 @@ const BlogPost = ({ data }) => {
             </div>
           </Article>
         </Section>
-        <Comment repo="sungik-choi/blog-comment" />
+        <CommentWrap>
+          <Comment repo="sungik-choi/blog-comment" />
+        </CommentWrap>
       </main>
     </Layout>
   );
@@ -61,6 +63,11 @@ const Section = styled.section`
 const Article = styled.article`
   width: ${({ theme }) => theme.postWidth};
   margin: 0 auto;
+  padding-bottom: ${({ theme }) => theme.sizing.lg};
+`;
+
+const CommentWrap = styled.div`
+  margin-bottom: ${({ theme }) => theme.sizing.lg};
 `;
 
 const Info = styled.div`
