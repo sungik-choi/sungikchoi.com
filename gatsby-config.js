@@ -6,6 +6,11 @@ module.exports = {
     description: `Sungik Choi's Dev Blog`,
     author: `Sungik Choi`,
   },
+  comment: {
+    enable: true,
+    repo: `sungik-choi/blog-comment`,
+    theme: `preferred-color-scheme`,
+  },
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-alias-imports`,

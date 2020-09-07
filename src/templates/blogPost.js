@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Layout from 'components/layout/layout';
 import SEO from 'components/seo';
+import Comment from 'components/comment';
 
 import { rhythm } from 'styles/typography';
 import Tag from 'styles/tag';
@@ -47,6 +48,7 @@ const BlogPost = ({ data }) => {
             </div>
           </Article>
         </Section>
+        <Comment repo="sungik-choi/blog-comment" />
       </main>
     </Layout>
   );
