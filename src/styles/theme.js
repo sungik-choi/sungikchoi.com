@@ -40,7 +40,7 @@ const padding = {
 
 const borderRadius = {
   sm: '6px',
-  md: '16px',
+  base: '8px',
 };
 
 const sizing = {

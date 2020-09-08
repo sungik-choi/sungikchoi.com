@@ -28,7 +28,7 @@ const Wrapper = styled.article`
   flex-direction: column;
   overflow: hidden;
   height: 100%;
-  border-radius: ${({ theme }) => theme.sizing.sm};
+  border-radius: ${({ theme }) => theme.borderRadius.base};
   background-color: ${({ theme }) => theme.color.white};
 
   /* Fix Safari overflow:hidden with border radius not working error */
