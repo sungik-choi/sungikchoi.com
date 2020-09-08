@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import Layout from 'components/layout/layout';
-import SEO from 'components/seo';
+import SEO from '../components/seo';
 import Card from 'components/card';
 import { Image, ThumbnailWrapper } from 'components/centeredImg';
 
