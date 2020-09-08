@@ -1,27 +1,9 @@
 import React, { createRef, useLayoutEffect } from 'react';
-// import { useStaticQuery, graphql } from 'gatsby';
 
 const src = 'https://utteranc.es/client.js';
 
 const Comment = () => {
   const containerRef = createRef();
-
-  // const data = useStaticQuery(
-  //   graphql`
-  //     query {
-  //       site(comment: {}) {
-  //         id
-  //         comment {
-  //           enable
-  //           repo
-  //           theme
-  //         }
-  //       }
-  //     }
-  //   `
-  // );
-
-  // const { enable, repo, theme } = data.site.comment;
 
   useLayoutEffect(() => {
     const comment = document.createElement('script');
