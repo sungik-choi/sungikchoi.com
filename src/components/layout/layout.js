@@ -26,7 +26,9 @@ const Layout = ({ children }) => {
       <Container>
         <NavBar title={data.site.siteMetadata.title} />
         {children}
-        <Footer></Footer>
+        <Footer>
+          <Copyright>© Sungik Choi</Copyright>
+        </Footer>
       </Container>
     </ThemeProvider>
   );
@@ -38,11 +40,17 @@ const Container = styled.div`
   ${({ theme }) => `min-height: calc(100vh - ${theme.footerHeight})`};
 `;
 
-// ! footer 디자인 필요
-
 const Footer = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: ${({ theme }) => theme.footerHeight};
   background-color: ${({ theme }) => theme.color.gray1};
+`;
+
+const Copyright = styled.span`
+  font-size: ${({ theme }) => theme.text.sm};
+  color: ${({ theme }) => theme.color.gray6};
 `;
 
 export default Layout;
