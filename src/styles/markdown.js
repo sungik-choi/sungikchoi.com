@@ -33,9 +33,22 @@ const Markdown = styled.div`
   }
 
   h2 {
-    font-size: 1.75rem;
+    font-size: 1.3125rem;
+    line-height: 1.3;
     margin-bottom: ${({ rhythm }) => rhythm(1)};
     margin-top: ${({ rhythm }) => rhythm(2.25)};
+
+    @media (min-width: ${({ theme }) => theme.device.lg}) {
+      font-size: 1.75rem;
+    }
+  }
+
+  h3 {
+    font-size: 1.125rem;
+
+    @media (min-width: ${({ theme }) => theme.device.lg}) {
+      font-size: inherit;
+    }
   }
 
   h3,
@@ -75,11 +88,11 @@ const Markdown = styled.div`
   p,
   li,
   blockquote {
-    font-size: 17px;
+    font-size: 1.0625rem;
   }
 
   p {
-    line-height: 1.7;
+    line-height: 1.65;
     margin-bottom: 1.5rem;
   }
 

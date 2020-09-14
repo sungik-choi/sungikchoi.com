@@ -57,17 +57,31 @@ const BlogPost = ({ data }) => {
 };
 
 const Section = styled.section`
-  margin-top: ${({ theme }) => theme.sizing.xl};
+  margin-top: ${({ theme }) => theme.sizing.lg};
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    margin-top: ${({ theme }) => theme.sizing.xl};
+  }
 `;
 
 const Article = styled.article`
-  width: ${({ theme }) => theme.postWidth};
+  width: 87.5%;
   margin: 0 auto;
   padding-bottom: ${({ theme }) => theme.sizing.lg};
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    width: ${({ theme }) => theme.postWidth};
+  }
 `;
 
 const CommentWrap = styled.div`
+  padding: 0 1rem;
+  margin: 0 auto;
   margin-bottom: ${({ theme }) => theme.sizing.xl};
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    width: 100%;
+  }
 `;
 
 const Info = styled.div`
@@ -81,8 +95,13 @@ const Time = styled(DateTime)`
 
 const Desc = styled.p`
   margin-top: ${({ theme }) => theme.sizing.lg};
-  line-height: 1.5;
-  font-size: ${({ theme }) => theme.text.lg};
+  line-height: 1.31579;
+  font-size: 1.1875rem;
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    line-height: 1.5;
+    font-size: ${({ theme }) => theme.text.lg};
+  }
 `;
 
 const Divider = styled.div`
@@ -94,9 +113,14 @@ const Divider = styled.div`
 `;
 
 const Title = styled.h1`
-  line-height: 1.1875;
+  line-height: 1.21875;
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  font-size: ${({ theme }) => theme.text.xl};
+  font-size: 2rem;
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    line-height: 1.1875;
+    font-size: ${({ theme }) => theme.text.xl};
+  }
 `;
 
 export const query = graphql`
