@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Markdown = styled.div`
+const Markdown = styled.article`
   h1,
   h2,
   h3,
@@ -44,10 +44,10 @@ const Markdown = styled.div`
   }
 
   h3 {
-    font-size: 1.125rem;
+    font-size: 1.1875rem;
 
     @media (min-width: ${({ theme }) => theme.device.lg}) {
-      font-size: inherit;
+      font-size: 1.31951rem;
     }
   }
 
@@ -148,47 +148,3 @@ const Markdown = styled.div`
 `;
 
 export default Markdown;
-
-//  h1: {
-//       borderBottom: `1px solid ${gray(93)}`,
-//       paddingBottom: `calc(${rhythm(1 / 4)} - 1px)`,
-//       marginBottom: rhythm(3 / 4),
-//       marginTop: rhythm(1.5),
-//     },
-//     h2: {
-//       borderBottom: `1px solid ${gray(93)}`,
-//       paddingBottom: `calc(${rhythm(1 / 4)} - 1px)`,
-//       marginBottom: rhythm(1 / 4),
-//       marginTop: rhythm(1),
-//     },
-//     h6: {
-//       color: gray(47),
-//     },
-//     "h3,h4,h5,h6": {
-//       marginBottom: rhythm(1 / 2),
-//       marginTop: rhythm(1),
-//     },
-//     "ol,ul": {
-//       marginLeft: rhythm(1.25),
-//     },
-//     // children ol, ul
-//     "li>ol,li>ul": {
-//       marginLeft: rhythm(1.25),
-//     },
-//     a: {
-//       color: "#4078c0",
-//       textDecoration: "none",
-//     },
-//     "a:hover,a:active": {
-//       textDecoration: "underline",
-//     },
-//     blockquote: {
-//       borderLeft: `4px solid ${gray(87)}`,
-//       color: gray(47),
-//       marginTop: 0,
-//       marginRight: 0,
-//       marginLeft: 0,
-//       paddingLeft: `calc(${rhythm(1 / 2)} - 1px)`,
-//     },
-//   }),
-// }

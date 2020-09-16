@@ -27,36 +27,38 @@ const BlogPost = ({ data }) => {
     <Layout>
       <SEO title={title} description={desc} />
       <main>
-        <Section>
-          <Article>
-            <div>
-              <Info>
-                <Tag>{tag}</Tag>
-                <Time dateTime={date}>{korDate}</Time>
-              </Info>
-              <div>
-                <Title>{title}</Title>
-              </div>
-              <div>
-                <Desc>{desc}</Desc>
-              </div>
-              <Divider />
-              <Markdown
-                dangerouslySetInnerHTML={{ __html: html }}
-                rhythm={rhythm}
-              />
-            </div>
-          </Article>
-        </Section>
-        <CommentWrap>
-          <Comment repo="sungik-choi/blog-comment" />
-        </CommentWrap>
+        <article>
+          <section>
+            <OuterWrapper>
+              <InnerWrapper>
+                <div>
+                  <header>
+                    <Info>
+                      <Tag>{tag}</Tag>
+                      <Time dateTime={date}>{korDate}</Time>
+                    </Info>
+                    <Title>{title}</Title>
+                    <Desc>{desc}</Desc>
+                  </header>
+                  <Divider />
+                  <Markdown
+                    dangerouslySetInnerHTML={{ __html: html }}
+                    rhythm={rhythm}
+                  />
+                </div>
+              </InnerWrapper>
+            </OuterWrapper>
+          </section>
+          <CommentWrap>
+            <Comment repo="sungik-choi/blog-comment" />
+          </CommentWrap>
+        </article>
       </main>
     </Layout>
   );
 };
 
-const Section = styled.section`
+const OuterWrapper = styled.div`
   margin-top: ${({ theme }) => theme.sizing.lg};
 
   @media (min-width: ${({ theme }) => theme.device.lg}) {
@@ -64,7 +66,7 @@ const Section = styled.section`
   }
 `;
 
-const Article = styled.article`
+const InnerWrapper = styled.div`
   width: 87.5%;
   margin: 0 auto;
   padding-bottom: ${({ theme }) => theme.sizing.lg};
@@ -74,7 +76,7 @@ const Article = styled.article`
   }
 `;
 
-const CommentWrap = styled.div`
+const CommentWrap = styled.section`
   padding: 0 1rem;
   margin: 0 auto;
   margin-bottom: ${({ theme }) => theme.sizing.xl};
