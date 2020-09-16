@@ -27,7 +27,9 @@ const CenteredImg = ({ src, alt = 'Thumbnail Image' }) => {
 
   return (
     <ThumbnailWrapper>
-      <Img alt={alt} fluid={{ ...image.node.fluid, aspectRatio: 16 / 9 }} />
+      <InnerWrapper>
+        <Img alt={alt} fluid={{ ...image.node.fluid, aspectRatio: 16 / 9 }} />
+      </InnerWrapper>
     </ThumbnailWrapper>
   );
 };
@@ -47,6 +49,10 @@ export const ThumbnailWrapper = styled.div`
     background-color: ${({ theme }) => theme.color.dimmed};
     transition: 0.3s ease;
   }
+`;
+
+const InnerWrapper = styled.div`
+  overflow: hidden;
 `;
 
 export default CenteredImg;

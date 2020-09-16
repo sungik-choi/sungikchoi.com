@@ -95,12 +95,12 @@ const List = styled.li`
     opacity: 1;
   }
 
-  & img {
-    transition: opacity 1s ease-out, transform 0.25s ease;
+  & .gatsby-image-wrapper {
+    transition: opacity 1s ease-out, transform 0.5s ease;
   }
 
-  &:hover img {
-    transform: scale(1.05);
+  &:hover .gatsby-image-wrapper {
+    transform: scale(1.03);
   }
 
   @media (min-width: ${({ theme }) => theme.device.lg}) {
