@@ -25,7 +25,7 @@ const postWidth = calcRem(650);
 
 const navHeight = calcRem(54);
 
-const footerHeight = calcRem(48);
+const footerHeight = calcRem(60);
 
 const gridGap = {
   sm: calcRem(10),

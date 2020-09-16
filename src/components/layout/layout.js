@@ -14,20 +14,25 @@ const Layout = ({ children }) => {
         site {
           siteMetadata {
             title
+            description
+            author
           }
         }
       }
     `
   );
 
+  const { title, description, author } = data.site.siteMetadata;
+  const copyrightStr = `${description}. Copyright © ${author}.`;
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Container>
-        <NavBar title={data.site.siteMetadata.title} />
+        <NavBar title={title} />
         {children}
-        <Footer>
-          <Copyright>© Sungik Choi</Copyright>
+        <Footer role="contentinfo">
+          <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
         </Footer>
       </Container>
     </ThemeProvider>
@@ -50,6 +55,7 @@ const Footer = styled.footer`
 
 const Copyright = styled.span`
   font-size: ${({ theme }) => theme.text.sm};
+  font-weight: 400;
   color: ${({ theme }) => theme.color.gray6};
 `;
 
