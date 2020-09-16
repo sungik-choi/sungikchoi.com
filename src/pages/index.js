@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Layout from 'components/layout/layout';
 import SEO from 'components/seo';
 import Card from 'components/card';
-import { Image, ThumbnailWrapper } from 'components/centeredImg';
+import { ThumbnailWrapper } from 'components/centeredImg';
 
 import convertToKorDate from 'utils/convertToKorDate';
 
@@ -18,14 +18,22 @@ const Home = ({ data }) => {
           <Content>
             <Grid>
               {data.allMarkdownRemark.edges.map(({ node }) => {
-                const { title, desc, date, tag, thumbnail } = node.frontmatter;
+                const {
+                  title,
+                  desc,
+                  date,
+                  tag,
+                  thumbnail: { base },
+                  alt,
+                } = node.frontmatter;
                 const korDate = convertToKorDate(date);
                 const ariaLabel = `${title} - ${tag} - Posted on ${korDate}`;
                 return (
                   <List key={node.id}>
                     <Link to={node.fields.slug} aria-label={ariaLabel}>
                       <Card
-                        thumbnail={thumbnail}
+                        thumbnail={base}
+                        alt={alt}
                         tag={tag}
                         title={title}
                         desc={desc}
@@ -83,16 +91,20 @@ const List = styled.li`
   box-sizing: border-box;
   grid-column: span 2;
 
+  &:hover ${ThumbnailWrapper}::after {
+    opacity: 1;
+  }
+
+  & img {
+    transition: opacity 1s ease-out, transform 0.25s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
   @media (min-width: ${({ theme }) => theme.device.lg}) {
     grid-column: span 1;
-
-    &:hover ${ThumbnailWrapper}::after {
-      opacity: 1;
-    }
-
-    &:hover ${Image} {
-      transform: translate(-50%, -50%) scale(1.05);
-    }
   }
 `;
 
@@ -108,7 +120,10 @@ export const query = graphql`
             tag
             date(formatString: "YYYY-MM-DD")
             desc
-            thumbnail
+            thumbnail {
+              base
+            }
+            alt
           }
           fields {
             slug

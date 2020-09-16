@@ -3,7 +3,8 @@ title: "Call Stack, Callback Queue"
 tag: "JavaScript"
 date: "2020-08-07 15:00:00 +09:00"
 desc: "비동기 프로그래밍의 기초에 대해 간단하게 정리해봅니다."
-thumbnail: "https://i1.wp.com/9to5mac.com/wp-content/uploads/sites/6/2020/06/Appearance.png?w=663&h=663&crop=1&quality=82&strip=all&ssl=1"
+thumbnail: "../images/galaxy.jpg"
+alt: "우주 사진"
 ---
 
 ## 개요
@@ -16,7 +17,7 @@ Apple Music, Beats 및 인터내셔널 콘텐츠 담당 부사장인 올리버 �
 
 ## Beats 1, 이제 Apple Music 1으로 명칭 변경
 
-![](https://www.apple.com/newsroom/images/product/apple-music/Apple_announces-apple-music-radio-apple-music-1_08182020_inline.jpg.large_2x.jpg)
+![](./../images/icon.png)
 
 로스앤젤레스, 뉴욕, 내쉬빌 및 런던에 최첨단 스튜디오를 갖춘 Apple Music 1은 팝 문화에 대한 담론 및 아티스트가 주도하는 편성의 중심이자 전 세계의 아티스트들이 새로운 음악을 공개하고, 화제를 터뜨리며, 자신의 팬과 직접 소통할 수 있는 글로벌 무대이다. Apple Music 1은 주축을 이루는 진행자들인 제인 로우(Zane Lowe), 에브로 다든(Ebro Darden), 브룩 리스(Brooke Reese), 도티(Dotty), 하누만 웰치(Hanuman Welch), 매트 윌킨슨(Matt Wilkinson), 나데스카(Nadeska), 레베카 주드(Rebecca Judd) 및 트래비스 밀스(Travis Mills)에 의해 주도되지만, 액션 브론슨(Action Bronson), 빌리 아일리시(Billie Eilish), 엘튼 존(Elton John), 조 케이(Joe Kay), 릴 웨인(Lil Wayne), 프랭크 오션(Frank Ocean), 빈스 스테이플스(Vince Staples) 및 더 위켄드(The Weeknd) 등 유명 음악인들이 참여하는 방송 라인업 및 에이치(Aitch), 커윈 프로스트(Kerwin Frost), 하임(HAIM), 레이디 가가(Lady Gaga), 나일 로저스(Nile Rodgers), 트래비스 스콧(Travis Scott), 찰리 슬로스(Charlie Sloth), 영 M.A(Young M.A) 등이 진행하는 새로운 방송도 제공한다.
 

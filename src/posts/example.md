@@ -3,7 +3,7 @@ title: "콜 스택, 콜백 큐, 이벤트 루프"
 tag: "JavaScript"
 date: "2020-08-11 15:00:00 +09:00"
 desc: "비동기 프로그래밍의 기초에 대해 간단하게 정리해봅니다."
-thumbnail: "https://i1.wp.com/9to5mac.com/wp-content/uploads/sites/6/2020/06/Appearance.png?w=663&h=663&crop=1&quality=82&strip=all&ssl=1"
+thumbnail: "../images/galaxy.jpg"
 ---
 
 ---
