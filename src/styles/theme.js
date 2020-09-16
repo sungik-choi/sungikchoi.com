@@ -21,7 +21,7 @@ const minWidth = calcRem(320);
 
 const width = calcRem(980);
 
-const postWidth = calcRem(653);
+const postWidth = calcRem(650);
 
 const navHeight = calcRem(54);
 

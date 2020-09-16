@@ -92,7 +92,7 @@ const Markdown = styled.div`
   }
 
   p {
-    line-height: 1.65;
+    line-height: 1.68;
     margin-bottom: 1.5rem;
   }
 
