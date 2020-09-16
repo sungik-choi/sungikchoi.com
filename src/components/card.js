@@ -6,10 +6,10 @@ import CenteredImg from 'components/centeredImg';
 import Tag from 'styles/tag';
 import DateTime from 'styles/dateTime';
 
-const Card = ({ thumbnail, tag, title, desc, date, korDate }) => {
+const Card = ({ thumbnail, alt, tag, title, desc, date, korDate }) => {
   return (
     <Wrapper>
-      <CenteredImg src={thumbnail} />
+      <CenteredImg src={thumbnail} alt={alt} />
       <Text>
         <div>
           <Tag>{tag}</Tag>
