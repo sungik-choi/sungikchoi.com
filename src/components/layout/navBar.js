@@ -12,10 +12,6 @@ const NavBar = ({ title }) => {
       linkTo: '/about/',
       text: '소개',
     },
-    {
-      linkTo: '/',
-      text: 'Github',
-    },
   ];
 
   return (
@@ -28,11 +24,18 @@ const NavBar = ({ title }) => {
         <LinkList>
           {data.map(({ linkTo, text }) => (
             <li key={text}>
-              <Link to={linkTo}>
-                <LinkText>{text}</LinkText>
-              </Link>
+              <Link to={linkTo}>{text}</Link>
             </li>
           ))}
+          <li>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.github.com/sungik-choi"
+            >
+              Github
+            </a>
+          </li>
         </LinkList>
       </Content>
     </Nav>
@@ -105,16 +108,16 @@ const Title = styled.h1`
 const LinkList = styled.ul`
   display: flex;
 
+  a {
+    font-weight: ${({ theme }) => theme.fontWeight.regular};
+  }
+
+  a:hover {
+    color: ${({ theme }) => theme.color.hover};
+  }
+
   & > li + li {
     margin-left: 2rem;
-  }
-`;
-
-const LinkText = styled.span`
-  font-weight: ${({ theme }) => theme.fontWeight.regular};
-
-  &:hover {
-    color: ${({ theme }) => theme.color.hover};
   }
 `;
 
