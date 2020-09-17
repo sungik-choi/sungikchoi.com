@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
+
+import kebabCase from 'lodash/kebabCase';
 
 import Layout from 'components/layout/layout';
 import SEO from 'components/seo';
@@ -9,41 +11,84 @@ import { ThumbnailWrapper } from 'components/centeredImg';
 
 import convertToKorDate from 'utils/convertToKorDate';
 
-const Home = ({ data }) => {
+const Home = ({ pageContext, data }) => {
+  const [post, setPost] = useState([]);
+  const currentTag = pageContext.tag;
+  const tagList = data.allMarkdownRemark.group;
+  const postData = data.allMarkdownRemark.edges;
+
+  const filteredPostData = currentTag
+    ? postData.filter(({ node }) => node.frontmatter.tag === currentTag)
+    : postData;
+
+  useLayoutEffect(() => {
+    filteredPostData.forEach(({ node }) => {
+      const {
+        id,
+        fields: { slug },
+        frontmatter: {
+          title,
+          desc,
+          date,
+          tag,
+          thumbnail: { base },
+          alt,
+        },
+      } = node;
+
+      setPost((prevPost) => [
+        ...prevPost,
+        { id, slug, title, desc, date, tag, base, alt },
+      ]);
+    });
+  }, []);
+
   return (
     <Layout>
       <SEO title="Home" />
       <Main>
         <section>
           <Content>
-            <Grid>
-              {data.allMarkdownRemark.edges.map(({ node }) => {
-                const {
-                  title,
-                  desc,
-                  date,
-                  tag,
-                  thumbnail: { base },
-                  alt,
-                } = node.frontmatter;
-                const korDate = convertToKorDate(date);
-                const ariaLabel = `${title} - ${tag} - Posted on ${korDate}`;
+            <ul>
+              <li key="all">
+                <Link to="/">all</Link>
+              </li>
+              {tagList.map((tag) => {
+                const { fieldValue } = tag;
                 return (
-                  <List key={node.id}>
-                    <Link to={node.fields.slug} aria-label={ariaLabel}>
-                      <Card
-                        thumbnail={base}
-                        alt={alt}
-                        tag={tag}
-                        title={title}
-                        desc={desc}
-                        date={date}
-                        korDate={korDate}
-                      />
+                  <li key={fieldValue}>
+                    <Link to={`/tags/${kebabCase(fieldValue)}`}>
+                      {fieldValue}
                     </Link>
-                  </List>
+                  </li>
                 );
               })}
+            </ul>
+            <Grid>
+              {!post ? (
+                <div>loading...</div>
+              ) : (
+                post.map((data) => {
+                  const { id, slug, title, desc, date, tag, base, alt } = data;
+                  const korDate = convertToKorDate(date);
+                  const ariaLabel = `${title} - ${tag} - Posted on ${korDate}`;
+                  return (
+                    <List key={id}>
+                      <Link to={slug} aria-label={ariaLabel}>
+                        <Card
+                          thumbnail={base}
+                          alt={alt}
+                          tag={tag}
+                          title={title}
+                          desc={desc}
+                          date={date}
+                          korDate={korDate}
+                        />
+                      </Link>
+                    </List>
+                  );
+                })
+              )}
             </Grid>
           </Content>
         </section>
@@ -110,7 +155,14 @@ const List = styled.li`
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+    allMarkdownRemark(
+      limit: 2000
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      group(field: frontmatter___tag) {
+        fieldValue
+        totalCount
+      }
       totalCount
       edges {
         node {

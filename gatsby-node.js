@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 
 const path = require(`path`);
+const _ = require('lodash');
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -17,9 +18,16 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
+
+  const blogPostTemplate = path.resolve(`./src/templates/blogPost.js`);
+  const tagTemplate = path.resolve(`./src/pages/index.js`);
+
   const result = await graphql(`
-    query {
-      allMarkdownRemark {
+    {
+      postsRemark: allMarkdownRemark(
+        sort: { fields: frontmatter___date, order: DESC }
+        limit: 2000
+      ) {
         edges {
           node {
             fields {
@@ -28,15 +36,34 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      tagsGroup: allMarkdownRemark(limit: 2000) {
+        group(field: frontmatter___tag) {
+          fieldValue
+        }
+      }
     }
   `);
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  const posts = result.data.postsRemark.edges;
+
+  posts.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/templates/blogPost.js`),
+      component: blogPostTemplate,
       context: {
         slug: node.fields.slug,
+      },
+    });
+  });
+
+  const tags = result.data.tagsGroup.group;
+
+  tags.forEach((tag) => {
+    createPage({
+      path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
+      component: tagTemplate,
+      context: {
+        tag: tag.fieldValue,
       },
     });
   });
