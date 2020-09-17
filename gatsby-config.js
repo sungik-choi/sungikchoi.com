@@ -3,7 +3,7 @@
 module.exports = {
   siteMetadata: {
     title: `Sungik Choi`,
-    description: `Sungik Choi's Dev Blog`,
+    description: `Sungik Choi's Devlog`,
     author: `Sungik Choi`,
   },
   plugins: [
