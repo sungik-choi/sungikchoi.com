@@ -2,10 +2,9 @@ import React, { useState, useLayoutEffect } from 'react';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import kebabCase from 'lodash/kebabCase';
-
 import Layout from 'components/layout/layout';
 import SEO from 'components/seo';
+import TagFilter from 'components/tagFilter';
 import Card from 'components/card';
 import { ThumbnailWrapper } from 'components/centeredImg';
 
@@ -49,46 +48,28 @@ const Home = ({ pageContext, data }) => {
       <Main>
         <section>
           <Content>
-            <ul>
-              <li key="all">
-                <Link to="/">all</Link>
-              </li>
-              {tagList.map((tag) => {
-                const { fieldValue } = tag;
+            <TagFilter tagList={tagList} />
+            <Grid>
+              {post.map((data) => {
+                const { id, slug, title, desc, date, tag, base, alt } = data;
+                const korDate = convertToKorDate(date);
+                const ariaLabel = `${title} - ${tag} - Posted on ${korDate}`;
                 return (
-                  <li key={fieldValue}>
-                    <Link to={`/tags/${kebabCase(fieldValue)}`}>
-                      {fieldValue}
+                  <List key={id}>
+                    <Link to={slug} aria-label={ariaLabel}>
+                      <Card
+                        thumbnail={base}
+                        alt={alt}
+                        tag={tag}
+                        title={title}
+                        desc={desc}
+                        date={date}
+                        korDate={korDate}
+                      />
                     </Link>
-                  </li>
+                  </List>
                 );
               })}
-            </ul>
-            <Grid>
-              {!post ? (
-                <div>loading...</div>
-              ) : (
-                post.map((data) => {
-                  const { id, slug, title, desc, date, tag, base, alt } = data;
-                  const korDate = convertToKorDate(date);
-                  const ariaLabel = `${title} - ${tag} - Posted on ${korDate}`;
-                  return (
-                    <List key={id}>
-                      <Link to={slug} aria-label={ariaLabel}>
-                        <Card
-                          thumbnail={base}
-                          alt={alt}
-                          tag={tag}
-                          title={title}
-                          desc={desc}
-                          date={date}
-                          korDate={korDate}
-                        />
-                      </Link>
-                    </List>
-                  );
-                })
-              )}
             </Grid>
           </Content>
         </section>
