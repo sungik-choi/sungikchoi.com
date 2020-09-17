@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { useStaticQuery, graphql } from 'gatsby';
+
+import { useSiteMetadata } from 'hooks/use-site-metadata';
 
 import theme from 'styles/theme';
 import GlobalStyle from 'styles/globalStyle';
@@ -8,21 +9,8 @@ import GlobalStyle from 'styles/globalStyle';
 import NavBar from './navBar';
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  );
-
-  const { title, description, author } = data.site.siteMetadata;
+  const site = useSiteMetadata();
+  const { title, description, author } = site.siteMetadata;
   const copyrightStr = `${description}. Copyright © ${author}.`;
 
   return (
