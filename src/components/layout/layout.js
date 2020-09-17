@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
-import { useSiteMetadata } from 'hooks/use-site-metadata';
+import { useSiteMetadata } from 'hooks/useSiteMetadata';
 
 import theme from 'styles/theme';
 import GlobalStyle from 'styles/globalStyle';
