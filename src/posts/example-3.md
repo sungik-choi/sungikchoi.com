@@ -1,6 +1,6 @@
 ---
 title: "마크다운 테스트"
-tag: "JavaScript"
+tag: "Markdown"
 date: "2020-08-02 15:00:00 +09:00"
 desc: "여러가지 마크다운 형식 테스트 문서"
 thumbnail: "../images/icon.png"
