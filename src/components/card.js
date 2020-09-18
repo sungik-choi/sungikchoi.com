@@ -52,7 +52,7 @@ const Text = styled.div`
 `;
 
 const Title = styled.h2`
-  margin-top: ${({ theme }) => theme.sizing.sm};
+  margin-top: ${({ theme }) => theme.sizing.xs};
   font-size: ${({ theme }) => theme.text.md};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   line-height: 1.3;
@@ -64,7 +64,8 @@ const Title = styled.h2`
 
 const Desc = styled.p`
   line-height: 1.5;
-  margin-top: 0.8rem;
+  margin-top: 0.4rem;
+  padding-bottom: 0.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

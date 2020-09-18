@@ -34,7 +34,7 @@ const BlogPost = ({ data }) => {
                 <div>
                   <header>
                     <Info>
-                      <Category>{category}</Category>
+                      <PostCategory>{category}</PostCategory>
                       <Time dateTime={date}>{korDate}</Time>
                     </Info>
                     <Title>{title}</Title>
@@ -84,6 +84,11 @@ const CommentWrap = styled.section`
   @media (min-width: ${({ theme }) => theme.device.lg}) {
     width: 100%;
   }
+`;
+
+const PostCategory = styled(Category)`
+  font-size: 0.875rem;
+  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
 `;
 
 const Info = styled.div`

@@ -22,6 +22,8 @@ const Home = ({ pageContext, data }) => {
       )
     : postData;
 
+  const postTitle = currentCategory || 'New';
+
   useLayoutEffect(() => {
     filteredPostData.forEach(({ node }) => {
       const {
@@ -51,6 +53,7 @@ const Home = ({ pageContext, data }) => {
         <section>
           <Content>
             <CategoryFilter categoryList={categoryList} />
+            <PostTitle>{postTitle}</PostTitle>
             <Grid>
               {post.map((data) => {
                 const {
@@ -90,6 +93,7 @@ const Home = ({ pageContext, data }) => {
 };
 
 const Main = styled.main`
+  height: 3000px;
   min-width: ${({ theme }) => theme.minWidth};
   ${({ theme }) =>
     `min-height: calc(100vh - ${theme.navHeight} - ${theme.footerHeight})`};
@@ -107,6 +111,13 @@ const Content = styled.div`
     max-width: ${({ theme }) => theme.width};
     padding-top: ${({ theme }) => theme.sizing.lg};
   }
+`;
+
+const PostTitle = styled.h2`
+  font-size: 2rem;
+  font-weight: ${({ theme }) => theme.fontWeight.extraBold};
+  margin-bottom: 1.5rem;
+  line-height: 1.21875;
 `;
 
 const Grid = styled.ul`
