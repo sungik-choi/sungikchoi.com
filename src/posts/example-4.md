@@ -1,6 +1,6 @@
 ---
 title: "코드블럭 테스트"
-tag: "JavaScript"
+category: "JavaScript"
 date: "2019-07-10 15:00:00 +09:00"
 desc: "자바스크립트 클로저에 대해서 알아보자"
 thumbnail: "../images/galaxy.jpg"

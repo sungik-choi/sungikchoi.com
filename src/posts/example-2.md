@@ -1,6 +1,6 @@
 ---
 title: "Call Stack, Callback Queue"
-tag: "JavaScript"
+category: "JavaScript"
 date: "2020-08-07 15:00:00 +09:00"
 desc: "비동기 프로그래밍의 기초에 대해 간단하게 정리해봅니다."
 thumbnail: "../images/galaxy.jpg"

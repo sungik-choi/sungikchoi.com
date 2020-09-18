@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
-const CenteredImg = ({ src, alt = 'Thumbnail Image' }) => {
+const CenteredImg = ({ src, alt }) => {
   const data = useStaticQuery(graphql`
     query {
       allImageSharp {
@@ -23,7 +23,7 @@ const CenteredImg = ({ src, alt = 'Thumbnail Image' }) => {
     (edge) => edge.node.fluid.originalName === src
   );
 
-  if (!image) return null;
+  if (!alt) alt = 'Thumbnail Image';
 
   return (
     <ThumbnailWrapper>

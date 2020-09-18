@@ -7,7 +7,7 @@ import SEO from 'components/seo';
 import Comment from 'components/comment';
 
 import { rhythm } from 'styles/typography';
-import Tag from 'styles/tag';
+import Category from 'styles/category';
 import DateTime from 'styles/dateTime';
 import Markdown from 'styles/markdown';
 
@@ -16,7 +16,7 @@ import convertToKorDate from 'utils/convertToKorDate';
 const BlogPost = ({ data }) => {
   const {
     markdownRemark: {
-      frontmatter: { title, desc, date, tag },
+      frontmatter: { title, desc, date, category },
       html,
     },
   } = data;
@@ -34,7 +34,7 @@ const BlogPost = ({ data }) => {
                 <div>
                   <header>
                     <Info>
-                      <Tag>{tag}</Tag>
+                      <Category>{category}</Category>
                       <Time dateTime={date}>{korDate}</Time>
                     </Info>
                     <Title>{title}</Title>
@@ -133,7 +133,7 @@ export const query = graphql`
         title
         desc
         date(formatString: "YYYY-MM-DD")
-        tag
+        category
       }
       excerpt
     }

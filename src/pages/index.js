@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Layout from 'components/layout/layout';
 import SEO from 'components/seo';
-import TagFilter from 'components/tagFilter';
+import CategoryFilter from 'components/categoryFilter';
 import Card from 'components/card';
 import { ThumbnailWrapper } from 'components/centeredImg';
 
@@ -12,12 +12,14 @@ import convertToKorDate from 'utils/convertToKorDate';
 
 const Home = ({ pageContext, data }) => {
   const [post, setPost] = useState([]);
-  const currentTag = pageContext.tag;
-  const tagList = data.allMarkdownRemark.group;
+  const currentCategory = pageContext.category;
+  const categoryList = data.allMarkdownRemark.group;
   const postData = data.allMarkdownRemark.edges;
 
-  const filteredPostData = currentTag
-    ? postData.filter(({ node }) => node.frontmatter.tag === currentTag)
+  const filteredPostData = currentCategory
+    ? postData.filter(
+        ({ node }) => node.frontmatter.category === currentCategory
+      )
     : postData;
 
   useLayoutEffect(() => {
@@ -29,7 +31,7 @@ const Home = ({ pageContext, data }) => {
           title,
           desc,
           date,
-          tag,
+          category,
           thumbnail: { base },
           alt,
         },
@@ -37,7 +39,7 @@ const Home = ({ pageContext, data }) => {
 
       setPost((prevPost) => [
         ...prevPost,
-        { id, slug, title, desc, date, tag, base, alt },
+        { id, slug, title, desc, date, category, base, alt },
       ]);
     });
   }, []);
@@ -48,19 +50,28 @@ const Home = ({ pageContext, data }) => {
       <Main>
         <section>
           <Content>
-            <TagFilter tagList={tagList} />
+            <CategoryFilter categoryList={categoryList} />
             <Grid>
               {post.map((data) => {
-                const { id, slug, title, desc, date, tag, base, alt } = data;
+                const {
+                  id,
+                  slug,
+                  title,
+                  desc,
+                  date,
+                  category,
+                  base,
+                  alt,
+                } = data;
                 const korDate = convertToKorDate(date);
-                const ariaLabel = `${title} - ${tag} - Posted on ${korDate}`;
+                const ariaLabel = `${title} - ${category} - Posted on ${korDate}`;
                 return (
                   <List key={id}>
                     <Link to={slug} aria-label={ariaLabel}>
                       <Card
                         thumbnail={base}
                         alt={alt}
-                        tag={tag}
+                        category={category}
                         title={title}
                         desc={desc}
                         date={date}
@@ -140,7 +151,7 @@ export const query = graphql`
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
-      group(field: frontmatter___tag) {
+      group(field: frontmatter___category) {
         fieldValue
         totalCount
       }
@@ -150,7 +161,7 @@ export const query = graphql`
           id
           frontmatter {
             title
-            tag
+            category
             date(formatString: "YYYY-MM-DD")
             desc
             thumbnail {

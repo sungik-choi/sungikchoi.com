@@ -3,16 +3,16 @@ import styled from 'styled-components';
 
 import CenteredImg from 'components/centeredImg';
 
-import Tag from 'styles/tag';
+import Category from 'styles/category';
 import DateTime from 'styles/dateTime';
 
-const Card = ({ thumbnail, alt, tag, title, desc, date, korDate }) => {
+const Card = ({ thumbnail, alt, category, title, desc, date, korDate }) => {
   return (
     <Wrapper>
       <CenteredImg src={thumbnail} alt={alt} />
       <Text>
         <div>
-          <Tag>{tag}</Tag>
+          <Category>{category}</Category>
           <Title>{title}</Title>
           <Desc>{desc}</Desc>
         </div>

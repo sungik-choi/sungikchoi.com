@@ -1,25 +1,31 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import styled from 'styled-components';
+
 import kebabCase from 'lodash/kebabCase';
 
-const TagFilter = ({ tagList }) => {
+const CategoryFilter = ({ categoryList }) => {
   const ALL_TAG_NAME = 'All';
 
   return (
-    <ul>
+    <CategoryUl>
       <li key={ALL_TAG_NAME}>
         <Link to="/">{ALL_TAG_NAME}</Link>
       </li>
-      {tagList.map((tag) => {
+      {categoryList.map((tag) => {
         const { fieldValue } = tag;
         return (
           <li key={fieldValue}>
-            <Link to={`/tags/${kebabCase(fieldValue)}`}>{fieldValue}</Link>
+            <Link to={`/category/${kebabCase(fieldValue)}`}>{fieldValue}</Link>
           </li>
         );
       })}
-    </ul>
+    </CategoryUl>
   );
 };
 
-export default TagFilter;
+const CategoryUl = styled.ul`
+  list-style: none;
+`;
+
+export default CategoryFilter;
