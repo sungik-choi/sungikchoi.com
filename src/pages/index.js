@@ -50,43 +50,32 @@ const Home = ({ pageContext, data }) => {
     <Layout>
       <SEO title="Home" />
       <Main>
-        <section>
-          <Content>
-            <CategoryFilter categoryList={categoryList} />
-            <PostTitle>{postTitle}</PostTitle>
-            <Grid>
-              {post.map((data) => {
-                const {
-                  id,
-                  slug,
-                  title,
-                  desc,
-                  date,
-                  category,
-                  base,
-                  alt,
-                } = data;
-                const korDate = convertToKorDate(date);
-                const ariaLabel = `${title} - ${category} - Posted on ${korDate}`;
-                return (
-                  <List key={id}>
-                    <Link to={slug} aria-label={ariaLabel}>
-                      <Card
-                        thumbnail={base}
-                        alt={alt}
-                        category={category}
-                        title={title}
-                        desc={desc}
-                        date={date}
-                        korDate={korDate}
-                      />
-                    </Link>
-                  </List>
-                );
-              })}
-            </Grid>
-          </Content>
-        </section>
+        <Content>
+          <CategoryFilter categoryList={categoryList} />
+          <PostTitle>{postTitle}</PostTitle>
+          <Grid role="list">
+            {post.map((data) => {
+              const { id, slug, title, desc, date, category, base, alt } = data;
+              const korDate = convertToKorDate(date);
+              const ariaLabel = `${title} - ${category} - Posted on ${korDate}`;
+              return (
+                <List key={id} role="listitem">
+                  <Link to={slug} aria-label={ariaLabel}>
+                    <Card
+                      thumbnail={base}
+                      alt={alt}
+                      category={category}
+                      title={title}
+                      desc={desc}
+                      date={date}
+                      korDate={korDate}
+                    />
+                  </Link>
+                </List>
+              );
+            })}
+          </Grid>
+        </Content>
       </Main>
     </Layout>
   );

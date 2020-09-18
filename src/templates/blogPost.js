@@ -28,31 +28,29 @@ const BlogPost = ({ data }) => {
       <SEO title={title} description={desc} />
       <main>
         <article>
-          <section>
-            <OuterWrapper>
-              <InnerWrapper>
-                <div>
-                  <header>
-                    <Info>
-                      <PostCategory>{category}</PostCategory>
-                      <Time dateTime={date}>{korDate}</Time>
-                    </Info>
-                    <Title>{title}</Title>
-                    <Desc>{desc}</Desc>
-                  </header>
-                  <Divider />
-                  <Markdown
-                    dangerouslySetInnerHTML={{ __html: html }}
-                    rhythm={rhythm}
-                  />
-                </div>
-              </InnerWrapper>
-            </OuterWrapper>
-          </section>
-          <CommentWrap>
-            <Comment repo="sungik-choi/blog-comment" />
-          </CommentWrap>
+          <OuterWrapper>
+            <InnerWrapper>
+              <div>
+                <header>
+                  <Info>
+                    <PostCategory>{category}</PostCategory>
+                    <Time dateTime={date}>{korDate}</Time>
+                  </Info>
+                  <Title>{title}</Title>
+                  <Desc>{desc}</Desc>
+                </header>
+                <Divider />
+                <Markdown
+                  dangerouslySetInnerHTML={{ __html: html }}
+                  rhythm={rhythm}
+                />
+              </div>
+            </InnerWrapper>
+          </OuterWrapper>
         </article>
+        <CommentWrap>
+          <Comment repo="sungik-choi/blog-comment" />
+        </CommentWrap>
       </main>
     </Layout>
   );

@@ -22,7 +22,7 @@ const Card = ({ thumbnail, alt, category, title, desc, date, korDate }) => {
   );
 };
 
-const Wrapper = styled.article`
+const Wrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -51,7 +51,7 @@ const Text = styled.div`
   }
 `;
 
-const Title = styled.h2`
+const Title = styled.h3`
   margin-top: ${({ theme }) => theme.sizing.xs};
   font-size: ${({ theme }) => theme.text.md};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
