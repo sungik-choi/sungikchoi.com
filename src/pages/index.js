@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 
@@ -12,6 +12,8 @@ import convertToKorDate from 'utils/convertToKorDate';
 
 const Home = ({ pageContext, data }) => {
   const [post, setPost] = useState([]);
+  const [page, setPage] = useState(0);
+  const POST_PER_PAGE = 1;
   const currentCategory = pageContext.category;
   const categoryList = data.allMarkdownRemark.group;
   const postData = data.allMarkdownRemark.edges;
@@ -22,29 +24,33 @@ const Home = ({ pageContext, data }) => {
       )
     : postData;
 
-  const postTitle = currentCategory || 'New';
+  const currentPageIndex = POST_PER_PAGE * page;
 
   useLayoutEffect(() => {
-    filteredPostData.forEach(({ node }) => {
-      const {
-        id,
-        fields: { slug },
-        frontmatter: {
-          title,
-          desc,
-          date,
-          category,
-          thumbnail: { base },
-          alt,
-        },
-      } = node;
+    filteredPostData
+      .slice(currentPageIndex, currentPageIndex + POST_PER_PAGE)
+      .forEach(({ node }) => {
+        const {
+          id,
+          fields: { slug },
+          frontmatter: {
+            title,
+            desc,
+            date,
+            category,
+            thumbnail: { base },
+            alt,
+          },
+        } = node;
 
-      setPost((prevPost) => [
-        ...prevPost,
-        { id, slug, title, desc, date, category, base, alt },
-      ]);
-    });
-  }, []);
+        setPost((prevPost) => [
+          ...prevPost,
+          { id, slug, title, desc, date, category, base, alt },
+        ]);
+      });
+  }, [page]);
+
+  const postTitle = currentCategory || '전체 포스트';
 
   return (
     <Layout>
@@ -53,6 +59,7 @@ const Home = ({ pageContext, data }) => {
         <Content>
           <CategoryFilter categoryList={categoryList} />
           <PostTitle>{postTitle}</PostTitle>
+          <button onClick={() => setPage(page + 1)}>페이지 증가</button>
           <Grid role="list">
             {post.map((data) => {
               const { id, slug, title, desc, date, category, base, alt } = data;
