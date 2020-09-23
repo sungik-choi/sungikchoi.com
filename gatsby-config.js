@@ -5,6 +5,16 @@ module.exports = {
     title: `Sungik Choi`,
     description: `Sungik Choi's Devlog`,
     author: `Sungik Choi`,
+    menuLinks: [
+      {
+        link: '/',
+        name: '홈',
+      },
+      {
+        link: '/about/',
+        name: '소개',
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-styled-components`,

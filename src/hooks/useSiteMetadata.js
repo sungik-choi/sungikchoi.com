@@ -9,6 +9,10 @@ export const useSiteMetadata = () => {
             title
             description
             author
+            menuLinks {
+              name
+              link
+            }
           }
         }
       }

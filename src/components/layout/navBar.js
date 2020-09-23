@@ -2,17 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
+import { useSiteMetadata } from 'hooks/useSiteMetadata';
+
 const NavBar = ({ title }) => {
-  const data = [
-    {
-      linkTo: '/',
-      text: '홈',
-    },
-    {
-      linkTo: '/about/',
-      text: '소개',
-    },
-  ];
+  const site = useSiteMetadata();
 
   return (
     <Nav aria-label="네비게이션">
@@ -22,9 +15,9 @@ const NavBar = ({ title }) => {
           <Link to="/">{title}</Link>
         </Title>
         <LinkList>
-          {data.map(({ linkTo, text }) => (
-            <li key={text}>
-              <Link to={linkTo}>{text}</Link>
+          {site.siteMetadata.menuLinks.map(({ link, name }) => (
+            <li key={name}>
+              <Link to={link}>{name}</Link>
             </li>
           ))}
           <li>
