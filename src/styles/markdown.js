@@ -117,33 +117,19 @@ const Markdown = styled.article`
   pre,
   code {
     font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+    background-color: ${({ theme }) => theme.color.gray2};
   }
 
-  code {
-    background-color: ${({ theme }) => theme.color.gray1} !important;
+  pre {
+    border: 1px solid ${({ theme }) => theme.color.gray4};
+  }
+
+  *:not(pre) > code {
+    background-color: ${({ theme }) => theme.color.gray1};
     padding: 0.2rem 0.4rem;
     margin: 0;
     font-size: 85%;
     border-radius: 3px;
-  }
-
-  pre.shiki,
-  pre.shiki-unknown {
-    overflow: auto;
-    overflow-wrap: break-word;
-    padding: 1rem;
-    margin: 1rem 0;
-    white-space: pre-wrap;
-    background-color: ${({ theme }) => theme.color.gray2} !important;
-    border: 1px solid ${({ theme }) => theme.color.gray4};
-    border-radius: ${({ theme }) => theme.borderRadius.sm};
-    code {
-      background-color: transparent !important;
-      padding: 0;
-      margin: 0;
-      border-radius: 0;
-      font-size: 0.9375rem;
-    }
   }
 `;
 

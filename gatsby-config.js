@@ -36,9 +36,10 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-shiki`,
+            resolve: `gatsby-remark-vscode`,
             options: {
-              theme: 'min-light',
+              theme: 'Github Light Theme',
+              extensions: ['vscode-theme-github-light'],
             },
           },
           {
@@ -66,3 +67,4 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
   ],
 };
+``;
