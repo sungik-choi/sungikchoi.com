@@ -1,8 +1,11 @@
 import React, { createRef, useLayoutEffect } from 'react';
+import { useSiteMetadata } from 'hooks/useSiteMetadata';
 
 const src = 'https://utteranc.es/client.js';
 
 const Comment = () => {
+  const site = useSiteMetadata();
+  const { repo, theme } = site.siteMetadata.utterances;
   const containerRef = createRef();
 
   useLayoutEffect(() => {
@@ -10,10 +13,10 @@ const Comment = () => {
 
     const attributes = {
       src,
-      repo: 'sungik-choi/blog-comment',
+      repo,
       'issue-term': 'pathname',
       label: 'comment',
-      theme: 'preferred-color-scheme',
+      theme,
       crossOrigin: 'anonymous',
       async: 'true',
     };

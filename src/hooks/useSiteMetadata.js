@@ -9,6 +9,12 @@ export const useSiteMetadata = () => {
             title
             description
             author
+            githubLink
+            utterances {
+              repo
+              theme
+            }
+            postTitle
             menuLinks {
               name
               link

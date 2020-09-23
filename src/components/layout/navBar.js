@@ -6,6 +6,7 @@ import { useSiteMetadata } from 'hooks/useSiteMetadata';
 
 const NavBar = ({ title }) => {
   const site = useSiteMetadata();
+  const { menuLinks, githubLink } = site.siteMetadata;
 
   return (
     <Nav aria-label="네비게이션">
@@ -15,17 +16,13 @@ const NavBar = ({ title }) => {
           <Link to="/">{title}</Link>
         </Title>
         <LinkList>
-          {site.siteMetadata.menuLinks.map(({ link, name }) => (
+          {menuLinks.map(({ link, name }) => (
             <li key={name}>
               <Link to={link}>{name}</Link>
             </li>
           ))}
           <li>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.github.com/sungik-choi"
-            >
+            <a target="_blank" rel="noreferrer" href={githubLink}>
               Github
             </a>
           </li>

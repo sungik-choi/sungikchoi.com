@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 
@@ -8,12 +8,14 @@ import CategoryFilter from 'components/categoryFilter';
 import Card from 'components/card';
 import { ThumbnailWrapper } from 'components/centeredImg';
 
+import { useSiteMetadata } from 'hooks/useSiteMetadata';
+
 import convertToKorDate from 'utils/convertToKorDate';
 
 const Home = ({ pageContext, data }) => {
   const [post, setPost] = useState([]);
   const [page, setPage] = useState(0);
-  const POST_PER_PAGE = 1;
+
   const currentCategory = pageContext.category;
   const categoryList = data.allMarkdownRemark.group;
   const postData = data.allMarkdownRemark.edges;
@@ -50,7 +52,8 @@ const Home = ({ pageContext, data }) => {
       });
   }, [page]);
 
-  const postTitle = currentCategory || '전체 포스트';
+  const site = useSiteMetadata();
+  const postTitle = currentCategory || site.siteMetadata.postTitle;
 
   return (
     <Layout>

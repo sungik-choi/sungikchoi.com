@@ -5,6 +5,12 @@ module.exports = {
     title: `Sungik Choi`,
     description: `Sungik Choi's Devlog`,
     author: `Sungik Choi`,
+    githubLink: `https://www.github.com/sungik-choi`,
+    utterances: {
+      repo: 'sungik-choi/blog-comment',
+      theme: 'preferred-color-scheme',
+    },
+    postTitle: '전체 포스트',
     menuLinks: [
       {
         link: '/',
