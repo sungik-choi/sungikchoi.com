@@ -26,6 +26,8 @@ const Home = ({ pageContext, data }) => {
       )
     : postData;
 
+  // ! 별도 설정 파일로 분리할 수 있을듯.
+  const POST_PER_PAGE = 1;
   const currentPageIndex = POST_PER_PAGE * page;
 
   useLayoutEffect(() => {
@@ -62,7 +64,6 @@ const Home = ({ pageContext, data }) => {
         <Content>
           <CategoryFilter categoryList={categoryList} />
           <PostTitle>{postTitle}</PostTitle>
-          <button onClick={() => setPage(page + 1)}>페이지 증가</button>
           <Grid role="list">
             {post.map((data) => {
               const { id, slug, title, desc, date, category, base, alt } = data;
@@ -86,13 +87,13 @@ const Home = ({ pageContext, data }) => {
             })}
           </Grid>
         </Content>
+        <button onClick={() => setPage(page + 1)}>페이지 증가</button>
       </Main>
     </Layout>
   );
 };
 
 const Main = styled.main`
-  height: 3000px;
   min-width: ${({ theme }) => theme.minWidth};
   ${({ theme }) =>
     `min-height: calc(100vh - ${theme.navHeight} - ${theme.footerHeight})`};
