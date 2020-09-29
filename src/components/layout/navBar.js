@@ -9,7 +9,7 @@ const NavBar = ({ title }) => {
   const { menuLinks, githubLink } = site.siteMetadata;
 
   return (
-    <Nav aria-label="네비게이션">
+    <Nav aria-label="Global Navigation">
       <Background />
       <Content>
         <Title>

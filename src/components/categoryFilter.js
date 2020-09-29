@@ -6,28 +6,26 @@ import kebabCase from 'lodash/kebabCase';
 
 const CategoryFilter = ({ categoryList }) => {
   const ALL_CATEGORY_NAME = 'All';
-  const isActive = ({ isCurrent }) => {
-    return isCurrent ? { className: 'active' } : {};
-  };
+  const isActive = ({ isCurrent }) => (isCurrent ? { id: 'active' } : {});
 
   return (
-    <Nav aria-label="카테고리">
+    <Nav aria-label="Category Filter">
       <CategoryTitle>Category</CategoryTitle>
-      <Link getProps={isActive} to="/">
-        <AllCategoryButton>{ALL_CATEGORY_NAME}</AllCategoryButton>
-      </Link>
+      <CategoryButton getProps={isActive} to="/">
+        {ALL_CATEGORY_NAME}
+      </CategoryButton>
       <Divider />
       <CategoryUl>
         {categoryList.map((category) => {
           const { fieldValue } = category;
           return (
             <li key={fieldValue}>
-              <Link
+              <CategoryButton
                 getProps={isActive}
-                to={`/category/${kebabCase(fieldValue)}`}
+                to={`/category/${kebabCase(fieldValue)}/`}
               >
-                <CategoryButton>{fieldValue}</CategoryButton>
-              </Link>
+                {fieldValue}
+              </CategoryButton>
             </li>
           );
         })}
@@ -39,12 +37,12 @@ const CategoryFilter = ({ categoryList }) => {
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-  background-color: white;
+  background-color: ${({ theme }) => theme.color.white};
   margin-bottom: 3rem;
   padding: 0.75rem;
-  border-radius: 8px;
+  border-radius: ${({ theme }) => theme.borderRadius.base};
 
-  & a.active button {
+  a#active {
     color: ${({ theme }) => theme.color.white};
     background-color: ${({ theme }) => theme.color.hover};
   }
@@ -55,10 +53,10 @@ const Nav = styled.nav`
 `;
 
 const CategoryTitle = styled.em`
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: ${({ theme }) => theme.text.base};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
   font-style: initial;
-  margin-right: 40px;
+  margin-right: ${({ theme }) => theme.sizing.lg};
 
   position: absolute;
   width: 1px;
@@ -76,13 +74,15 @@ const CategoryTitle = styled.em`
   }
 `;
 
-const CategoryButton = styled.button`
+const CategoryButton = styled(Link)`
   cursor: pointer;
+  display: block;
+  text-decoration: none;
   border: none;
   background-color: ${({ theme }) => theme.color.gray1};
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: ${({ theme }) => theme.sizing.sm} ${({ theme }) => theme.sizing.base};
+  border-radius: ${({ theme }) => theme.borderRadius.base};
+  font-size: 0.875rem;
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   transition: 300ms ease;
 
@@ -99,13 +99,10 @@ const Divider = styled.div`
   background-color: ${({ theme }) => theme.color.gray4};
 `;
 
-const AllCategoryButton = styled(CategoryButton)``;
-
 const CategoryUl = styled.ul`
   display: flex;
   list-style: none;
   overflow-x: scroll;
-  overflow-y: hidden;
 
   li + li {
     margin-left: 4px;
