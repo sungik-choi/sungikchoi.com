@@ -1,20 +1,25 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
+import useTheme from 'hooks/useTheme';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 
-import theme from 'styles/theme';
+import { lightTheme, darkTheme } from 'styles/theme';
 import GlobalStyle from 'styles/globalStyle';
 
 import NavBar from './navBar';
 
 const Layout = ({ children }) => {
+  const [theme, themeToggler] = useTheme();
+  // ? 왜 2번 불리면서 theme가 제대로 저장이 안되는거지?
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+  console.log(theme, themeMode);
   const site = useSiteMetadata();
   const { title, description, author } = site.siteMetadata;
   const copyrightStr = `${description}. Copyright © ${author}.`;
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
       <Container>
         <NavBar title={title} />
