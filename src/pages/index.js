@@ -14,45 +14,36 @@ import convertToKorDate from 'utils/convertToKorDate';
 
 const Home = ({ pageContext, data }) => {
   const [post, setPost] = useState([]);
-  const [page, setPage] = useState(0);
 
   const currentCategory = pageContext.category;
-  const categoryList = data.allMarkdownRemark.group;
   const postData = data.allMarkdownRemark.edges;
-
   const filteredPostData = currentCategory
     ? postData.filter(
         ({ node }) => node.frontmatter.category === currentCategory
       )
     : postData;
 
-  // ! 별도 설정 파일로 분리할 수 있을듯.
-  const POST_PER_PAGE = 1;
-  const currentPageIndex = POST_PER_PAGE * page;
-
   useLayoutEffect(() => {
-    filteredPostData
-      .slice(currentPageIndex, currentPageIndex + POST_PER_PAGE)
-      .forEach(({ node }) => {
-        const {
-          id,
-          fields: { slug },
-          frontmatter: {
-            title,
-            desc,
-            date,
-            category,
-            thumbnail: { base },
-            alt,
-          },
-        } = node;
+    filteredPostData.forEach(({ node }) => {
+      const {
+        id,
+        fields: { slug },
+        frontmatter: {
+          title,
+          desc,
+          date,
+          category,
+          thumbnail: { base },
+          alt,
+        },
+      } = node;
 
-        setPost((prevPost) => [
-          ...prevPost,
-          { id, slug, title, desc, date, category, base, alt },
-        ]);
-      });
-  }, [page]);
+      setPost((prevPost) => [
+        ...prevPost,
+        { id, slug, title, desc, date, category, thumbnail: base, alt },
+      ]);
+    });
+  }, []);
 
   const site = useSiteMetadata();
   const postTitle = currentCategory || site.siteMetadata.postTitle;
@@ -62,18 +53,27 @@ const Home = ({ pageContext, data }) => {
       <SEO title="Home" />
       <Main>
         <Content>
-          <CategoryFilter categoryList={categoryList} />
+          <CategoryFilter categoryList={data.allMarkdownRemark.group} />
           <PostTitle>{postTitle}</PostTitle>
           <Grid role="list">
             {post.map((data) => {
-              const { id, slug, title, desc, date, category, base, alt } = data;
+              const {
+                id,
+                slug,
+                title,
+                desc,
+                date,
+                category,
+                thumbnail,
+                alt,
+              } = data;
               const korDate = convertToKorDate(date);
               const ariaLabel = `${title} - ${category} - Posted on ${korDate}`;
               return (
                 <List key={id} role="listitem">
                   <Link to={slug} aria-label={ariaLabel}>
                     <Card
-                      thumbnail={base}
+                      thumbnail={thumbnail}
                       alt={alt}
                       category={category}
                       title={title}
@@ -87,7 +87,6 @@ const Home = ({ pageContext, data }) => {
             })}
           </Grid>
         </Content>
-        <button onClick={() => setPage(page + 1)}>페이지 증가</button>
       </Main>
     </Layout>
   );

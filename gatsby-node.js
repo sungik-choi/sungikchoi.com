@@ -19,8 +19,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
+  const mainTemplate = path.resolve(`./src/pages/index.js`);
   const blogPostTemplate = path.resolve(`./src/templates/blogPost.js`);
-  const categoryTemplate = path.resolve(`./src/pages/index.js`);
 
   const result = await graphql(`
     {
@@ -61,7 +61,7 @@ exports.createPages = async ({ graphql, actions }) => {
   categories.forEach((category) => {
     createPage({
       path: `/category/${_.kebabCase(category.fieldValue)}/`,
-      component: categoryTemplate,
+      component: mainTemplate,
       context: {
         category: category.fieldValue,
       },
