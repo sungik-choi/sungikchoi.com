@@ -49,7 +49,7 @@ const BlogPost = ({ data }) => {
           </OuterWrapper>
         </article>
         <CommentWrap>
-          <Comment repo="sungik-choi/blog-comment" />
+          <Comment />
         </CommentWrap>
       </main>
     </Layout>
