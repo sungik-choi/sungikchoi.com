@@ -26,9 +26,9 @@ const Markdown = styled.article`
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.color.blue};
+    color: ${({ theme }) => theme.color.blue} !important;
     * {
-      color: ${({ theme }) => theme.color.blue};
+      color: ${({ theme }) => theme.color.blue} !important;
     }
     &:hover,
     &:active {
@@ -135,6 +135,12 @@ const Markdown = styled.article`
 
   pre.grvsc-container {
     margin: ${({ theme }) => theme.sizing.md} 0;
+  }
+
+  .grvsc-line-highlighted::before {
+    background-color: ${({ theme }) => theme.color.codeHighlight} !important;
+    box-shadow: inset 4px 0 0 0
+      ${({ theme }) => theme.color.codeHighlightBorder} !important;
   }
 
   *:not(pre) > code {

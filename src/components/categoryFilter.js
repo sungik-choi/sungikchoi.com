@@ -94,7 +94,7 @@ const Divider = styled.div`
   width: 1px;
   height: 2rem;
   margin: 0 0.5rem;
-  background-color: ${({ theme }) => theme.color.gray3};
+  background-color: ${({ theme }) => theme.color.divider};
 `;
 
 const CategoryUl = styled.ul`
