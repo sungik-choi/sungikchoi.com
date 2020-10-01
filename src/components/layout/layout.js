@@ -1,19 +1,17 @@
 import React, { createContext } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-
+import NavBar from './navBar';
 import useTheme from 'hooks/useTheme';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
-
 import { lightTheme, darkTheme } from 'styles/theme';
 import GlobalStyle from 'styles/globalStyle';
-
-import NavBar from './navBar';
+import { LIGHT } from 'constants/constants';
 
 export const ThemeContext = createContext();
 
 const Layout = ({ children }) => {
   const [theme, themeToggler] = useTheme();
-  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+  const themeMode = theme === LIGHT ? lightTheme : darkTheme;
 
   const site = useSiteMetadata();
   const { title, description, author } = site.siteMetadata;
@@ -35,7 +33,7 @@ const Layout = ({ children }) => {
 };
 
 const ThemeToggleButton = styled.button`
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -45,7 +43,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   ${({ theme }) => `min-height: calc(100vh - ${theme.footerHeight})`};
-  background-color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.postBackground};
 `;
 
 const Footer = styled.footer`
@@ -59,7 +57,7 @@ const Footer = styled.footer`
 const Copyright = styled.span`
   font-size: ${({ theme }) => theme.text.sm};
   font-weight: 400;
-  color: ${({ theme }) => theme.color.gray6};
+  color: ${({ theme }) => theme.color.gray4};
 `;
 
 export default Layout;

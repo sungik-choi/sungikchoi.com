@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import CenteredImg from 'components/centeredImg';
-
 import Category from 'styles/category';
 import DateTime from 'styles/dateTime';
 
@@ -29,7 +27,7 @@ const Wrapper = styled.div`
   overflow: hidden;
   height: 100%;
   border-radius: ${({ theme }) => theme.borderRadius.base};
-  background-color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.card};
 
   /* Fix Safari overflow:hidden with border radius not working error */
   transform: translateZ(0);

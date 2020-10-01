@@ -1,16 +1,13 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-
 import Layout from 'components/layout/layout';
 import SEO from 'components/seo';
 import Comment from 'components/comment';
-
 import { rhythm } from 'styles/typography';
 import Category from 'styles/category';
 import DateTime from 'styles/dateTime';
 import Markdown from 'styles/markdown';
-
 import convertToKorDate from 'utils/convertToKorDate';
 
 const BlogPost = ({ data }) => {
@@ -112,7 +109,7 @@ const Desc = styled.p`
 const Divider = styled.div`
   width: 100%;
   height: 1px;
-  background-color: ${({ theme }) => theme.color.shadow};
+  background-color: ${({ theme }) => theme.color.gray3};
   margin-top: ${({ theme }) => theme.sizing.lg};
   margin-bottom: ${({ theme }) => theme.sizing.lg};
 `;

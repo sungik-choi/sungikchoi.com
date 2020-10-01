@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-
 import kebabCase from 'lodash/kebabCase';
 
 const CategoryFilter = ({ categoryList }) => {
@@ -37,14 +36,14 @@ const CategoryFilter = ({ categoryList }) => {
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-  background-color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.card};
   margin-bottom: 3rem;
   padding: 0.75rem;
   border-radius: ${({ theme }) => theme.borderRadius.base};
 
   a#active {
     color: ${({ theme }) => theme.color.white};
-    background-color: ${({ theme }) => theme.color.hover};
+    background-color: ${({ theme }) => theme.color.blue};
   }
 
   @media (min-width: ${({ theme }) => theme.device.lg}) {
@@ -54,7 +53,7 @@ const Nav = styled.nav`
 
 const CategoryTitle = styled.em`
   font-size: ${({ theme }) => theme.text.base};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   font-style: initial;
   margin-right: ${({ theme }) => theme.sizing.lg};
 
@@ -79,16 +78,15 @@ const CategoryButton = styled(Link)`
   display: block;
   text-decoration: none;
   border: none;
-  background-color: ${({ theme }) => theme.color.gray1};
+  background-color: ${({ theme }) => theme.color.categoryButton};
   padding: ${({ theme }) => theme.sizing.sm} ${({ theme }) => theme.sizing.base};
   border-radius: ${({ theme }) => theme.borderRadius.base};
   font-size: 0.875rem;
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
-  transition: 300ms ease;
 
   &:hover {
     color: ${({ theme }) => theme.color.white};
-    background-color: ${({ theme }) => theme.color.hover};
+    background-color: ${({ theme }) => theme.color.blue};
   }
 `;
 
@@ -96,7 +94,7 @@ const Divider = styled.div`
   width: 1px;
   height: 2rem;
   margin: 0 0.5rem;
-  background-color: ${({ theme }) => theme.color.gray4};
+  background-color: ${({ theme }) => theme.color.gray3};
 `;
 
 const CategoryUl = styled.ul`
@@ -105,7 +103,7 @@ const CategoryUl = styled.ul`
   overflow-x: scroll;
 
   li + li {
-    margin-left: 4px;
+    margin-left: 6px;
   }
 `;
 

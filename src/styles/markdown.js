@@ -6,21 +6,29 @@ const Markdown = styled.article`
   h3,
   h4,
   h5,
-  h6,
+  h6 {
+    font-weight: ${({ theme }) => theme.fontWeight.bold};
+  }
+
+  td,
+  th {
+    border-bottom: 1px solid ${({ theme }) => theme.color.gray3};
+  }
+
   strong {
-    font-weight: 600;
+    font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   }
 
   a,
   p {
-    font-weight: 400;
+    font-weight: ${({ theme }) => theme.fontWeight.regular};
   }
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.color.hover};
+    color: ${({ theme }) => theme.color.blue};
     * {
-      color: ${({ theme }) => theme.color.hover};
+      color: ${({ theme }) => theme.color.blue};
     }
     &:hover,
     &:active {
@@ -94,20 +102,20 @@ const Markdown = styled.article`
 
   p {
     line-height: 1.68;
-    margin-bottom: 1.5rem;
+    margin-bottom: ${({ theme }) => theme.sizing.md};
   }
 
   hr {
-    margin: 40px 0;
-    background: ${({ theme }) => theme.color.shadow};
+    margin: ${({ theme }) => theme.sizing.lg} 0;
+    background: ${({ theme }) => theme.color.gray3};
   }
 
   blockquote {
-    border-left: 0.25rem solid ${({ theme }) => theme.color.gray3};
-    padding-left: 1rem;
-    margin: 1.5rem 0;
+    border-left: 0.25rem solid ${({ theme }) => theme.color.gray2};
+    padding-left: ${({ theme }) => theme.sizing.base};
+    margin: ${({ theme }) => theme.sizing.md} 0;
     * {
-      color: ${({ theme }) => theme.color.gray5};
+      color: ${({ theme }) => theme.color.gray6};
     }
   }
 
@@ -118,19 +126,19 @@ const Markdown = styled.article`
   pre,
   code {
     font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-    background-color: ${({ theme }) => theme.color.gray2};
+    background-color: ${({ theme }) => theme.color.codeBlock};
   }
 
   pre {
-    border: 1px solid ${({ theme }) => theme.color.gray4};
+    border: 1px solid ${({ theme }) => theme.color.gray3};
   }
 
   pre.grvsc-container {
-    margin: 1.5rem 0;
+    margin: ${({ theme }) => theme.sizing.md} 0;
   }
 
   *:not(pre) > code {
-    background-color: ${({ theme }) => theme.color.gray1};
+    background-color: ${({ theme }) => theme.color.code};
     padding: 0.2rem 0.4rem;
     margin: 0;
     font-size: 85%;

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 
 const NavBar = ({ title }) => {
@@ -40,7 +39,6 @@ const Nav = styled.nav`
   width: 100%;
   height: ${({ theme }) => theme.navHeight};
   z-index: 10;
-
   a:hover {
     text-decoration: none;
   }
@@ -54,7 +52,8 @@ const Background = styled.div`
   height: 100%;
   z-index: 1;
   backdrop-filter: saturate(180%) blur(20px);
-  background-color: ${({ theme }) => theme.color.transparent};
+  background-color: ${({ theme }) => theme.color.navBar};
+  border-bottom: 1px solid ${({ theme }) => theme.color.navBorder};
 `;
 
 const Content = styled.div`
@@ -103,7 +102,7 @@ const LinkList = styled.ul`
   }
 
   a:hover {
-    color: ${({ theme }) => theme.color.hover};
+    color: ${({ theme }) => theme.color.blue};
   }
 
   & > li + li {

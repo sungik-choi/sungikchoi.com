@@ -1,15 +1,12 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
-
 import Layout from 'components/layout/layout';
 import SEO from 'components/seo';
 import CategoryFilter from 'components/categoryFilter';
 import Card from 'components/card';
 import { ThumbnailWrapper } from 'components/centeredImg';
-
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
-
 import convertToKorDate from 'utils/convertToKorDate';
 
 const Home = ({ pageContext, data }) => {
@@ -96,7 +93,7 @@ const Main = styled.main`
   min-width: ${({ theme }) => theme.minWidth};
   ${({ theme }) =>
     `min-height: calc(100vh - ${theme.navHeight} - ${theme.footerHeight})`};
-  background-color: ${({ theme }) => theme.color.gray1};
+  background-color: ${({ theme }) => theme.color.background};
 `;
 
 const Content = styled.div`
