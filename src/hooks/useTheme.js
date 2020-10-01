@@ -1,10 +1,10 @@
 import { useState, useLayoutEffect } from 'react';
 
-const useTheme = () => {
-  const THEME_MEDIA_QUERY = '(prefers-color-scheme: light)';
-  const LIGHT = 'light';
-  const DARK = 'dark';
+const THEME_MEDIA_QUERY = '(prefers-color-scheme: light)';
+const LIGHT = 'light';
+const DARK = 'dark';
 
+const useTheme = () => {
   const prefersColorScheme = window.matchMedia(THEME_MEDIA_QUERY).matches
     ? LIGHT
     : DARK;
@@ -12,7 +12,6 @@ const useTheme = () => {
   const [theme, setTheme] = useState(prefersColorScheme);
 
   const setMode = (mode) => {
-    console.log('run!');
     localStorage.setItem('theme', mode);
     setTheme(mode);
   };
