@@ -45,13 +45,14 @@ const Markdown = styled.article`
 
   h3 {
     font-size: 1.1875rem;
+    margin-bottom: ${({ rhythm }) => rhythm(1)};
+    margin-top: ${({ rhythm }) => rhythm(1.5)};
 
     @media (min-width: ${({ theme }) => theme.device.lg}) {
       font-size: 1.31951rem;
     }
   }
 
-  h3,
   h4,
   h5,
   h6 {
@@ -122,6 +123,10 @@ const Markdown = styled.article`
 
   pre {
     border: 1px solid ${({ theme }) => theme.color.gray4};
+  }
+
+  pre.grvsc-container {
+    margin: 1.5rem 0;
   }
 
   *:not(pre) > code {
