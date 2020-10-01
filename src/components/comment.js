@@ -1,6 +1,7 @@
 import React, { useRef, useContext, useEffect, useLayoutEffect } from 'react';
 import { ThemeContext } from 'components/layout/layout';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
+import { LIGHT, THEME } from 'constants/constants';
 
 const src = 'https://utteranc.es';
 const utterancesSelector = 'iframe.utterances-frame';
@@ -9,7 +10,7 @@ const DARK_THEME = 'github-dark';
 
 const Comment = () => {
   const theme = useContext(ThemeContext);
-  const themeMode = theme === 'light' ? LIGHT_THEME : DARK_THEME;
+  const themeMode = theme === LIGHT ? LIGHT_THEME : DARK_THEME;
 
   const site = useSiteMetadata();
   const { repo } = site.siteMetadata.utterances;
@@ -42,7 +43,7 @@ const Comment = () => {
   };
 
   useLayoutEffect(() => {
-    const bSameSavedTheme = theme === localStorage.getItem('theme');
+    const bSameSavedTheme = theme === localStorage.getItem(THEME);
     if (!bSameSavedTheme) return;
     const utterancesEl = document.querySelector(utterancesSelector);
     if (utterancesEl) postThemeMessage(utterancesEl);
