@@ -63,7 +63,8 @@ const Title = styled.h3`
 const Desc = styled.p`
   line-height: 1.5;
   margin-top: 0.4rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: ${({ theme }) => theme.sizing.sm};
+  color: ${({ theme }) => theme.color.text2};
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

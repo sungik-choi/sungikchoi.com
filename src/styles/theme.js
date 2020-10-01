@@ -9,16 +9,18 @@ export const lightTheme = {
 
   color: {
     text: '#1d1d1d',
+    text2: '#1d1d1d',
+    text3: '#696969',
     white: '#ffffff',
     navBar: 'rgba(255, 255, 255, 0.7)',
     navBorder: 'rgba(200, 200, 200, 0.7)',
-    categoryButton: '#f5f5f5',
-    background: '#f5f5f5',
+    categoryButton: '#f2f2f2',
+    background: '#f2f2f2',
     postBackground: '#ffffff',
     card: '#ffffff',
-    code: '#f5f5f5',
+    code: '#f2f2f2',
     codeBlock: '#fafafa',
-    gray1: '#f5f5f5',
+    gray1: '#f2f2f2',
     gray2: '#e0e0e0',
     gray3: '#d1d1d1',
     gray4: '#868686',
@@ -76,66 +78,29 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  width: calcRem(980),
-  minWidth: calcRem(320),
-  postWidth: calcRem(650),
-  navHeight: calcRem(54),
-  footerHeight: calcRem(60),
+  ...lightTheme,
 
   color: {
-    text: '#f3f3f3',
-    white: '#ffffff',
+    text: '#e6e6e6',
+    text2: '#d1d1d1',
+    text3: '#8c8c8c',
+    white: '#e6e6e6',
     navBar: 'rgba(29, 29, 29, 0.7)',
     navBorder: 'rgba(255, 255, 255, 0.2)',
     categoryButton: '#484848',
     background: '#1c1c1c',
     postBackground: '#1c1c1c',
+    card: '#2c2c2c',
     code: '#3a3a3a',
     codeBlock: '#1c1c1c',
-    card: '#2c2c2c',
     gray1: '#1c1c1c',
     gray2: '#2c2c2c',
     gray3: '#3a3a3a',
     gray4: '#484848',
     gray5: '#646464',
-    gray6: '#8e8e8e',
+    gray6: '#868686',
     dimmed: 'rgba(0, 0, 0, 0.15)',
     blue: '#0a84ff',
-  },
-
-  gridGap: {
-    sm: calcRem(10),
-    lg: calcRem(24),
-    xl: calcRem(36),
-  },
-
-  padding: {
-    sm: calcRem(16),
-    lg: calcRem(22),
-  },
-
-  borderRadius: {
-    sm: '6px',
-    base: '8px',
-  },
-
-  sizing: {
-    xs: calcRem(4),
-    sm: calcRem(8),
-    base: calcRem(16),
-    md: calcRem(24),
-    lg: calcRem(40),
-    xl: calcRem(64),
-  },
-
-  text: {
-    xs: calcRem(10),
-    sm: calcRem(12),
-    base: calcRem(16),
-    md: calcRem(18),
-    lg: calcRem(24),
-    xl: calcRem(48),
-    title: calcRem(20),
   },
 
   fontWeight: {
@@ -143,9 +108,5 @@ export const darkTheme = {
     semiBold: 600,
     bold: 600,
     extraBold: 700,
-  },
-
-  device: {
-    lg: calcRem(1024),
   },
 };
