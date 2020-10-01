@@ -8,7 +8,6 @@ module.exports = {
     githubLink: `https://www.github.com/sungik-choi`,
     utterances: {
       repo: 'sungik-choi/blog-comment',
-      theme: 'preferred-color-scheme',
     },
     postTitle: '전체 포스트',
     menuLinks: [
