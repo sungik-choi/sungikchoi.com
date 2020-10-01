@@ -53,10 +53,13 @@ module.exports = {
           {
             resolve: `gatsby-remark-vscode`,
             options: {
-              // theme: 'Github Light Theme',
-              // extensions: ['vscode-theme-github-light'],
-              theme: 'Dark Github',
-              extensions: ['dark-theme-github'],
+              theme: {
+                default: 'Github Light Theme',
+                parentSelector: {
+                  'html[data-theme=dark]': 'Dark Github',
+                },
+              },
+              extensions: ['vscode-theme-github-light', 'dark-theme-github'],
             },
           },
           {

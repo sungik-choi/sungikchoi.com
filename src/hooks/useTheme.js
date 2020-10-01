@@ -8,10 +8,12 @@ const useTheme = () => {
     ? LIGHT
     : DARK;
 
+  let htmlEl = document.querySelector('html');
   const [theme, setTheme] = useState(prefersColorScheme);
 
   const setMode = (mode) => {
     localStorage.setItem(THEME, mode);
+    htmlEl.dataset.theme = mode;
     setTheme(mode);
   };
 
@@ -21,7 +23,12 @@ const useTheme = () => {
 
   useLayoutEffect(() => {
     const localTheme = localStorage.getItem(THEME);
-    localTheme && setTheme(localTheme);
+    if (localTheme) {
+      htmlEl.dataset.theme = localTheme;
+      setTheme(localTheme);
+    } else if (!htmlEl.dataset.theme) {
+      htmlEl.dataset.theme = prefersColorScheme;
+    }
   }, [theme]);
 
   return [theme, themeToggler];
