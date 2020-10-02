@@ -1,12 +1,12 @@
 import { useState, useLayoutEffect } from 'react';
 import { LIGHT, DARK, THEME } from 'constants/constants';
 
-const THEME_MEDIA_QUERY = '(prefers-color-scheme: light)';
+const THEME_MEDIA_QUERY = '(prefers-color-scheme: dark)';
 
 const useTheme = () => {
   const prefersColorScheme = window.matchMedia(THEME_MEDIA_QUERY).matches
-    ? LIGHT
-    : DARK;
+    ? DARK
+    : LIGHT;
 
   let htmlEl = document.querySelector('html');
   const [theme, setTheme] = useState(prefersColorScheme);
