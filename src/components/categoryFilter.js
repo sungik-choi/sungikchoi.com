@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
+import { ACTIVE } from 'constants/constants';
 
 const CategoryFilter = ({ categoryList }) => {
+  const categoryRef = useRef(null);
   const ALL_CATEGORY_NAME = 'All';
-  const isActive = ({ isCurrent }) => (isCurrent ? { id: 'active' } : {});
+  const isActive = ({ isCurrent }) => (isCurrent ? { id: ACTIVE } : {});
+
+  useLayoutEffect(() => {
+    if (!categoryRef) return;
+    const categoryWrapEl = categoryRef.current;
+    const isScrollActivated =
+      categoryWrapEl.scrollWidth >= categoryWrapEl.offsetWidth;
+    if (!isScrollActivated) return;
+    const activeCategoryEl = document.querySelector(`#${ACTIVE}`);
+    const offsetX = activeCategoryEl.offsetLeft - categoryWrapEl.offsetLeft;
+    categoryWrapEl.scrollTo(
+      offsetX -
+        categoryWrapEl.offsetWidth / 2 +
+        activeCategoryEl.offsetWidth / 2,
+      0
+    );
+  }, []);
 
   return (
     <Nav aria-label="Category Filter">
@@ -14,7 +32,7 @@ const CategoryFilter = ({ categoryList }) => {
         {ALL_CATEGORY_NAME}
       </CategoryButton>
       <Divider />
-      <CategoryUl>
+      <CategoryUl ref={categoryRef} className="invisible-scrollbar">
         {categoryList.map((category) => {
           const { fieldValue } = category;
           return (
@@ -47,7 +65,7 @@ const Nav = styled.nav`
   }
 
   @media (min-width: ${({ theme }) => theme.device.lg}) {
-    padding: 0.4375rem 1.5rem;
+    padding: 0.75rem 1.5rem;
   }
 `;
 
@@ -79,17 +97,17 @@ const CategoryButton = styled(Link)`
 const Divider = styled.div`
   width: 1px;
   height: 2rem;
-  margin-left: 8px;
-  margin-right: 3px;
+  margin: 0 ${({ theme }) => theme.sizing.sm};
+  transform: translateX(-50%);
   background-color: ${({ theme }) => theme.color.divider};
 `;
 
 const CategoryUl = styled.ul`
   display: flex;
   list-style: none;
-  overflow: auto;
   overflow-x: scroll;
-  padding: 5px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
   li + li {
     margin-left: 6px;
