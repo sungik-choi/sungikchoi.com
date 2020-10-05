@@ -52,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
-  :focus, a:focus {
+  :focus {
     outline: 4px solid rgba(0,125,250,0.6);
     outline-offset: 1px;
   }
