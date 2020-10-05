@@ -9,7 +9,7 @@ const CategoryFilter = ({ categoryList }) => {
 
   return (
     <Nav aria-label="Category Filter">
-      <CategoryTitle>Category</CategoryTitle>
+      <CategoryTitle className="visually-hidden">Category</CategoryTitle>
       <CategoryButton getProps={isActive} to="/">
         {ALL_CATEGORY_NAME}
       </CategoryButton>
@@ -47,7 +47,7 @@ const Nav = styled.nav`
   }
 
   @media (min-width: ${({ theme }) => theme.device.lg}) {
-    padding: 0.75rem 1.5rem;
+    padding: 0.4375rem 1.5rem;
   }
 `;
 
@@ -56,27 +56,12 @@ const CategoryTitle = styled.em`
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   font-style: initial;
   margin-right: ${({ theme }) => theme.sizing.lg};
-
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: no-wrap;
-
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    position: static;
-    width: auto;
-    height: auto;
-    clip: auto;
-    white-space: auto;
-  }
 `;
 
 const CategoryButton = styled(Link)`
   cursor: pointer;
+  position: relative;
   display: block;
-  text-decoration: none;
   border: none;
   background-color: ${({ theme }) => theme.color.categoryButton};
   padding: ${({ theme }) => theme.sizing.sm} ${({ theme }) => theme.sizing.base};
@@ -84,7 +69,8 @@ const CategoryButton = styled(Link)`
   font-size: 0.875rem;
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: ${({ theme }) => theme.color.white};
     background-color: ${({ theme }) => theme.color.blue};
   }
@@ -93,14 +79,17 @@ const CategoryButton = styled(Link)`
 const Divider = styled.div`
   width: 1px;
   height: 2rem;
-  margin: 0 0.5rem;
+  margin-left: 8px;
+  margin-right: 3px;
   background-color: ${({ theme }) => theme.color.divider};
 `;
 
 const CategoryUl = styled.ul`
   display: flex;
   list-style: none;
+  overflow: auto;
   overflow-x: scroll;
+  padding: 5px;
 
   li + li {
     margin-left: 6px;

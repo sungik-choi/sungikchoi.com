@@ -21,8 +21,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={themeMode}>
       <GlobalStyle />
       <Container>
-        <NavBar title={title} />
-        <ThemeToggleButton onClick={themeToggler}>테마변경</ThemeToggleButton>
+        <NavBar title={title} themeToggler={themeToggler} />
         <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
         <Footer role="contentinfo">
           <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
@@ -31,13 +30,6 @@ const Layout = ({ children }) => {
     </ThemeProvider>
   );
 };
-
-const ThemeToggleButton = styled.button`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-`;
 
 const Container = styled.div`
   width: 100%;

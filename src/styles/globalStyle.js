@@ -48,6 +48,15 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+  a {
+    text-decoration: none;
+  }
+
+  :focus, a:focus {
+    outline: 4px solid rgba(0,125,250,0.6);
+    outline-offset: 1px;
+  }
+
   .visually-hidden {
     position: absolute;
     width: 1px;
@@ -55,6 +64,14 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
     white-space: no-wrap;
+
+    @media (min-width: ${({ theme }) => theme.device.lg}) {
+      position: static;
+      width: auto;
+      height: auto;
+      clip: auto;
+      white-space: auto;
+    }
   }
 `;
 

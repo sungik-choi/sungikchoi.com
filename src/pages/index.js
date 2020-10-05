@@ -135,7 +135,12 @@ const List = styled.li`
   box-sizing: border-box;
   grid-column: span 2;
 
-  &:hover ${ThumbnailWrapper}::after {
+  a {
+    display: block;
+    height: 100%;
+  }
+
+  a:hover ${ThumbnailWrapper}::after, a:focus ${ThumbnailWrapper}::after {
     opacity: 1;
   }
 
@@ -143,8 +148,11 @@ const List = styled.li`
     transition: opacity 1s ease-out, transform 0.5s ease;
   }
 
-  &:hover .gatsby-image-wrapper {
-    transform: scale(1.03);
+  a:hover,
+  a:focus {
+    .gatsby-image-wrapper {
+      transform: scale(1.03);
+    }
   }
 
   @media (min-width: ${({ theme }) => theme.device.lg}) {

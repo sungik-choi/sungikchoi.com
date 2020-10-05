@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 
-const NavBar = ({ title }) => {
+const NavBar = ({ title, themeToggler }) => {
   const site = useSiteMetadata();
   const { menuLinks, githubLink } = site.siteMetadata;
 
@@ -14,22 +14,43 @@ const NavBar = ({ title }) => {
         <Title>
           <Link to="/">{title}</Link>
         </Title>
-        <LinkList>
-          {menuLinks.map(({ link, name }) => (
-            <li key={name}>
-              <Link to={link}>{name}</Link>
+        <LinkWrap>
+          <LinkUl>
+            {menuLinks.map(({ link, name }) => (
+              <li key={name}>
+                <Link to={link}>{name}</Link>
+              </li>
+            ))}
+            <li>
+              <a target="_blank" rel="noreferrer" href={githubLink}>
+                Github
+              </a>
             </li>
-          ))}
-          <li>
-            <a target="_blank" rel="noreferrer" href={githubLink}>
-              Github
-            </a>
-          </li>
-        </LinkList>
+          </LinkUl>
+          <ThemeToggleButton onClick={themeToggler}>
+            <Div></Div>
+          </ThemeToggleButton>
+        </LinkWrap>
       </Content>
     </Nav>
   );
 };
+
+const ThemeToggleButton = styled.button`
+  cursor: pointer;
+  width: 64px;
+  height: 36px;
+  border: none;
+  border-radius: 20px;
+  background-color: #eee;
+`;
+
+const Div = styled.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: black;
+`;
 
 const Nav = styled.nav`
   min-width: ${({ theme }) => theme.minWidth};
@@ -94,7 +115,11 @@ const Title = styled.h1`
   }
 `;
 
-const LinkList = styled.ul`
+const LinkWrap = styled.div`
+  display: flex;
+`;
+
+const LinkUl = styled.ul`
   display: flex;
 
   a {
@@ -107,6 +132,12 @@ const LinkList = styled.ul`
 
   & > li + li {
     margin-left: 2rem;
+  }
+
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
