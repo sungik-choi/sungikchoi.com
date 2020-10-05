@@ -78,14 +78,16 @@ const CategoryTitle = styled.em`
 
 const CategoryButton = styled(Link)`
   cursor: pointer;
-  position: relative;
   display: block;
-  border: none;
   background-color: ${({ theme }) => theme.color.categoryButton};
   padding: ${({ theme }) => theme.sizing.sm} ${({ theme }) => theme.sizing.base};
   border-radius: ${({ theme }) => theme.borderRadius.base};
   font-size: 0.875rem;
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+
+  :focus {
+    outline: none;
+  }
 
   &:hover,
   &:focus {
