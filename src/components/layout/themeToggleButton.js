@@ -58,11 +58,11 @@ const Text = styled.span`
   margin-left: 0.375rem;
 
   @media (min-width: ${({ theme }) => theme.device.lg}) {
-    position: static;
-    width: auto;
-    height: auto;
-    clip: auto;
-    white-space: auto;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    clip: auto !important;
+    white-space: auto !important;
   }
 `;
 
