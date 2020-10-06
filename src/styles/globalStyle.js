@@ -64,14 +64,6 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
     white-space: no-wrap;
-
-    @media (min-width: ${({ theme }) => theme.device.lg}) {
-      position: static;
-      width: auto;
-      height: auto;
-      clip: auto;
-      white-space: auto;
-    }
   }
 `;
 

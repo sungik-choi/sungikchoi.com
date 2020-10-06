@@ -30,6 +30,7 @@ export const lightTheme = {
     gray6: '#696969',
     divider: 'rgba(0, 0, 0, 0.15)',
     dimmed: 'rgba(0, 0, 0, 0.15)',
+    icon: 'transparent',
     blue: '#0066cc',
   },
 
@@ -106,6 +107,7 @@ export const darkTheme = {
     gray6: '#868686',
     divider: 'rgba(255, 255, 255, 0.15)',
     dimmed: 'rgba(0, 0, 0, 0.15)',
+    icon: '#d1d1d1',
     blue: '#0a84ff',
   },
 

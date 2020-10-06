@@ -74,6 +74,14 @@ const CategoryTitle = styled.em`
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   font-style: initial;
   margin-right: ${({ theme }) => theme.sizing.lg};
+
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    position: static;
+    width: auto;
+    height: auto;
+    clip: auto;
+    white-space: auto;
+  }
 `;
 
 const CategoryButton = styled(Link)`

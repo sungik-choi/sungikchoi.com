@@ -21,8 +21,10 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={themeMode}>
       <GlobalStyle />
       <Container>
-        <NavBar title={title} themeToggler={themeToggler} />
-        <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+        <ThemeContext.Provider value={theme}>
+          <NavBar title={title} themeToggler={themeToggler} />
+          {children}
+        </ThemeContext.Provider>
         <Footer role="contentinfo">
           <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
         </Footer>

@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useEffect, useLayoutEffect } from 'react';
+import React, { useRef, useContext, useLayoutEffect } from 'react';
 import { ThemeContext } from 'components/layout/layout';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 import { LIGHT, THEME } from 'constants/constants';
