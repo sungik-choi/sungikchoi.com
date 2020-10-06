@@ -1,6 +1,7 @@
 import React, { createContext } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import NavBar from './navBar';
+import ThemeToggleButton from './themeToggleButton';
 import useTheme from 'hooks/useTheme';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 import { lightTheme, darkTheme } from 'styles/theme';
@@ -22,9 +23,10 @@ const Layout = ({ children }) => {
       <GlobalStyle />
       <Container>
         <ThemeContext.Provider value={theme}>
-          <NavBar title={title} themeToggler={themeToggler} />
+          <NavBar title={title} />
           {children}
         </ThemeContext.Provider>
+        <ThemeToggleButton themeToggler={themeToggler} />
         <Footer role="contentinfo">
           <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
         </Footer>
