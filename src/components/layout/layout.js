@@ -24,9 +24,9 @@ const Layout = ({ children }) => {
       <Container>
         <ThemeContext.Provider value={theme}>
           <NavBar title={title} />
+          <ThemeToggleButton themeToggler={themeToggler} />
           {children}
         </ThemeContext.Provider>
-        <ThemeToggleButton themeToggler={themeToggler} />
         <Footer role="contentinfo">
           <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
         </Footer>

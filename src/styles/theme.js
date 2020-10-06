@@ -30,8 +30,16 @@ export const lightTheme = {
     gray6: '#696969',
     divider: 'rgba(0, 0, 0, 0.15)',
     dimmed: 'rgba(0, 0, 0, 0.15)',
-    icon: 'transparent',
+    floatingButton: 'rgba(255, 255, 255, 0.7)',
+    floatingButtonHover: 'rgba(50, 50, 50, 0.7)',
+    floatingButtonBorder: 'rgba(230, 230, 230, 0.7)',
+    floatingButtonBorderHover: 'rgba(255, 255, 255, 0.2)',
+    floatingButtonText: '#202020',
+    floatingButtonTextHover: '#f2f2f2',
+    floatingButtonShadow: 'rgba(0, 0, 0, 0.2)',
+    floatingButtonShadowHover: 'rgba(0, 0, 0, 0.4)',
     blue: '#0066cc',
+    icon: '#2c2c2c',
   },
 
   gridGap: {
@@ -48,6 +56,7 @@ export const lightTheme = {
   borderRadius: {
     sm: '6px',
     base: '8px',
+    lg: '28px',
   },
 
   sizing: {
@@ -107,8 +116,16 @@ export const darkTheme = {
     gray6: '#868686',
     divider: 'rgba(255, 255, 255, 0.15)',
     dimmed: 'rgba(0, 0, 0, 0.15)',
-    icon: '#d1d1d1',
+    floatingButton: 'rgba(50, 50, 50, 0.7)',
+    floatingButtonHover: 'rgba(255, 255, 255, 0.7)',
+    floatingButtonBorder: 'rgba(255, 255, 255, 0.2)',
+    floatingButtonBorderHover: 'rgba(230, 230, 230, 0.7)',
+    floatingButtonText: '#d1d1d1',
+    floatingButtonTextHover: '#202020',
+    floatingButtonShadow: 'rgba(0, 0, 0, 0.4)',
+    floatingButtonShadowHover: 'rgba(0, 0, 0, 0.4)',
     blue: '#0a84ff',
+    icon: '#d1d1d1',
   },
 
   fontWeight: {

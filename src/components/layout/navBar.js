@@ -46,7 +46,7 @@ const Nav = styled.nav`
   }
 `;
 
-const Background = styled.div`
+export const Background = styled.div`
   position: absolute;
   top: 0;
   left: 0;
