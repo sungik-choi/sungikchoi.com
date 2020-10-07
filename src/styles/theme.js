@@ -105,7 +105,7 @@ export const darkTheme = {
     postBackground: '#1c1c1c',
     card: '#2c2c2c',
     code: '#3a3a3a',
-    codeBlock: '#1c1c1c',
+    codeBlock: '#242424',
     codeHighlight: 'rgba(255, 255, 255, 0.05)',
     codeHighlightBorder: 'rgba(255, 255, 255, 0.2)',
     gray1: '#1c1c1c',
