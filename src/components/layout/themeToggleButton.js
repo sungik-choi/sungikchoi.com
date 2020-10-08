@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import styled from 'styled-components';
 import { Background } from './navBar';
-import { ThemeContext } from 'components/layout/layout';
 import ThemeIcon from './themeIcon';
 import { DARK } from 'constants/constants';
 
 const ThemeToggleButton = ({ themeToggler }) => {
-  const theme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const LABEL_TEXT = theme === DARK ? '라이트 모드로 보기' : '다크 모드로 보기';
 
   return (

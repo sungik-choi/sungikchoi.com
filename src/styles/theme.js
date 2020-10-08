@@ -1,6 +1,10 @@
+import { LIGHT, DARK } from 'constants/constants';
+
 const calcRem = (size) => `${size / 16}rem`;
 
 export const lightTheme = {
+  theme: LIGHT,
+
   width: calcRem(980),
   minWidth: calcRem(320),
   postWidth: calcRem(650),
@@ -92,6 +96,8 @@ export const lightTheme = {
 
 export const darkTheme = {
   ...lightTheme,
+
+  theme: DARK,
 
   color: {
     text: '#e6e6e6',

@@ -1,5 +1,5 @@
 import React, { useRef, useContext, useLayoutEffect } from 'react';
-import { ThemeContext } from 'components/layout/layout';
+import { ThemeContext } from 'styled-components';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 import { LIGHT, THEME } from 'constants/constants';
 
@@ -9,7 +9,7 @@ const LIGHT_THEME = 'github-light';
 const DARK_THEME = 'github-dark';
 
 const Comment = () => {
-  const theme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const themeMode = theme === LIGHT ? LIGHT_THEME : DARK_THEME;
 
   const site = useSiteMetadata();

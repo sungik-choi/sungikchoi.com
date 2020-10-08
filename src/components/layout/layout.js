@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import NavBar from './navBar';
 import ThemeToggleButton from './themeToggleButton';
@@ -7,8 +7,6 @@ import { useSiteMetadata } from 'hooks/useSiteMetadata';
 import { lightTheme, darkTheme } from 'styles/theme';
 import GlobalStyle from 'styles/globalStyle';
 import { LIGHT } from 'constants/constants';
-
-export const ThemeContext = createContext();
 
 const Layout = ({ children }) => {
   const [theme, themeToggler] = useTheme();
@@ -22,11 +20,9 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={themeMode}>
       <GlobalStyle />
       <Container>
-        <ThemeContext.Provider value={theme}>
-          <NavBar title={title} />
-          <ThemeToggleButton themeToggler={themeToggler} />
-          {children}
-        </ThemeContext.Provider>
+        <NavBar title={title} />
+        <ThemeToggleButton themeToggler={themeToggler} />
+        {children}
         <Footer role="contentinfo">
           <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
         </Footer>
