@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from 'react';
+import { useState } from 'react';
 import { LIGHT, DARK, THEME } from 'constants/constants';
 
 const THEME_MEDIA_QUERY = '(prefers-color-scheme: dark)';
@@ -7,9 +7,12 @@ const useTheme = () => {
   const prefersColorScheme = window.matchMedia(THEME_MEDIA_QUERY).matches
     ? DARK
     : LIGHT;
+  const localTheme = localStorage.getItem(THEME);
+  const initialTheme = localTheme || prefersColorScheme;
+  const [theme, setTheme] = useState(initialTheme);
 
   let htmlEl = document.querySelector('html');
-  const [theme, setTheme] = useState(prefersColorScheme);
+  htmlEl.dataset.theme = initialTheme;
 
   const setMode = (mode) => {
     localStorage.setItem(THEME, mode);
@@ -20,16 +23,6 @@ const useTheme = () => {
   const themeToggler = () => {
     theme === LIGHT ? setMode(DARK) : setMode(LIGHT);
   };
-
-  useLayoutEffect(() => {
-    const localTheme = localStorage.getItem(THEME);
-    if (localTheme) {
-      htmlEl.dataset.theme = localTheme;
-      setTheme(localTheme);
-    } else if (!htmlEl.dataset.theme) {
-      htmlEl.dataset.theme = prefersColorScheme;
-    }
-  }, [theme]);
 
   return [theme, themeToggler];
 };
