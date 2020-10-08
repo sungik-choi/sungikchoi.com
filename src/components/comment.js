@@ -1,7 +1,7 @@
-import React, { useRef, useContext, useLayoutEffect } from 'react';
+import React, { useRef, useContext, useEffect } from 'react';
 import { ThemeContext } from 'styled-components';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
-import { LIGHT, THEME } from 'constants/constants';
+import { LIGHT } from 'constants/constants';
 
 const src = 'https://utteranc.es';
 const utterancesSelector = 'iframe.utterances-frame';
@@ -42,9 +42,7 @@ const Comment = () => {
     containerRef.current.appendChild(comment);
   };
 
-  useLayoutEffect(() => {
-    const bSameSavedTheme = theme === localStorage.getItem(THEME);
-    if (!bSameSavedTheme) return;
+  useEffect(() => {
     const utterancesEl = document.querySelector(utterancesSelector);
     if (utterancesEl) postThemeMessage(utterancesEl);
     else createUtterancesEl();
