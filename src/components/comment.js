@@ -34,13 +34,12 @@ const Comment = () => {
       containerRef.current.appendChild(comment);
     };
 
-    const postThemeMessage = (elem) => {
-      const utterances = elem.contentWindow;
+    const postThemeMessage = () => {
       const message = {
         type: 'set-theme',
         theme: themeMode,
       };
-      utterances.postMessage(message, src);
+      utterancesEl.contentWindow.postMessage(message, src);
     };
 
     const utterancesEl = containerRef.current.querySelector(utterancesSelector);
