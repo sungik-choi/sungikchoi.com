@@ -45,7 +45,7 @@ const Comment = () => {
 
     const utterancesEl = document.querySelector(utterancesSelector);
     utterancesEl ? postThemeMessage(utterancesEl) : createUtterancesEl();
-  });
+  }, [repo, themeMode]);
 
   return <div ref={containerRef} />;
 };
