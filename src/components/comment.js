@@ -43,7 +43,7 @@ const Comment = () => {
       utterances.postMessage(message, src);
     };
 
-    const utterancesEl = document.querySelector(utterancesSelector);
+    const utterancesEl = containerRef.current.querySelector(utterancesSelector);
     utterancesEl ? postThemeMessage(utterancesEl) : createUtterancesEl();
   }, [repo, themeMode]);
 

@@ -12,10 +12,14 @@ const CategoryFilter = ({ categoryList }) => {
   useLayoutEffect(() => {
     if (!categoryRef) return;
     const categoryWrapEl = categoryRef.current;
+
     const isScrollActivated =
       categoryWrapEl.scrollWidth >= categoryWrapEl.offsetWidth;
     if (!isScrollActivated) return;
-    const activeCategoryEl = document.querySelector(`#${ACTIVE}`);
+
+    const activeCategoryEl = categoryWrapEl.querySelector(`#${ACTIVE}`);
+    if (!activeCategoryEl) return;
+
     const offsetX = activeCategoryEl.offsetLeft - categoryWrapEl.offsetLeft;
     categoryWrapEl.scrollTo(
       offsetX -
