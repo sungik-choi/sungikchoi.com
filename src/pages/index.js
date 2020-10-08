@@ -11,16 +11,16 @@ import convertToKorDate from 'utils/convertToKorDate';
 
 const Home = ({ pageContext, data }) => {
   const [post, setPost] = useState([]);
-
   const currentCategory = pageContext.category;
   const postData = data.allMarkdownRemark.edges;
-  const filteredPostData = currentCategory
-    ? postData.filter(
-        ({ node }) => node.frontmatter.category === currentCategory
-      )
-    : postData;
 
   useLayoutEffect(() => {
+    const filteredPostData = currentCategory
+      ? postData.filter(
+          ({ node }) => node.frontmatter.category === currentCategory
+        )
+      : postData;
+
     filteredPostData.forEach(({ node }) => {
       const {
         id,
@@ -40,7 +40,7 @@ const Home = ({ pageContext, data }) => {
         { id, slug, title, desc, date, category, thumbnail: base, alt },
       ]);
     });
-  }, []);
+  }, [currentCategory, postData]);
 
   const site = useSiteMetadata();
   const postTitle = currentCategory || site.siteMetadata.postTitle;

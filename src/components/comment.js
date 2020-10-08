@@ -16,37 +16,36 @@ const Comment = () => {
   const { repo } = site.siteMetadata.utterances;
   const containerRef = useRef(null);
 
-  const postThemeMessage = (elem) => {
-    const utterances = elem.contentWindow;
-    const message = {
-      type: 'set-theme',
-      theme: themeMode,
-    };
-    utterances.postMessage(message, src);
-  };
-
-  const createUtterancesEl = () => {
-    const comment = document.createElement('script');
-    const attributes = {
-      src: `${src}/client.js`,
-      repo,
-      'issue-term': 'title',
-      label: 'comment',
-      theme: themeMode,
-      crossOrigin: 'anonymous',
-      async: 'true',
-    };
-    Object.entries(attributes).forEach(([key, value]) => {
-      comment.setAttribute(key, value);
-    });
-    containerRef.current.appendChild(comment);
-  };
-
   useEffect(() => {
+    const createUtterancesEl = () => {
+      const comment = document.createElement('script');
+      const attributes = {
+        src: `${src}/client.js`,
+        repo,
+        'issue-term': 'title',
+        label: 'comment',
+        theme: themeMode,
+        crossOrigin: 'anonymous',
+        async: 'true',
+      };
+      Object.entries(attributes).forEach(([key, value]) => {
+        comment.setAttribute(key, value);
+      });
+      containerRef.current.appendChild(comment);
+    };
+
+    const postThemeMessage = (elem) => {
+      const utterances = elem.contentWindow;
+      const message = {
+        type: 'set-theme',
+        theme: themeMode,
+      };
+      utterances.postMessage(message, src);
+    };
+
     const utterancesEl = document.querySelector(utterancesSelector);
-    if (utterancesEl) postThemeMessage(utterancesEl);
-    else createUtterancesEl();
-  }, [theme]);
+    utterancesEl ? postThemeMessage(utterancesEl) : createUtterancesEl();
+  });
 
   return <div ref={containerRef} />;
 };
