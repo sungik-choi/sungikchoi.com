@@ -151,7 +151,7 @@ const LinkUl = styled.ul`
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     flex-direction: column;
-    padding-left: ${({ theme }) => theme.sizing.lg};
+    padding: 0 ${({ theme }) => theme.sizing.lg};
 
     li {
       display: block;
@@ -160,8 +160,6 @@ const LinkUl = styled.ul`
 
       a {
         display: block;
-        ${({ toggle, theme }) =>
-          toggle && `width: calc(100vw - ${theme.sizing.lg} * 2)`};
         height: 100%;
         padding: 0.5rem 0;
         font-weight: 500;
@@ -218,6 +216,7 @@ const Curtain = styled.div`
 const LinkContent = styled.div`
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     visibility: ${({ toggle }) => (toggle ? 'visible' : 'hidden')};
+    width: 100%;
     z-index: 200;
   }
 `;
