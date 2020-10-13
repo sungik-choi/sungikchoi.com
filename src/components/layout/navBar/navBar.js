@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import ThemeToggleButton from './themeToggleButton/themeToggleButton';
+import MenuIcon from './menuIcon';
 import Background from 'styles/background';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 
@@ -36,87 +37,12 @@ const NavBar = ({ title, themeToggler }) => {
               <ThemeToggleButton themeToggler={themeToggler} />
             </li>
           </LinkUl>
-          <MenuIconWrap onClick={onClickHandler} toggle={toggle}>
-            <MenuIconBreadTop>
-              <div />
-            </MenuIconBreadTop>
-            <MenuIconBreadBottom>
-              <div />
-            </MenuIconBreadBottom>
-          </MenuIconWrap>
+          <MenuIcon onClickHandler={onClickHandler} toggle={toggle} />
         </LinkWrap>
       </Content>
     </Nav>
   );
 };
-
-const MenuIconBreadTop = styled.div`
-  top: 22px;
-`;
-
-const MenuIconBreadBottom = styled.div`
-  bottom: 22px;
-`;
-
-const MenuIconWrap = styled.div`
-  display: block;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: ${({ theme }) => theme.navHeight};
-  height: ${({ theme }) => theme.navHeight};
-  padding-right: ${({ theme }) => theme.padding.sm};
-
-  & > div {
-    position: absolute;
-    width: 18px;
-    height: 1px;
-    left: 35px; // 19 + 16
-    background-color: none;
-    opacity: 0.8;
-    animation-duration: 0.5s;
-    animation-direction: alternate;
-    animation-fill-mode: both;
-    transition: opacity 0.3s ease,
-      transform
-        ${({ toggle }) => (toggle === true ? '0.2s ease' : '0.3s ease 0.2s')};
-  }
-
-  & > div > div {
-    width: 100%;
-    height: 100%;
-    background-color: ${({ theme }) => theme.color.text};
-    transition: transform
-      ${({ toggle }) => (toggle === true ? '0.3s ease 0.2s' : '0.2s ease')};
-  }
-
-  ${MenuIconBreadTop} {
-    transform: ${({ toggle }) =>
-      toggle === false ? 'none' : 'translateY(4.5px)'};
-    div {
-      transform: ${({ toggle }) =>
-        toggle === false ? 'none' : 'rotate(45deg)'};
-    }
-  }
-
-  ${MenuIconBreadBottom} {
-    transform: ${({ toggle }) =>
-      toggle === false ? 'none' : 'translateY(-4.5px)'};
-    div {
-      transform: ${({ toggle }) =>
-        toggle === false ? 'none' : 'rotate(-45deg)'};
-    }
-  }
-
-  &:hover > div {
-    opacity: 1;
-  }
-
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    display: none;
-  }
-`;
 
 const Nav = styled.nav`
   min-width: ${({ theme }) => theme.minWidth};
