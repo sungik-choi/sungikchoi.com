@@ -26,11 +26,12 @@ const Icon = styled.svg`
   width: 1.125rem;
   height: 1.125rem;
   fill: ${({ theme }) => theme.color.icon};
-  transform: translate(0, -1px);
+  transform: translateY(-1px);
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     width: 0;
-    height: 0;
+    height: 1rem;
+    transition: width 0.3s ease;
   }
 `;
 
@@ -109,8 +110,13 @@ const Button = styled.button`
     padding: 0;
 
     &:hover {
-      ${Text} {
+      ${Icon}, ${Text} {
+        fill: ${({ theme }) => theme.color.blue};
         color: ${({ theme }) => theme.color.blue};
+      }
+      ${Icon} {
+        width: 1rem;
+        margin-right: 4px;
       }
     }
   }
