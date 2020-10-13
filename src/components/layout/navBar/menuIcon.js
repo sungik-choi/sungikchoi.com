@@ -23,59 +23,59 @@ const MenuIconBreadBottom = styled.div`
 `;
 
 const MenuIconButton = styled.button`
-  display: block;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: ${({ theme }) => theme.navHeight};
-  height: ${({ theme }) => theme.navHeight};
-  border: none;
-  background-color: transparent;
+  display: none;
 
-  & > div {
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    display: block;
+    cursor: pointer;
     position: absolute;
-    width: 18px;
-    height: 1px;
-    right: ${({ theme }) => theme.padding.sm};
-    opacity: 0.8;
-    transition: opacity 0.3s ease,
-      transform
-        ${({ toggle }) => (toggle === true ? '0.1s ease' : '0.2s ease 0.1s')};
-  }
+    top: 0;
+    right: 0;
+    width: ${({ theme }) => theme.navHeight};
+    height: ${({ theme }) => theme.navHeight};
+    border: none;
+    background-color: transparent;
 
-  & > div > div {
-    width: 100%;
-    height: 100%;
-    background-color: ${({ theme }) => theme.color.text};
-    transition: transform
-      ${({ toggle }) => (toggle === true ? '0.2s ease 0.1s' : '0.1s ease')};
-  }
-
-  ${MenuIconBreadTop} {
-    transform: ${({ toggle }) =>
-      toggle === false ? 'none' : 'translateY(4.5px)'};
-    div {
-      transform: ${({ toggle }) =>
-        toggle === false ? 'none' : 'rotate(45deg)'};
+    & > div {
+      position: absolute;
+      width: 18px;
+      height: 1px;
+      right: ${({ theme }) => theme.padding.sm};
+      opacity: 0.8;
+      transition: opacity 0.3s ease,
+        transform
+          ${({ toggle }) => (toggle === true ? '0.1s ease' : '0.2s ease 0.1s')};
     }
-  }
 
-  ${MenuIconBreadBottom} {
-    transform: ${({ toggle }) =>
-      toggle === false ? 'none' : 'translateY(-4.5px)'};
-    div {
-      transform: ${({ toggle }) =>
-        toggle === false ? 'none' : 'rotate(-45deg)'};
+    & > div > div {
+      width: 100%;
+      height: 100%;
+      background-color: ${({ theme }) => theme.color.text};
+      transition: transform
+        ${({ toggle }) => (toggle === true ? '0.2s ease 0.1s' : '0.1s ease')};
     }
-  }
 
-  &:hover > div {
-    opacity: 1;
-  }
+    ${MenuIconBreadTop} {
+      transform: ${({ toggle }) =>
+        toggle === false ? 'none' : 'translateY(4.5px)'};
+      div {
+        transform: ${({ toggle }) =>
+          toggle === false ? 'none' : 'rotate(45deg)'};
+      }
+    }
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    display: none;
+    ${MenuIconBreadBottom} {
+      transform: ${({ toggle }) =>
+        toggle === false ? 'none' : 'translateY(-4.5px)'};
+      div {
+        transform: ${({ toggle }) =>
+          toggle === false ? 'none' : 'rotate(-45deg)'};
+      }
+    }
+
+    &:hover > div {
+      opacity: 1;
+    }
   }
 `;
 

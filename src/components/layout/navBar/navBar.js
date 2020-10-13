@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import styled, { css, ThemeContext } from 'styled-components';
 import { Link } from 'gatsby';
 import ThemeToggleButton from './themeToggleButton/themeToggleButton';
 import MenuIcon from './menuIcon';
 import Background from 'styles/background';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
+
+// ! 메뉴 등장 시 스크롤 막기
+// ! 메뉴 등장 시 키보드 포커스가 메뉴 안으로만 향하도록 변경
 
 const NavBar = ({ title, themeToggler }) => {
   const site = useSiteMetadata();
@@ -43,12 +46,12 @@ const NavBar = ({ title, themeToggler }) => {
         <Title onClick={() => setToggle(false)}>
           <Link to="/">{title}</Link>
         </Title>
-        <LinkWrap>
+        <LinkWrap toggle={toggle}>
           <Curtain ref={curtainRef} toggle={toggle} />
           <LinkContent toggle={toggle}>
             <LinkUl>
               {menuLinks.map(({ link, name }) => (
-                <li key={name}>
+                <li key={name} onClick={() => link === '/' && setToggle(false)}>
                   <Link to={link}>{name}</Link>
                 </li>
               ))}
@@ -105,6 +108,7 @@ const Content = styled.div`
 `;
 
 const Title = styled.h1`
+  z-index: 9999;
   padding: 0;
   border: none;
   font-size: ${({ theme }) => theme.text.md};
@@ -142,6 +146,31 @@ const LinkUl = styled.ul`
   li:last-child {
     margin-left: 0;
   }
+
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    flex-direction: column;
+    padding-left: ${({ theme }) => theme.sizing.lg};
+
+    li {
+      display: block;
+      margin-left: 0;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      a {
+        font-weight: 500;
+      }
+    }
+
+    li + li::before {
+      content: '';
+      display: block;
+      position: absolute;
+      ${({ theme }) => `width: calc(100vw - ${theme.sizing.lg} * 2)`};
+      height: 1px;
+      transform: translateY(-8px);
+      background-color: ${({ theme }) => theme.color.divider};
+    }
+  }
 `;
 
 const NavBackground = styled(Background)`
@@ -156,7 +185,7 @@ const NavBackground = styled(Background)`
       height: 100%;
       background-color: ${({ theme }) => theme.color.postBackground};
       transition: opacity
-        ${({ toggle }) => (toggle ? '0.1s ease' : '0.4s ease-in-out 0.5s')};
+        ${({ toggle }) => (toggle ? '0.1s ease' : '0.4s ease-in-out 0.48s')};
       opacity: ${({ toggle }) => (toggle ? '1' : '0')};
     }
   }
@@ -182,15 +211,25 @@ const Curtain = styled.div`
 const LinkContent = styled.div`
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     visibility: ${({ toggle }) => (toggle ? 'visible' : 'hidden')};
+    z-index: 200;
   }
 `;
 
 const LinkWrap = styled.div`
   display: flex;
-  align-items: center;
-  align-content: center;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
+    ${({ toggle }) =>
+      toggle &&
+      css`
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        ${({ theme }) =>
+          `padding-top: calc(${theme.navHeight} + ${theme.sizing.lg})`};
+      `}
   }
 `;
 
