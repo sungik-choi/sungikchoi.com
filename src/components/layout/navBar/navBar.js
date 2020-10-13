@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 import { Link } from 'gatsby';
 import ThemeToggleButton from './themeToggleButton/themeToggleButton';
 import Background from 'styles/background';
@@ -8,6 +8,10 @@ import { useSiteMetadata } from 'hooks/useSiteMetadata';
 const NavBar = ({ title, themeToggler }) => {
   const site = useSiteMetadata();
   const { menuLinks, githubLink } = site.siteMetadata;
+
+  const [toggle, setToggle] = useState(false);
+  const onClickHandler = () =>
+    toggle === true ? setToggle(false) : setToggle(true);
 
   return (
     <Nav aria-label="Global Navigation">
@@ -32,9 +36,13 @@ const NavBar = ({ title, themeToggler }) => {
               <ThemeToggleButton themeToggler={themeToggler} />
             </li>
           </LinkUl>
-          <MenuIconWrap>
-            <MenuIconBreadTop />
-            <MenuIconBreadBottom />
+          <MenuIconWrap onClick={onClickHandler} toggle={toggle}>
+            <MenuIconBreadTop>
+              <div />
+            </MenuIconBreadTop>
+            <MenuIconBreadBottom>
+              <div />
+            </MenuIconBreadBottom>
           </MenuIconWrap>
         </LinkWrap>
       </Content>
@@ -50,34 +58,6 @@ const MenuIconBreadBottom = styled.div`
   bottom: 22px;
 `;
 
-const iconChangeTop = keyframes`
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-
-  25% {
-    transform: translateY(4.5px) rotate(0deg);
-  }
-
-  100% {
-    transform: translateY(4.5px) rotate(45deg);
-  }
-`;
-
-const iconChangeBottom = keyframes`
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-
-  25% {
-    transform: translateY(-4.5px) rotate(0deg);
-  }
-
-  100% {
-    transform: translateY(-4.5px) rotate(-45deg);
-  }
-`;
-
 const MenuIconWrap = styled.div`
   display: block;
   cursor: pointer;
@@ -88,34 +68,49 @@ const MenuIconWrap = styled.div`
   height: ${({ theme }) => theme.navHeight};
   padding-right: ${({ theme }) => theme.padding.sm};
 
-  div {
+  & > div {
     position: absolute;
     width: 18px;
     height: 1px;
-    left: 19px;
-    background-color: ${({ theme }) => theme.color.text};
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
+    left: 35px; // 19 + 16
+    background-color: none;
+    opacity: 0.8;
+    animation-duration: 0.5s;
     animation-direction: alternate;
-    /* transition: transform 0.5s cubic-bezier(0.845, 0.005, 0.17, 0.995); */
+    animation-fill-mode: both;
+    transition: opacity 0.3s ease,
+      transform
+        ${({ toggle }) => (toggle === true ? '0.2s ease' : '0.3s ease 0.2s')};
+  }
+
+  & > div > div {
+    width: 100%;
+    height: 100%;
+    background-color: ${({ theme }) => theme.color.text};
+    transition: transform
+      ${({ toggle }) => (toggle === true ? '0.3s ease 0.2s' : '0.2s ease')};
   }
 
   ${MenuIconBreadTop} {
-    animation-name: ${iconChangeTop};
+    transform: ${({ toggle }) =>
+      toggle === false ? 'none' : 'translateY(4.5px)'};
+    div {
+      transform: ${({ toggle }) =>
+        toggle === false ? 'none' : 'rotate(45deg)'};
+    }
   }
 
   ${MenuIconBreadBottom} {
-    animation-name: ${iconChangeBottom};
+    transform: ${({ toggle }) =>
+      toggle === false ? 'none' : 'translateY(-4.5px)'};
+    div {
+      transform: ${({ toggle }) =>
+        toggle === false ? 'none' : 'rotate(-45deg)'};
+    }
   }
 
-  &:hover {
-    ${MenuIconBreadTop} {
-      /* transform: translateY(4.5px) rotate(45deg); */
-    }
-
-    ${MenuIconBreadBottom} {
-      /* transform: translateY(-4.5px) rotate(-45deg); */
-    }
+  &:hover > div {
+    opacity: 1;
   }
 
   @media (min-width: ${({ theme }) => theme.device.lg}) {
