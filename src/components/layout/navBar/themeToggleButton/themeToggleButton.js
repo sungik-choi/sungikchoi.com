@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import styled from 'styled-components';
-import { Background } from './navBar';
 import ThemeIcon from './themeIcon';
+import Background from 'styles/background';
 import { DARK } from 'constants/constants';
 
 const ThemeToggleButton = ({ themeToggler }) => {

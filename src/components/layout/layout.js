@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import NavBar from './navBar';
-import ThemeToggleButton from './themeToggleButton';
+import NavBar from './navBar/navBar';
 import useTheme from 'hooks/useTheme';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 import { lightTheme, darkTheme } from 'styles/theme';
@@ -20,13 +19,12 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={themeMode}>
       <GlobalStyle />
       <Container>
-        <NavBar title={title} />
-        <ThemeToggleButton themeToggler={themeToggler} />
+        <NavBar title={title} themeToggler={themeToggler} />
         {children}
-        <Footer role="contentinfo">
-          <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
-        </Footer>
       </Container>
+      <Footer role="contentinfo">
+        <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
+      </Footer>
     </ThemeProvider>
   );
 };
