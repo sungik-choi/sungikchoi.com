@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { Link } from 'gatsby';
 import ThemeToggleButton from './themeToggleButton/themeToggleButton';
@@ -7,18 +7,29 @@ import Background from 'styles/background';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 
 const NavBar = ({ title, themeToggler }) => {
-  const theme = useContext(ThemeContext);
   const site = useSiteMetadata();
   const { menuLinks, githubLink } = site.siteMetadata;
 
   const [toggle, setToggle] = useState(false);
+  const { device } = useContext(ThemeContext);
+  const curtainRef = useRef(null);
+
   const onClickHandler = () =>
     toggle === true ? setToggle(false) : setToggle(true);
 
   useEffect(() => {
-    const mql = window.matchMedia(`(min-width: ${theme.device.lg})`);
+    const mql = window.matchMedia(`(max-width: ${device.sm})`);
+    const hideCurtainAnimation = () => {
+      curtainRef.current.style.display = 'none';
+      setTimeout(() => {
+        curtainRef.current.style.display = 'block';
+      }, 500);
+    };
     const setToggleFalse = (e) => {
-      if (!e.matches) return;
+      if (e.matches) {
+        hideCurtainAnimation();
+        return;
+      }
       setToggle(false);
     };
     mql.addEventListener('change', setToggleFalse);
@@ -27,27 +38,30 @@ const NavBar = ({ title, themeToggler }) => {
 
   return (
     <Nav aria-label="Global Navigation">
-      <Background />
+      <NavBackground toggle={toggle} />
       <Content>
-        <Title>
+        <Title onClick={() => setToggle(false)}>
           <Link to="/">{title}</Link>
         </Title>
-        <LinkWrap toggle={toggle}>
-          <LinkUl>
-            {menuLinks.map(({ link, name }) => (
-              <li key={name}>
-                <Link to={link}>{name}</Link>
+        <LinkWrap>
+          <Curtain ref={curtainRef} toggle={toggle} />
+          <LinkContent toggle={toggle}>
+            <LinkUl>
+              {menuLinks.map(({ link, name }) => (
+                <li key={name}>
+                  <Link to={link}>{name}</Link>
+                </li>
+              ))}
+              <li>
+                <a target="_blank" rel="noreferrer" href={githubLink}>
+                  Github
+                </a>
               </li>
-            ))}
-            <li>
-              <a target="_blank" rel="noreferrer" href={githubLink}>
-                Github
-              </a>
-            </li>
-            <li>
-              <ThemeToggleButton themeToggler={themeToggler} />
-            </li>
-          </LinkUl>
+              <li>
+                <ThemeToggleButton themeToggler={themeToggler} />
+              </li>
+            </LinkUl>
+          </LinkContent>
           <MenuIcon onClickHandler={onClickHandler} toggle={toggle} />
         </LinkWrap>
       </Content>
@@ -106,16 +120,7 @@ const Title = styled.h1`
   }
 `;
 
-const LinkWrap = styled.div`
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    display: flex;
-    align-items: center;
-    align-content: center;
-  }
-`;
-
 const LinkUl = styled.ul`
-  visibility: hidden;
   display: flex;
 
   a {
@@ -137,9 +142,55 @@ const LinkUl = styled.ul`
   li:last-child {
     margin-left: 0;
   }
+`;
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
+const NavBackground = styled(Background)`
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: ${({ theme }) => theme.color.postBackground};
+      transition: opacity
+        ${({ toggle }) => (toggle ? '0.1s ease' : '0.4s ease-in-out 0.5s')};
+      opacity: ${({ toggle }) => (toggle ? '1' : '0')};
+    }
+  }
+`;
+
+const Curtain = styled.div`
+  visibility: hidden;
+
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
     visibility: visible;
+    position: fixed;
+    ${({ theme }) => `top: calc(${theme.navHeight} - 1px)`};
+    left: 0;
+    width: 100%;
+    ${({ theme }) => `height: calc(100% - ${theme.navHeight} + 1px)`};
+    background-color: ${({ theme }) => theme.color.postBackground};
+    transition: transform 0.6s cubic-bezier(0.41, 0.06, 0.05, 1) 0.1s;
+    transform: ${({ toggle }) => (toggle ? 'scaleY(1)' : 'scaleY(0)')};
+    transform-origin: top;
+  }
+`;
+
+const LinkContent = styled.div`
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    visibility: ${({ toggle }) => (toggle ? 'visible' : 'hidden')};
+  }
+`;
+
+const LinkWrap = styled.div`
+  display: flex;
+  align-items: center;
+  align-content: center;
+
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
   }
 `;
 
