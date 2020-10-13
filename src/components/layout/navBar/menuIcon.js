@@ -3,14 +3,14 @@ import styled from 'styled-components';
 
 const MenuIcon = ({ onClickHandler, toggle }) => {
   return (
-    <MenuIconWrap onClick={onClickHandler} toggle={toggle} aria-label="Menu">
+    <MenuIconButton onClick={onClickHandler} toggle={toggle} aria-label="Menu">
       <MenuIconBreadTop>
         <div />
       </MenuIconBreadTop>
       <MenuIconBreadBottom>
         <div />
       </MenuIconBreadBottom>
-    </MenuIconWrap>
+    </MenuIconButton>
   );
 };
 
@@ -22,7 +22,7 @@ const MenuIconBreadBottom = styled.div`
   bottom: 22px;
 `;
 
-const MenuIconWrap = styled.button`
+const MenuIconButton = styled.button`
   display: block;
   cursor: pointer;
   position: absolute;
@@ -41,7 +41,7 @@ const MenuIconWrap = styled.button`
     opacity: 0.8;
     transition: opacity 0.3s ease,
       transform
-        ${({ toggle }) => (toggle === true ? '0.2s ease' : '0.3s ease 0.2s')};
+        ${({ toggle }) => (toggle === true ? '0.1s ease' : '0.2s ease 0.1s')};
   }
 
   & > div > div {
@@ -49,10 +49,7 @@ const MenuIconWrap = styled.button`
     height: 100%;
     background-color: ${({ theme }) => theme.color.text};
     transition: transform
-      ${({ toggle }) =>
-        toggle === true
-          ? '0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.2s'
-          : '0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86)'};
+      ${({ toggle }) => (toggle === true ? '0.2s ease 0.1s' : '0.1s ease')};
   }
 
   ${MenuIconBreadTop} {
