@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const MenuIcon = ({ onClickHandler, toggle }) => {
   return (
-    <MenuIconWrap onClick={onClickHandler} toggle={toggle}>
+    <MenuIconWrap onClick={onClickHandler} toggle={toggle} aria-label="Menu">
       <MenuIconBreadTop>
         <div />
       </MenuIconBreadTop>
@@ -22,7 +22,7 @@ const MenuIconBreadBottom = styled.div`
   bottom: 22px;
 `;
 
-const MenuIconWrap = styled.div`
+const MenuIconWrap = styled.button`
   display: block;
   cursor: pointer;
   position: absolute;
@@ -30,13 +30,14 @@ const MenuIconWrap = styled.div`
   right: 0;
   width: ${({ theme }) => theme.navHeight};
   height: ${({ theme }) => theme.navHeight};
-  padding-right: ${({ theme }) => theme.padding.sm};
+  border: none;
+  background-color: transparent;
 
   & > div {
     position: absolute;
     width: 18px;
     height: 1px;
-    left: 35px; // 19 + 16
+    right: ${({ theme }) => theme.padding.sm};
     opacity: 0.8;
     transition: opacity 0.3s ease,
       transform
@@ -48,7 +49,10 @@ const MenuIconWrap = styled.div`
     height: 100%;
     background-color: ${({ theme }) => theme.color.text};
     transition: transform
-      ${({ toggle }) => (toggle === true ? '0.3s ease 0.2s' : '0.2s ease')};
+      ${({ toggle }) =>
+        toggle === true
+          ? '0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.2s'
+          : '0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86)'};
   }
 
   ${MenuIconBreadTop} {
