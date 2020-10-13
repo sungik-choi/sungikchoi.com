@@ -52,10 +52,19 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
-  :focus {
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  :focus-visible {
     outline: 4px solid rgba(0,125,250,0.6);
     outline-offset: 1px;
   }
+/* 
+  :focus {
+    outline: 4px solid rgba(0,125,250,0.6);
+    outline-offset: 1px;
+  } */
 
   .visually-hidden {
     position: absolute;
