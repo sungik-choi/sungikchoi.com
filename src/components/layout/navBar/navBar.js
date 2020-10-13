@@ -49,7 +49,7 @@ const NavBar = ({ title, themeToggler }) => {
         <LinkWrap toggle={toggle}>
           <Curtain ref={curtainRef} toggle={toggle} />
           <LinkContent toggle={toggle}>
-            <LinkUl>
+            <LinkUl toggle={toggle}>
               {menuLinks.map(({ link, name }) => (
                 <li key={name} onClick={() => link === '/' && setToggle(false)}>
                   <Link to={link}>{name}</Link>
@@ -81,6 +81,7 @@ const Nav = styled.nav`
   width: 100%;
   height: ${({ theme }) => theme.navHeight};
   z-index: 10;
+
   a:hover {
     text-decoration: none;
   }
@@ -91,7 +92,7 @@ const Content = styled.div`
   position: relative;
   margin: 0 auto;
   max-width: ${({ theme }) => theme.width};
-  padding: 0 ${({ theme }) => theme.padding.sm};
+  padding: 0 ${({ theme }) => theme.padding.lg};
   height: 100%;
   z-index: 2;
   display: flex;
@@ -103,8 +104,8 @@ const Content = styled.div`
     list-style-type: none;
   }
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    padding: 0 ${({ theme }) => theme.padding.lg};
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    padding: 0 ${({ theme }) => theme.padding.sm};
   }
 `;
 
@@ -112,7 +113,7 @@ const Title = styled.h1`
   z-index: 9999;
   padding: 0;
   border: none;
-  font-size: ${({ theme }) => theme.text.md};
+  font-size: ${({ theme }) => theme.text.title};
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   color: ${({ theme }) => theme.color.text};
 
@@ -120,8 +121,8 @@ const Title = styled.h1`
     color: inherit;
   }
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    font-size: ${({ theme }) => theme.text.title};
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    font-size: ${({ theme }) => theme.text.md};
   }
 `;
 
@@ -156,8 +157,13 @@ const LinkUl = styled.ul`
       display: block;
       margin-left: 0;
       font-size: ${({ theme }) => theme.text.md};
-      margin-bottom: 1rem;
+
       a {
+        display: block;
+        ${({ toggle, theme }) =>
+          toggle && `width: calc(100vw - ${theme.sizing.lg} * 2)`};
+        height: 100%;
+        padding: 0.5rem 0;
         font-weight: 500;
       }
     }
@@ -168,7 +174,7 @@ const LinkUl = styled.ul`
       position: absolute;
       ${({ theme }) => `width: calc(100vw - ${theme.sizing.lg} * 2)`};
       height: 1px;
-      transform: translateY(-8px);
+      transform: translateY(-2px);
       background-color: ${({ theme }) => theme.color.divider};
     }
   }

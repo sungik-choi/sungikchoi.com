@@ -104,10 +104,12 @@ const Button = styled.button`
   }
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
+    justify-content: start;
     position: static;
     border-radius: 0;
     border: none;
-    padding: 0;
+    width: 100%;
+    padding: 0.5rem 0;
 
     &:hover {
       ${Icon}, ${Text} {
