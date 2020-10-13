@@ -155,7 +155,7 @@ const LinkUl = styled.ul`
     li {
       display: block;
       margin-left: 0;
-      font-size: 1.5rem;
+      font-size: ${({ theme }) => theme.text.md};
       margin-bottom: 1rem;
       a {
         font-weight: 500;
