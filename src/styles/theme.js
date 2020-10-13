@@ -90,6 +90,7 @@ export const lightTheme = {
   },
 
   device: {
+    sm: calcRem(767),
     lg: calcRem(1024),
   },
 };
