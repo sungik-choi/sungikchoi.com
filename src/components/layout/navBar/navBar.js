@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect, useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import { Link } from 'gatsby';
 import ThemeToggleButton from './themeToggleButton/themeToggleButton';
 import MenuIcon from './menuIcon';
@@ -7,12 +7,23 @@ import Background from 'styles/background';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 
 const NavBar = ({ title, themeToggler }) => {
+  const theme = useContext(ThemeContext);
   const site = useSiteMetadata();
   const { menuLinks, githubLink } = site.siteMetadata;
 
   const [toggle, setToggle] = useState(false);
   const onClickHandler = () =>
     toggle === true ? setToggle(false) : setToggle(true);
+
+  useEffect(() => {
+    const mql = window.matchMedia(`(min-width: ${theme.device.lg})`);
+    const setToggleFalse = (e) => {
+      if (!e.matches) return;
+      setToggle(false);
+    };
+    mql.addEventListener('change', setToggleFalse);
+    return () => mql.removeEventListener('change', setToggleFalse);
+  });
 
   return (
     <Nav aria-label="Global Navigation">
@@ -21,7 +32,7 @@ const NavBar = ({ title, themeToggler }) => {
         <Title>
           <Link to="/">{title}</Link>
         </Title>
-        <LinkWrap>
+        <LinkWrap toggle={toggle}>
           <LinkUl>
             {menuLinks.map(({ link, name }) => (
               <li key={name}>
@@ -96,9 +107,11 @@ const Title = styled.h1`
 `;
 
 const LinkWrap = styled.div`
-  display: flex;
-  align-items: center;
-  align-content: center;
+  @media (min-width: ${({ theme }) => theme.device.lg}) {
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
 `;
 
 const LinkUl = styled.ul`
