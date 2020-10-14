@@ -64,7 +64,7 @@ const NavBar = ({ title, themeToggler }) => {
 const Nav = styled.nav`
   min-width: ${({ theme }) => theme.minWidth};
   position: sticky;
-  overflow: hidden;
+  /* overflow: hidden; */
   top: 0;
   left: 0;
   width: 100%;
