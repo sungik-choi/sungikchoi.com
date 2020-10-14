@@ -68,6 +68,7 @@ const NavBar = ({ title, themeToggler }) => {
           <Curtain ref={curtainRef} toggle={toggle} />
           <LinkContent ref={linkWrapRef} toggle={toggle}>
             <LinkUl toggle={toggle}>
+            <MenuIcon onClickHandler={onClickHandler} toggle={toggle} />
               {menuLinks.map(({ link, name }) => (
                 <li key={name} onClick={() => link === '/' && setToggle(false)}>
                   <Link to={link}>{name}</Link>
@@ -83,7 +84,6 @@ const NavBar = ({ title, themeToggler }) => {
               </li>
             </LinkUl>
           </LinkContent>
-          <MenuIcon onClickHandler={onClickHandler} toggle={toggle} />
         </LinkWrap>
       </Content>
     </Nav>
@@ -151,7 +151,7 @@ const LinkUl = styled.ul`
     font-weight: ${({ theme }) => theme.fontWeight.regular};
   }
 
-  a:hover {
+  a:hover, a:focus {
     color: ${({ theme }) => theme.color.blue};
   }
 
@@ -169,6 +169,7 @@ const LinkUl = styled.ul`
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     ${({ toggle }) => listAnimationCSS(toggle)}
+    pointer-events: ${({ toggle }) => (toggle ? 'auto' : 'none')};
     flex-direction: column;
     padding: 0 ${({ theme }) => theme.sizing.lg};
 
@@ -176,8 +177,10 @@ const LinkUl = styled.ul`
       display: block;
       margin-left: 0;
       font-size: ${({ theme }) => theme.text.md};
-      transform: ${({ toggle }) =>
-        toggle ? 'translateY(0)' : 'translateY(-30px)'};
+      transform: ${({ toggle, theme }) =>
+        toggle
+          ? `translateY(calc(${theme.navHeight} + ${theme.sizing.lg}))`
+          : `translateY(${theme.navHeight})`};
       opacity: ${({ toggle }) => (toggle ? '1' : '0')};
     }
 
@@ -217,11 +220,11 @@ const NavBackground = styled(Background)`
 `;
 
 const Curtain = styled.div`
-  visibility: hidden;
+  display: none;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     ${({ toggle }) => curtainAnimationCSS(toggle)}
-    visibility: visible;
+    display: block;
     position: fixed;
     ${({ theme }) => `top: calc(${theme.navHeight} - 1px)`};
     left: 0;
@@ -240,15 +243,12 @@ const LinkContent = styled.div`
 
 const LinkWrap = styled.div`
   display: flex;
-
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    ${({ theme }) =>
-      `padding-top: calc(${theme.navHeight} + ${theme.sizing.lg})`};
+    height: ${({ theme }) => theme.navHeight};
   }
 `;
 
