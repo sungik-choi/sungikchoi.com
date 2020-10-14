@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useContext,
+} from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { Link } from 'gatsby';
 import ThemeToggleButton from './themeToggleButton/themeToggleButton';
@@ -21,14 +27,13 @@ const NavBar = ({ title, themeToggler }) => {
   const [toggle, setToggle] = useState(false);
   const { device } = useContext(ThemeContext);
   const curtainRef = useRef(null);
-  const linkWrapRef = useRef(null);
   const linkUlRef = useRef(null);
+  const mql = window.matchMedia(`(max-width: ${device.sm})`);
 
   const onClickHandler = () =>
     toggle === true ? setToggle(false) : setToggle(true);
 
   useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${device.sm})`);
     const hideAnimation = () => {
       curtainRef.current.style.display = 'none';
       linkUlRef.current.style.display = 'none';
@@ -48,14 +53,40 @@ const NavBar = ({ title, themeToggler }) => {
     return () => mql.removeEventListener('change', setToggleFalse);
   });
 
+  const toggleKeyboardFocus = useCallback(() => {
+    const focusableElementsString = `a[href], button:not([disabled])`;
+    const focusableElements = linkUlRef.current.querySelectorAll(
+      focusableElementsString
+    );
+    const FOCUSABLE_TABINDEX = 0;
+    const DISABLE_FOCUS_TABINDEX = -1;
+    if (!mql.matches) {
+      focusableElements.forEach((e) =>
+        e.setAttribute('tabindex', FOCUSABLE_TABINDEX)
+      );
+      return;
+    }
+    const tabIndex = toggle ? FOCUSABLE_TABINDEX : DISABLE_FOCUS_TABINDEX;
+    focusableElements.forEach((e) => e.setAttribute('tabindex', tabIndex));
+  }, [mql.matches, toggle]);
+
+  useEffect(() => {
+    toggleKeyboardFocus();
+  }, [toggleKeyboardFocus]);
+
+  useEffect(() => {
+    mql.addEventListener('change', toggleKeyboardFocus);
+    return () => mql.removeEventListener('change', toggleKeyboardFocus);
+  });
+
   useEffect(() => {
     const ESC_KEYCODE = 27;
-    const handleKeyDown = (e) => {
+    const keydownHandler = (e) => {
       if (!toggle) return;
       if (e.keyCode === ESC_KEYCODE) setToggle(false);
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', keydownHandler);
+    return () => window.removeEventListener('keydown', keydownHandler);
   }, [toggle]);
 
   return (
