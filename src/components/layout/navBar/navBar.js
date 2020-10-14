@@ -47,6 +47,16 @@ const NavBar = ({ title, themeToggler }) => {
     return () => mql.removeEventListener('change', setToggleFalse);
   });
 
+  useEffect(() => {
+    const ESC_KEYCODE = 27;
+    const handleKeyDown = (e) => {
+      if (!toggle) return;
+      if (e.keyCode === ESC_KEYCODE) setToggle(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [toggle]);
+
   return (
     <Nav aria-label="Global Navigation">
       <NavBackground toggle={toggle} />
