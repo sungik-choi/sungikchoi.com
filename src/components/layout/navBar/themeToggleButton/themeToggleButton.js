@@ -84,6 +84,7 @@ const Button = styled.button`
   padding-right: 1.25rem;
   border: 1px solid ${({ theme }) => theme.color.floatingButtonBorder};
   border-radius: ${({ theme }) => theme.borderRadius.lg};
+  font-weight: 500;
 
   @media (min-width: ${({ theme }) => theme.device.sm}) {
     &:hover {
