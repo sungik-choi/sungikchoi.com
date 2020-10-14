@@ -7,7 +7,8 @@ import { ACTIVE } from 'constants/constants';
 const CategoryFilter = ({ categoryList }) => {
   const categoryRef = useRef(null);
   const ALL_CATEGORY_NAME = 'All';
-  const isActive = ({ isCurrent }) => (isCurrent ? { id: ACTIVE } : {});
+  const isActive = ({ isCurrent }) =>
+    isCurrent ? { id: ACTIVE, tabindex: -1 } : {};
 
   useLayoutEffect(() => {
     if (!categoryRef) return;
@@ -102,7 +103,7 @@ const CategoryButton = styled(Link)`
   }
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     color: ${({ theme }) => theme.color.white};
     background-color: ${({ theme }) => theme.color.blue};
   }
