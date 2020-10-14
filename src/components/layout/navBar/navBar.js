@@ -22,6 +22,7 @@ const NavBar = ({ title, themeToggler }) => {
   const { device } = useContext(ThemeContext);
   const curtainRef = useRef(null);
   const linkWrapRef = useRef(null);
+  const linkUlRef = useRef(null);
 
   const onClickHandler = () =>
     toggle === true ? setToggle(false) : setToggle(true);
@@ -30,10 +31,10 @@ const NavBar = ({ title, themeToggler }) => {
     const mql = window.matchMedia(`(max-width: ${device.sm})`);
     const hideAnimation = () => {
       curtainRef.current.style.display = 'none';
-      linkWrapRef.current.style.display = 'none';
+      linkUlRef.current.style.display = 'none';
       setTimeout(() => {
         curtainRef.current.style.display = 'block';
-        linkWrapRef.current.style.display = 'block';
+        linkUlRef.current.style.display = 'flex';
       }, 500);
     };
     const setToggleFalse = (e) => {
@@ -64,11 +65,11 @@ const NavBar = ({ title, themeToggler }) => {
         <Title onClick={() => setToggle(false)}>
           <Link to="/">{title}</Link>
         </Title>
-        <LinkWrap toggle={toggle}>
+        <LinkWrap>
           <Curtain ref={curtainRef} toggle={toggle} />
-          <LinkContent ref={linkWrapRef} toggle={toggle}>
-            <LinkUl toggle={toggle}>
+          <LinkContent>
             <MenuIcon onClickHandler={onClickHandler} toggle={toggle} />
+            <LinkUl ref={linkUlRef} toggle={toggle}>
               {menuLinks.map(({ link, name }) => (
                 <li key={name} onClick={() => link === '/' && setToggle(false)}>
                   <Link to={link}>{name}</Link>
