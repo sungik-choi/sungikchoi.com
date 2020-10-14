@@ -41,23 +41,23 @@ const Markdown = styled.article`
   }
 
   h2 {
-    font-size: 1.3125rem;
+    font-size: 1.75rem;
     line-height: 1.3;
     margin-bottom: ${({ rhythm }) => rhythm(1)};
     margin-top: ${({ rhythm }) => rhythm(2.25)};
 
-    @media (min-width: ${({ theme }) => theme.device.lg}) {
-      font-size: 1.75rem;
+    @media (max-width: ${({ theme }) => theme.device.sm}) {
+      font-size: 1.3125rem;
     }
   }
 
   h3 {
-    font-size: 1.1875rem;
+    font-size: 1.31951rem;
     margin-bottom: ${({ rhythm }) => rhythm(1)};
     margin-top: ${({ rhythm }) => rhythm(1.5)};
 
-    @media (min-width: ${({ theme }) => theme.device.lg}) {
-      font-size: 1.31951rem;
+    @media (max-width: ${({ theme }) => theme.device.sm}) {
+      font-size: 1.1875rem;
     }
   }
 

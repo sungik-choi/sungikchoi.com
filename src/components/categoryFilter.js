@@ -61,7 +61,7 @@ const Nav = styled.nav`
   align-items: center;
   background-color: ${({ theme }) => theme.color.card};
   margin-bottom: 3rem;
-  padding: 0.75rem;
+  padding: 0.75rem 1.5rem;
   border-radius: ${({ theme }) => theme.borderRadius.base};
 
   a#active {
@@ -69,23 +69,31 @@ const Nav = styled.nav`
     background-color: ${({ theme }) => theme.color.blue};
   }
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    padding: 0.75rem 1.5rem;
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    padding: 0.75rem;
   }
 `;
 
 const CategoryTitle = styled.em`
+  position: static;
+  flex-shrink: 0;
+  width: auto;
+  height: auto;
+  clip: auto;
+  white-space: auto;
+
   font-size: ${({ theme }) => theme.text.base};
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   font-style: initial;
   margin-right: ${({ theme }) => theme.sizing.lg};
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    position: static !important;
-    width: auto !important;
-    height: auto !important;
-    clip: auto !important;
-    white-space: auto !important;
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: no-wrap;
   }
 `;
 

@@ -54,30 +54,31 @@ const BlogPost = ({ data }) => {
 };
 
 const OuterWrapper = styled.div`
-  margin-top: ${({ theme }) => theme.sizing.lg};
+  margin-top: ${({ theme }) => theme.sizing.xl};
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    margin-top: ${({ theme }) => theme.sizing.xl};
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    margin-top: ${({ theme }) => theme.sizing.lg};
   }
 `;
 
 const InnerWrapper = styled.div`
-  width: 87.5%;
+  width: ${({ theme }) => theme.postWidth};
   margin: 0 auto;
   padding-bottom: ${({ theme }) => theme.sizing.lg};
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    width: ${({ theme }) => theme.postWidth};
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    width: 87.5%;
   }
 `;
 
 const CommentWrap = styled.section`
+  width: 100%;
   padding: 0 1rem;
   margin: 0 auto;
   margin-bottom: ${({ theme }) => theme.sizing.xl};
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    width: 100%;
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    width: auto;
   }
 `;
 
@@ -97,12 +98,12 @@ const Time = styled(DateTime)`
 
 const Desc = styled.p`
   margin-top: ${({ theme }) => theme.sizing.lg};
-  line-height: 1.31579;
-  font-size: 1.1875rem;
+  line-height: 1.5;
+  font-size: ${({ theme }) => theme.text.lg};
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    line-height: 1.5;
-    font-size: ${({ theme }) => theme.text.lg};
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    line-height: 1.31579;
+    font-size: 1.1875rem;
   }
 `;
 
@@ -115,13 +116,13 @@ const Divider = styled.div`
 `;
 
 const Title = styled.h1`
-  line-height: 1.21875;
   font-weight: ${({ theme }) => theme.fontWeight.bold};
-  font-size: 2rem;
+  line-height: 1.1875;
+  font-size: ${({ theme }) => theme.text.xl};
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    line-height: 1.1875;
-    font-size: ${({ theme }) => theme.text.xl};
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    line-height: 1.21875;
+    font-size: 2rem;
   }
 `;
 

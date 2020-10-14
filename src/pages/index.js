@@ -98,14 +98,14 @@ const Main = styled.main`
 
 const Content = styled.div`
   box-sizing: content-box;
-  padding-top: ${({ theme }) => theme.gridGap.lg};
   width: 87.5%;
+  max-width: ${({ theme }) => theme.width};
+  padding-top: ${({ theme }) => theme.sizing.lg};
   margin: 0 auto;
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    width: 100%;
-    max-width: ${({ theme }) => theme.width};
-    padding-top: ${({ theme }) => theme.sizing.lg};
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    padding-top: ${({ theme }) => theme.gridGap.lg};
+    width: 87.5%;
   }
 `;
 
@@ -118,7 +118,7 @@ const PostTitle = styled.h2`
 
 const Grid = styled.ul`
   display: grid;
-  grid-gap: ${({ theme }) => theme.gridGap.lg};
+  grid-gap: ${({ theme }) => theme.gridGap.xl};
   grid-template-columns: repeat(2, 1fr);
   list-style: none;
 
@@ -126,14 +126,14 @@ const Grid = styled.ul`
     margin-bottom: 0;
   }
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    grid-gap: ${({ theme }) => theme.gridGap.xl};
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    grid-gap: ${({ theme }) => theme.gridGap.lg};
   }
 `;
 
 const List = styled.li`
   box-sizing: border-box;
-  grid-column: span 2;
+  grid-column: span 1;
 
   a {
     display: block;
@@ -155,8 +155,8 @@ const List = styled.li`
     }
   }
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    grid-column: span 1;
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    grid-column: span 2;
   }
 `;
 

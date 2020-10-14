@@ -43,20 +43,16 @@ const Text = styled.div`
   & > * {
     display: block;
   }
-
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    padding: ${({ theme }) => theme.sizing.md};
-  }
 `;
 
 const Title = styled.h3`
   margin-top: ${({ theme }) => theme.sizing.xs};
-  font-size: ${({ theme }) => theme.text.md};
+  font-size: ${({ theme }) => theme.text.lg};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   line-height: 1.3;
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    font-size: ${({ theme }) => theme.text.lg};
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    font-size: ${({ theme }) => theme.text.md};
   }
 `;
 
