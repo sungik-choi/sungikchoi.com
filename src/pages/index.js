@@ -114,6 +114,10 @@ const PostTitle = styled.h2`
   font-weight: ${({ theme }) => theme.fontWeight.extraBold};
   margin-bottom: 1.5rem;
   line-height: 1.21875;
+
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    font-size: 1.75rem;
+  }
 `;
 
 const Grid = styled.ul`
