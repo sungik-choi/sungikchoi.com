@@ -7,13 +7,14 @@ const useMenu = ({ curtainRef, listRef, device }) => {
     toggle === true ? setToggle(false) : setToggle(true);
 
   useEffect(() => {
+    const TIMER = 500;
     const hideAnimation = () => {
       curtainRef.current.style.display = 'none';
       listRef.current.style.display = 'none';
       setTimeout(() => {
         curtainRef.current.style.display = 'block';
         listRef.current.style.display = 'flex';
-      }, 500);
+      }, TIMER);
     };
     const setToggleFalse = (e) => {
       if (e.matches) {

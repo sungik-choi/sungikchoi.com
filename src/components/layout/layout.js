@@ -2,10 +2,14 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import NavBar from './navBar/navBar';
 import useTheme from 'hooks/useTheme';
+import useScript from 'hooks/useScript';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 import { lightTheme, darkTheme } from 'styles/theme';
 import GlobalStyle from 'styles/globalStyle';
 import { LIGHT } from 'constants/constants';
+
+const FOCUS_VISIBLE_POLYFILL_SRC =
+  '/node_modules/focus-visible/dist/focus-visible.min.js';
 
 const Layout = ({ children }) => {
   const [theme, themeToggler] = useTheme();
@@ -14,6 +18,8 @@ const Layout = ({ children }) => {
   const site = useSiteMetadata();
   const { title, description, author } = site.siteMetadata;
   const copyrightStr = `${description}. Copyright © ${author}.`;
+
+  useScript(FOCUS_VISIBLE_POLYFILL_SRC);
 
   return (
     <ThemeProvider theme={themeMode}>

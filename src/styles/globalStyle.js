@@ -61,6 +61,10 @@ const GlobalStyle = createGlobalStyle`
     outline-offset: 1px;
   }
 
+  .js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+  }
+
   .visually-hidden {
     position: absolute;
     width: 1px;
