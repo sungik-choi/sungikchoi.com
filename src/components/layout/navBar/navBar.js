@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import styled, { css, ThemeContext } from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import { Link } from 'gatsby';
 import ThemeToggleButton from './themeToggleButton/themeToggleButton';
 import MenuIcon from './menuIcon';
 import Background from 'styles/background';
+import {
+  listAnimationCSS,
+  navBackgroundAnimationCSS,
+  curtainAnimationCSS,
+} from 'styles/navBarAnimation';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 
 // ! 메뉴 등장 시 스크롤 막기
@@ -153,6 +158,7 @@ const LinkUl = styled.ul`
   }
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
+    ${({ toggle }) => listAnimationCSS(toggle)}
     flex-direction: column;
     padding: 0 ${({ theme }) => theme.sizing.lg};
 
@@ -160,9 +166,9 @@ const LinkUl = styled.ul`
       display: block;
       margin-left: 0;
       font-size: ${({ theme }) => theme.text.md};
-      transition: transform 0.8s ease;
       transform: ${({ toggle }) =>
-        toggle ? 'translateY(0)' : 'translateY(-40px)'};
+        toggle ? 'translateY(0)' : 'translateY(-30px)'};
+      opacity: ${({ toggle }) => (toggle ? '1' : '0')};
     }
 
     a {
@@ -187,6 +193,7 @@ const LinkUl = styled.ul`
 const NavBackground = styled(Background)`
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     &::after {
+      ${({ toggle }) => navBackgroundAnimationCSS(toggle)};
       content: '';
       display: block;
       position: absolute;
@@ -195,9 +202,6 @@ const NavBackground = styled(Background)`
       width: 100%;
       height: 100%;
       background-color: ${({ theme }) => theme.color.postBackground};
-      transition: opacity
-        ${({ toggle }) => (toggle ? '0.3s ease' : '0.4s ease-in-out 0.48s')};
-      opacity: ${({ toggle }) => (toggle ? '1' : '0')};
     }
   }
 `;
@@ -206,6 +210,7 @@ const Curtain = styled.div`
   visibility: hidden;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
+    ${({ toggle }) => curtainAnimationCSS(toggle)}
     visibility: visible;
     position: fixed;
     ${({ theme }) => `top: calc(${theme.navHeight} - 1px)`};
@@ -213,17 +218,12 @@ const Curtain = styled.div`
     width: 100%;
     ${({ theme }) => `height: calc(100% - ${theme.navHeight} + 1px)`};
     background-color: ${({ theme }) => theme.color.postBackground};
-    transition: transform 0.6s cubic-bezier(0.41, 0.06, 0.05, 1) 0.1s;
-    transform: ${({ toggle }) => (toggle ? 'scaleY(1)' : 'scaleY(0)')};
-    transform-origin: top;
   }
 `;
 
 const LinkContent = styled.div`
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     width: 100%;
-    opacity: ${({ toggle }) => (toggle ? '1' : '0')};
-    transition: opacity 0.5s ease;
     z-index: 200;
   }
 `;
