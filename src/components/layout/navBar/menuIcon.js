@@ -23,6 +23,7 @@ const MenuIconBreadBottom = styled.div`
 `;
 
 const MenuIconButton = styled.button`
+  z-index: 9999;
   display: none;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
