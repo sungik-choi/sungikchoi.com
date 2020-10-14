@@ -113,7 +113,7 @@ const Button = styled.button`
     padding: 0.5rem 0;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       ${Icon}, ${Text} {
         fill: ${({ theme }) => theme.color.blue};
         color: ${({ theme }) => theme.color.blue};
