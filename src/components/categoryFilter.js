@@ -32,7 +32,7 @@ const CategoryFilter = ({ categoryList }) => {
 
   return (
     <Nav aria-label="Category Filter">
-      <CategoryTitle className="visually-hidden">Category</CategoryTitle>
+      <CategoryTitle>Category</CategoryTitle>
       <CategoryButton getProps={isActive} to="/">
         {ALL_CATEGORY_NAME}
       </CategoryButton>
@@ -76,12 +76,12 @@ const Nav = styled.nav`
 
 const CategoryTitle = styled.em`
   position: static;
-  flex-shrink: 0;
   width: auto;
   height: auto;
   clip: auto;
   white-space: auto;
 
+  flex-shrink: 0;
   font-size: ${({ theme }) => theme.text.base};
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   font-style: initial;
