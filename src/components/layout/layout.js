@@ -21,10 +21,10 @@ const Layout = ({ children }) => {
       <Container>
         <NavBar title={title} themeToggler={themeToggler} />
         {children}
+        <Footer role="contentinfo">
+          <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
+        </Footer>
       </Container>
-      <Footer role="contentinfo">
-        <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
-      </Footer>
     </ThemeProvider>
   );
 };
