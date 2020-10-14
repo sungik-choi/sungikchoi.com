@@ -16,21 +16,24 @@ const NavBar = ({ title, themeToggler }) => {
   const [toggle, setToggle] = useState(false);
   const { device } = useContext(ThemeContext);
   const curtainRef = useRef(null);
+  const linkWrapRef = useRef(null);
 
   const onClickHandler = () =>
     toggle === true ? setToggle(false) : setToggle(true);
 
   useEffect(() => {
     const mql = window.matchMedia(`(max-width: ${device.sm})`);
-    const hideCurtainAnimation = () => {
+    const hideAnimation = () => {
       curtainRef.current.style.display = 'none';
+      linkWrapRef.current.style.display = 'none';
       setTimeout(() => {
         curtainRef.current.style.display = 'block';
+        linkWrapRef.current.style.display = 'block';
       }, 500);
     };
     const setToggleFalse = (e) => {
       if (e.matches) {
-        hideCurtainAnimation();
+        hideAnimation();
         return;
       }
       setToggle(false);
@@ -48,7 +51,7 @@ const NavBar = ({ title, themeToggler }) => {
         </Title>
         <LinkWrap toggle={toggle}>
           <Curtain ref={curtainRef} toggle={toggle} />
-          <LinkContent toggle={toggle}>
+          <LinkContent ref={linkWrapRef} toggle={toggle}>
             <LinkUl toggle={toggle}>
               {menuLinks.map(({ link, name }) => (
                 <li key={name} onClick={() => link === '/' && setToggle(false)}>
@@ -75,7 +78,7 @@ const NavBar = ({ title, themeToggler }) => {
 const Nav = styled.nav`
   min-width: ${({ theme }) => theme.minWidth};
   position: sticky;
-  overflow-x: hidden;
+  overflow: hidden;
   top: 0;
   left: 0;
   width: 100%;
@@ -157,13 +160,16 @@ const LinkUl = styled.ul`
       display: block;
       margin-left: 0;
       font-size: ${({ theme }) => theme.text.md};
+      transition: transform 0.8s ease;
+      transform: ${({ toggle }) =>
+        toggle ? 'translateY(0)' : 'translateY(-40px)'};
+    }
 
-      a {
-        display: block;
-        height: 100%;
-        padding: 0.5rem 0;
-        font-weight: 500;
-      }
+    a {
+      display: block;
+      height: 100%;
+      padding: 0.5rem 0;
+      font-weight: 500;
     }
 
     li + li::before {
@@ -190,7 +196,7 @@ const NavBackground = styled(Background)`
       height: 100%;
       background-color: ${({ theme }) => theme.color.postBackground};
       transition: opacity
-        ${({ toggle }) => (toggle ? '0.1s ease' : '0.4s ease-in-out 0.48s')};
+        ${({ toggle }) => (toggle ? '0.3s ease' : '0.4s ease-in-out 0.48s')};
       opacity: ${({ toggle }) => (toggle ? '1' : '0')};
     }
   }
@@ -215,8 +221,9 @@ const Curtain = styled.div`
 
 const LinkContent = styled.div`
   @media (max-width: ${({ theme }) => theme.device.sm}) {
-    visibility: ${({ toggle }) => (toggle ? 'visible' : 'hidden')};
     width: 100%;
+    opacity: ${({ toggle }) => (toggle ? '1' : '0')};
+    transition: opacity 0.5s ease;
     z-index: 200;
   }
 `;
@@ -225,17 +232,13 @@ const LinkWrap = styled.div`
   display: flex;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
-    ${({ toggle }) =>
-      toggle &&
-      css`
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        ${({ theme }) =>
-          `padding-top: calc(${theme.navHeight} + ${theme.sizing.lg})`};
-      `}
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    ${({ theme }) =>
+      `padding-top: calc(${theme.navHeight} + ${theme.sizing.lg})`};
   }
 `;
 
