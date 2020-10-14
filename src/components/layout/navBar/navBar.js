@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  useContext,
-} from 'react';
+import React, { useRef, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { Link } from 'gatsby';
 import ThemeToggleButton from './themeToggleButton/themeToggleButton';
@@ -16,6 +10,7 @@ import {
   curtainAnimationCSS,
 } from 'styles/navBarAnimation';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
+import useMenu from 'hooks/useMenu';
 
 // ! 메뉴 등장 시 스크롤 막기
 // ! 메뉴 등장 시 키보드 포커스가 메뉴 안으로만 향하도록 변경
@@ -23,71 +18,15 @@ import { useSiteMetadata } from 'hooks/useSiteMetadata';
 const NavBar = ({ title, themeToggler }) => {
   const site = useSiteMetadata();
   const { menuLinks, githubLink } = site.siteMetadata;
-
-  const [toggle, setToggle] = useState(false);
   const { device } = useContext(ThemeContext);
   const curtainRef = useRef(null);
-  const linkUlRef = useRef(null);
-  const mql = window.matchMedia(`(max-width: ${device.sm})`);
+  const listRef = useRef(null);
 
-  const onClickHandler = () =>
-    toggle === true ? setToggle(false) : setToggle(true);
-
-  useEffect(() => {
-    const hideAnimation = () => {
-      curtainRef.current.style.display = 'none';
-      linkUlRef.current.style.display = 'none';
-      setTimeout(() => {
-        curtainRef.current.style.display = 'block';
-        linkUlRef.current.style.display = 'flex';
-      }, 500);
-    };
-    const setToggleFalse = (e) => {
-      if (e.matches) {
-        hideAnimation();
-        return;
-      }
-      setToggle(false);
-    };
-    mql.addEventListener('change', setToggleFalse);
-    return () => mql.removeEventListener('change', setToggleFalse);
+  const [toggle, setToggle, onClickHandler] = useMenu({
+    curtainRef,
+    listRef,
+    device,
   });
-
-  const toggleKeyboardFocus = useCallback(() => {
-    const focusableElementsString = `a[href], button:not([disabled])`;
-    const focusableElements = linkUlRef.current.querySelectorAll(
-      focusableElementsString
-    );
-    const FOCUSABLE_TABINDEX = 0;
-    const DISABLE_FOCUS_TABINDEX = -1;
-    if (!mql.matches) {
-      focusableElements.forEach((e) =>
-        e.setAttribute('tabindex', FOCUSABLE_TABINDEX)
-      );
-      return;
-    }
-    const tabIndex = toggle ? FOCUSABLE_TABINDEX : DISABLE_FOCUS_TABINDEX;
-    focusableElements.forEach((e) => e.setAttribute('tabindex', tabIndex));
-  }, [mql.matches, toggle]);
-
-  useEffect(() => {
-    toggleKeyboardFocus();
-  }, [toggleKeyboardFocus]);
-
-  useEffect(() => {
-    mql.addEventListener('change', toggleKeyboardFocus);
-    return () => mql.removeEventListener('change', toggleKeyboardFocus);
-  });
-
-  useEffect(() => {
-    const ESC_KEYCODE = 27;
-    const keydownHandler = (e) => {
-      if (!toggle) return;
-      if (e.keyCode === ESC_KEYCODE) setToggle(false);
-    };
-    window.addEventListener('keydown', keydownHandler);
-    return () => window.removeEventListener('keydown', keydownHandler);
-  }, [toggle]);
 
   return (
     <Nav aria-label="Global Navigation">
@@ -100,7 +39,7 @@ const NavBar = ({ title, themeToggler }) => {
           <Curtain ref={curtainRef} toggle={toggle} />
           <LinkContent>
             <MenuIcon onClickHandler={onClickHandler} toggle={toggle} />
-            <LinkUl ref={linkUlRef} toggle={toggle}>
+            <LinkUl ref={listRef} toggle={toggle}>
               {menuLinks.map(({ link, name }) => (
                 <li key={name} onClick={() => link === '/' && setToggle(false)}>
                   <Link to={link}>{name}</Link>
