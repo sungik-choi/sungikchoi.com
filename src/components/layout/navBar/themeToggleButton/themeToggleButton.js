@@ -112,7 +112,8 @@ const Button = styled.button`
     width: 100%;
     padding: 0.5rem 0;
 
-    &:hover {
+    &:hover,
+    &:focus {
       ${Icon}, ${Text} {
         fill: ${({ theme }) => theme.color.blue};
         color: ${({ theme }) => theme.color.blue};
