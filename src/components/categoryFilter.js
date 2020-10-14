@@ -102,7 +102,11 @@ const CategoryButton = styled(Link)`
     outline: none;
   }
 
-  &:hover,
+  &:hover {
+    color: ${({ theme }) => theme.color.white};
+    background-color: ${({ theme }) => theme.color.blue};
+  }
+
   &:focus-visible {
     color: ${({ theme }) => theme.color.white};
     background-color: ${({ theme }) => theme.color.blue};
