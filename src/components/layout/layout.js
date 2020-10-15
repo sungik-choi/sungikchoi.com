@@ -1,23 +1,25 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-
+import NavBar from './navBar/navBar';
+import useTheme from 'hooks/useTheme';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
-
-import theme from 'styles/theme';
+import { lightTheme, darkTheme } from 'styles/theme';
 import GlobalStyle from 'styles/globalStyle';
-
-import NavBar from './navBar';
+import { DARK } from 'constants/constants';
 
 const Layout = ({ children }) => {
+  const [theme, themeToggler] = useTheme();
+  const themeMode = theme === DARK ? darkTheme : lightTheme;
+
   const site = useSiteMetadata();
   const { title, description, author } = site.siteMetadata;
   const copyrightStr = `${description}. Copyright © ${author}.`;
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeMode}>
       <GlobalStyle />
       <Container>
-        <NavBar title={title} />
+        <NavBar title={title} themeToggler={themeToggler} />
         {children}
         <Footer role="contentinfo">
           <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
@@ -31,6 +33,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   ${({ theme }) => `min-height: calc(100vh - ${theme.footerHeight})`};
+  background-color: ${({ theme }) => theme.color.postBackground};
 `;
 
 const Footer = styled.footer`
@@ -44,7 +47,7 @@ const Footer = styled.footer`
 const Copyright = styled.span`
   font-size: ${({ theme }) => theme.text.sm};
   font-weight: 400;
-  color: ${({ theme }) => theme.color.gray6};
+  color: ${({ theme }) => theme.color.gray4};
 `;
 
 export default Layout;

@@ -12,7 +12,6 @@ export const useSiteMetadata = () => {
             githubLink
             utterances {
               repo
-              theme
             }
             postTitle
             menuLinks {

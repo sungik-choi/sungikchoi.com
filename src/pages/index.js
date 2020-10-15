@@ -1,58 +1,46 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
-
 import Layout from 'components/layout/layout';
 import SEO from 'components/seo';
 import CategoryFilter from 'components/categoryFilter';
 import Card from 'components/card';
 import { ThumbnailWrapper } from 'components/centeredImg';
-
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
-
 import convertToKorDate from 'utils/convertToKorDate';
 
 const Home = ({ pageContext, data }) => {
   const [post, setPost] = useState([]);
-  const [page, setPage] = useState(0);
-
   const currentCategory = pageContext.category;
-  const categoryList = data.allMarkdownRemark.group;
   const postData = data.allMarkdownRemark.edges;
 
-  const filteredPostData = currentCategory
-    ? postData.filter(
-        ({ node }) => node.frontmatter.category === currentCategory
-      )
-    : postData;
-
-  // ! 별도 설정 파일로 분리할 수 있을듯.
-  const POST_PER_PAGE = 1;
-  const currentPageIndex = POST_PER_PAGE * page;
-
   useLayoutEffect(() => {
-    filteredPostData
-      .slice(currentPageIndex, currentPageIndex + POST_PER_PAGE)
-      .forEach(({ node }) => {
-        const {
-          id,
-          fields: { slug },
-          frontmatter: {
-            title,
-            desc,
-            date,
-            category,
-            thumbnail: { base },
-            alt,
-          },
-        } = node;
+    const filteredPostData = currentCategory
+      ? postData.filter(
+          ({ node }) => node.frontmatter.category === currentCategory
+        )
+      : postData;
 
-        setPost((prevPost) => [
-          ...prevPost,
-          { id, slug, title, desc, date, category, base, alt },
-        ]);
-      });
-  }, [page]);
+    filteredPostData.forEach(({ node }) => {
+      const {
+        id,
+        fields: { slug },
+        frontmatter: {
+          title,
+          desc,
+          date,
+          category,
+          thumbnail: { base },
+          alt,
+        },
+      } = node;
+
+      setPost((prevPost) => [
+        ...prevPost,
+        { id, slug, title, desc, date, category, thumbnail: base, alt },
+      ]);
+    });
+  }, [currentCategory, postData]);
 
   const site = useSiteMetadata();
   const postTitle = currentCategory || site.siteMetadata.postTitle;
@@ -62,18 +50,27 @@ const Home = ({ pageContext, data }) => {
       <SEO title="Home" />
       <Main>
         <Content>
-          <CategoryFilter categoryList={categoryList} />
+          <CategoryFilter categoryList={data.allMarkdownRemark.group} />
           <PostTitle>{postTitle}</PostTitle>
           <Grid role="list">
             {post.map((data) => {
-              const { id, slug, title, desc, date, category, base, alt } = data;
+              const {
+                id,
+                slug,
+                title,
+                desc,
+                date,
+                category,
+                thumbnail,
+                alt,
+              } = data;
               const korDate = convertToKorDate(date);
               const ariaLabel = `${title} - ${category} - Posted on ${korDate}`;
               return (
                 <List key={id} role="listitem">
                   <Link to={slug} aria-label={ariaLabel}>
                     <Card
-                      thumbnail={base}
+                      thumbnail={thumbnail}
                       alt={alt}
                       category={category}
                       title={title}
@@ -87,7 +84,6 @@ const Home = ({ pageContext, data }) => {
             })}
           </Grid>
         </Content>
-        <button onClick={() => setPage(page + 1)}>페이지 증가</button>
       </Main>
     </Layout>
   );
@@ -97,19 +93,19 @@ const Main = styled.main`
   min-width: ${({ theme }) => theme.minWidth};
   ${({ theme }) =>
     `min-height: calc(100vh - ${theme.navHeight} - ${theme.footerHeight})`};
-  background-color: ${({ theme }) => theme.color.gray1};
+  background-color: ${({ theme }) => theme.color.background};
 `;
 
 const Content = styled.div`
   box-sizing: content-box;
-  padding-top: ${({ theme }) => theme.gridGap.lg};
   width: 87.5%;
+  max-width: ${({ theme }) => theme.width};
+  padding-top: ${({ theme }) => theme.sizing.lg};
   margin: 0 auto;
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    width: 100%;
-    max-width: ${({ theme }) => theme.width};
-    padding-top: ${({ theme }) => theme.sizing.lg};
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    padding-top: ${({ theme }) => theme.gridGap.lg};
+    width: 87.5%;
   }
 `;
 
@@ -118,11 +114,15 @@ const PostTitle = styled.h2`
   font-weight: ${({ theme }) => theme.fontWeight.extraBold};
   margin-bottom: 1.5rem;
   line-height: 1.21875;
+
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    font-size: 1.75rem;
+  }
 `;
 
 const Grid = styled.ul`
   display: grid;
-  grid-gap: ${({ theme }) => theme.gridGap.lg};
+  grid-gap: ${({ theme }) => theme.gridGap.xl};
   grid-template-columns: repeat(2, 1fr);
   list-style: none;
 
@@ -130,16 +130,21 @@ const Grid = styled.ul`
     margin-bottom: 0;
   }
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    grid-gap: ${({ theme }) => theme.gridGap.xl};
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    grid-gap: ${({ theme }) => theme.gridGap.lg};
   }
 `;
 
 const List = styled.li`
   box-sizing: border-box;
-  grid-column: span 2;
+  grid-column: span 1;
 
-  &:hover ${ThumbnailWrapper}::after {
+  a {
+    display: block;
+    height: 100%;
+  }
+
+  a:hover ${ThumbnailWrapper}::after, a:focus ${ThumbnailWrapper}::after {
     opacity: 1;
   }
 
@@ -147,12 +152,15 @@ const List = styled.li`
     transition: opacity 1s ease-out, transform 0.5s ease;
   }
 
-  &:hover .gatsby-image-wrapper {
-    transform: scale(1.03);
+  a:hover,
+  a:focus {
+    .gatsby-image-wrapper {
+      transform: scale(1.03);
+    }
   }
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    grid-column: span 1;
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    grid-column: span 2;
   }
 `;
 

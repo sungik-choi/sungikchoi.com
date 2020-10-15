@@ -8,7 +8,6 @@ module.exports = {
     githubLink: `https://www.github.com/sungik-choi`,
     utterances: {
       repo: 'sungik-choi/blog-comment',
-      theme: 'preferred-color-scheme',
     },
     postTitle: '전체 포스트',
     menuLinks: [
@@ -54,8 +53,13 @@ module.exports = {
           {
             resolve: `gatsby-remark-vscode`,
             options: {
-              theme: 'Github Light Theme',
-              extensions: ['vscode-theme-github-light'],
+              theme: {
+                default: 'Github Light Theme',
+                parentSelector: {
+                  'html[data-theme=dark]': 'Dark Github',
+                },
+              },
+              extensions: ['vscode-theme-github-light', 'dark-theme-github'],
             },
           },
           {

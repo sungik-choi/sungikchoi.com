@@ -1,33 +1,53 @@
-import React from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-
 import kebabCase from 'lodash/kebabCase';
+import { ACTIVE } from 'constants/constants';
 
 const CategoryFilter = ({ categoryList }) => {
+  const categoryRef = useRef(null);
   const ALL_CATEGORY_NAME = 'All';
-  const isActive = ({ isCurrent }) => {
-    return isCurrent ? { className: 'active' } : {};
-  };
+  const isActive = ({ isCurrent }) =>
+    isCurrent ? { id: ACTIVE, tabIndex: -1 } : {};
+
+  useLayoutEffect(() => {
+    if (!categoryRef) return;
+    const categoryWrapEl = categoryRef.current;
+
+    const isScrollActivated =
+      categoryWrapEl.scrollWidth >= categoryWrapEl.offsetWidth;
+    if (!isScrollActivated) return;
+
+    const activeCategoryEl = categoryWrapEl.querySelector(`#${ACTIVE}`);
+    if (!activeCategoryEl) return;
+
+    const offsetX = activeCategoryEl.offsetLeft - categoryWrapEl.offsetLeft;
+    categoryWrapEl.scrollTo(
+      offsetX -
+        categoryWrapEl.offsetWidth / 2 +
+        activeCategoryEl.offsetWidth / 2,
+      0
+    );
+  }, []);
 
   return (
-    <Nav aria-label="카테고리">
+    <Nav aria-label="Category Filter">
       <CategoryTitle>Category</CategoryTitle>
-      <Link getProps={isActive} to="/">
-        <AllCategoryButton>{ALL_CATEGORY_NAME}</AllCategoryButton>
-      </Link>
+      <CategoryButton getProps={isActive} to="/">
+        {ALL_CATEGORY_NAME}
+      </CategoryButton>
       <Divider />
-      <CategoryUl>
+      <CategoryUl ref={categoryRef} className="invisible-scrollbar">
         {categoryList.map((category) => {
           const { fieldValue } = category;
           return (
             <li key={fieldValue}>
-              <Link
+              <CategoryButton
                 getProps={isActive}
-                to={`/category/${kebabCase(fieldValue)}`}
+                to={`/category/${kebabCase(fieldValue)}/`}
               >
-                <CategoryButton>{fieldValue}</CategoryButton>
-              </Link>
+                {fieldValue}
+              </CategoryButton>
             </li>
           );
         })}
@@ -39,76 +59,85 @@ const CategoryFilter = ({ categoryList }) => {
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-  background-color: white;
+  background-color: ${({ theme }) => theme.color.card};
   margin-bottom: 3rem;
-  padding: 0.75rem;
-  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  border-radius: ${({ theme }) => theme.borderRadius.base};
 
-  & a.active button {
+  a#active {
     color: ${({ theme }) => theme.color.white};
-    background-color: ${({ theme }) => theme.color.hover};
+    background-color: ${({ theme }) => theme.color.blue};
   }
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    padding: 0.75rem 1.5rem;
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    padding: 0.75rem;
   }
 `;
 
 const CategoryTitle = styled.em`
-  font-size: 1rem;
-  font-weight: bold;
+  position: static;
+  width: auto;
+  height: auto;
+  clip: auto;
+  white-space: auto;
+
+  flex-shrink: 0;
+  font-size: ${({ theme }) => theme.text.base};
+  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   font-style: initial;
-  margin-right: 40px;
+  margin-right: ${({ theme }) => theme.sizing.lg};
 
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: no-wrap;
-
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    position: static;
-    width: auto;
-    height: auto;
-    clip: auto;
-    white-space: auto;
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: no-wrap;
   }
 `;
 
-const CategoryButton = styled.button`
+const CategoryButton = styled(Link)`
   cursor: pointer;
-  border: none;
-  background-color: ${({ theme }) => theme.color.gray1};
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 14px;
+  display: block;
+  background-color: ${({ theme }) => theme.color.categoryButton};
+  padding: ${({ theme }) => theme.sizing.sm} ${({ theme }) => theme.sizing.base};
+  border-radius: ${({ theme }) => theme.borderRadius.base};
+  font-size: 0.875rem;
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
-  transition: 300ms ease;
+
+  :focus {
+    outline: none;
+  }
 
   &:hover {
     color: ${({ theme }) => theme.color.white};
-    background-color: ${({ theme }) => theme.color.hover};
+    background-color: ${({ theme }) => theme.color.blue};
+  }
+
+  &:focus-visible {
+    color: ${({ theme }) => theme.color.white};
+    background-color: ${({ theme }) => theme.color.blue};
   }
 `;
 
 const Divider = styled.div`
   width: 1px;
   height: 2rem;
-  margin: 0 0.5rem;
-  background-color: ${({ theme }) => theme.color.gray4};
+  margin: 0 ${({ theme }) => theme.sizing.sm};
+  transform: translateX(-50%);
+  background-color: ${({ theme }) => theme.color.divider};
 `;
-
-const AllCategoryButton = styled(CategoryButton)``;
 
 const CategoryUl = styled.ul`
   display: flex;
   list-style: none;
   overflow-x: scroll;
-  overflow-y: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
   li + li {
-    margin-left: 4px;
+    margin-left: 6px;
   }
 `;
 

@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import CenteredImg from 'components/centeredImg';
-
 import Category from 'styles/category';
 import DateTime from 'styles/dateTime';
 
@@ -29,7 +27,7 @@ const Wrapper = styled.div`
   overflow: hidden;
   height: 100%;
   border-radius: ${({ theme }) => theme.borderRadius.base};
-  background-color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.card};
 
   /* Fix Safari overflow:hidden with border radius not working error */
   transform: translateZ(0);
@@ -45,27 +43,24 @@ const Text = styled.div`
   & > * {
     display: block;
   }
-
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    padding: ${({ theme }) => theme.sizing.md};
-  }
 `;
 
 const Title = styled.h3`
   margin-top: ${({ theme }) => theme.sizing.xs};
-  font-size: ${({ theme }) => theme.text.md};
+  font-size: ${({ theme }) => theme.text.lg};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   line-height: 1.3;
 
-  @media (min-width: ${({ theme }) => theme.device.lg}) {
-    font-size: ${({ theme }) => theme.text.lg};
+  @media (max-width: ${({ theme }) => theme.device.sm}) {
+    font-size: ${({ theme }) => theme.text.md};
   }
 `;
 
 const Desc = styled.p`
   line-height: 1.5;
   margin-top: 0.4rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: ${({ theme }) => theme.sizing.sm};
+  color: ${({ theme }) => theme.color.text2};
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

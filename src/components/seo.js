@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 
 const SEO = ({ description = '', lang = 'ko', meta = [], title }) => {
