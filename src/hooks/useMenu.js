@@ -22,6 +22,7 @@ const useMenu = ({ navRef, curtainRef, listRef, device }) => {
       );
       return;
     }
+
     const tabIndex = toggle ? FOCUSABLE_TABINDEX : DISABLE_FOCUS_TABINDEX;
     focusableElements.forEach((e) => e.setAttribute('tabindex', tabIndex));
   }, [focusableElementsString, listRef, mql.matches, toggle]);
@@ -47,7 +48,6 @@ const useMenu = ({ navRef, curtainRef, listRef, device }) => {
     const trapTabKey = (e) => {
       if (!toggle) return;
       if (e.keyCode === TAB_KEYCODE) {
-        console.log(focusableElements);
         if (e.shiftKey) {
           if (document.activeElement === firstTabStop) {
             e.preventDefault();
@@ -79,7 +79,7 @@ const useMenu = ({ navRef, curtainRef, listRef, device }) => {
       }, TIMER);
     };
 
-    const setToggleFalse = (e) => {
+    const closeMenu = (e) => {
       if (e.matches) {
         hideAnimation();
         return;
@@ -87,8 +87,8 @@ const useMenu = ({ navRef, curtainRef, listRef, device }) => {
       setToggle(false);
     };
 
-    mql.addEventListener('change', setToggleFalse);
-    return () => mql.removeEventListener('change', setToggleFalse);
+    mql.addEventListener('change', closeMenu);
+    return () => mql.removeEventListener('change', closeMenu);
   });
 
   return [toggle, setToggle, onClickHandler];
