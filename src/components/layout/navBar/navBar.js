@@ -12,24 +12,23 @@ import {
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 import useMenu from 'hooks/useMenu';
 
-// ! 메뉴 등장 시 스크롤 막기
-// ! 메뉴 등장 시 키보드 포커스가 메뉴 안으로만 향하도록 변경
-
 const NavBar = ({ title, themeToggler }) => {
   const site = useSiteMetadata();
   const { menuLinks, githubLink } = site.siteMetadata;
   const { device } = useContext(ThemeContext);
+  const navRef = useRef(null);
   const curtainRef = useRef(null);
   const listRef = useRef(null);
 
   const [toggle, setToggle, onClickHandler] = useMenu({
+    navRef,
     curtainRef,
     listRef,
     device,
   });
 
   return (
-    <Nav aria-label="Global Navigation">
+    <Nav ref={navRef} aria-label="Global Navigation">
       <NavBackground toggle={toggle} />
       <Content>
         <Title onClick={() => setToggle(false)}>
