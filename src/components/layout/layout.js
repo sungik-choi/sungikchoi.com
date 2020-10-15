@@ -5,11 +5,11 @@ import useTheme from 'hooks/useTheme';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 import { lightTheme, darkTheme } from 'styles/theme';
 import GlobalStyle from 'styles/globalStyle';
-import { LIGHT } from 'constants/constants';
+import { DARK } from 'constants/constants';
 
 const Layout = ({ children }) => {
   const [theme, themeToggler] = useTheme();
-  const themeMode = theme === LIGHT ? lightTheme : darkTheme;
+  const themeMode = theme === DARK ? darkTheme : lightTheme;
 
   const site = useSiteMetadata();
   const { title, description, author } = site.siteMetadata;
