@@ -1,12 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-// --indigo: #622aff;
-// --blue: #0e90db;
-// --pink: #e94256;
-// --green: #0b9e43;
-// --azure: #027fff;
-// --r-localnav-height-stacked: 66px;
-
 // --r-globalnav-height: 44px;
 // --r-globalnav-segmentbar-height: 0;
 // --r-globalnav-viewport-large-min-width: 1024px;
@@ -27,8 +20,12 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.color.text};
   }
 
+  html {
+    background-color: ${({ theme }) => theme.color.background}
+  }
+
   html, body, #___gatsby, #gatsby-focus-wrapper {
-    min-height: 100vh;
+    min-height: 100%;
   }
 
   body {
