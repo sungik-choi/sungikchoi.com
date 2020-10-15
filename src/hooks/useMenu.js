@@ -1,14 +1,18 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import disableScroll from 'disable-scroll';
 
 const useMenu = ({ navRef, curtainRef, listRef, device }) => {
   const [toggle, setToggle] = useState(false);
-  const mql = window.matchMedia(`(max-width: ${device.sm})`);
+  const mql = useRef(null);
 
   const onClickHandler = () =>
     toggle === true ? setToggle(false) : setToggle(true);
 
   const focusableElementsString = `a[href], button:not([disabled])`;
+
+  useEffect(() => {
+    mql.current = window.matchMedia(`(max-width: ${device.sm})`);
+  });
 
   const toggleKeyboardFocus = useCallback(() => {
     const FOCUSABLE_TABINDEX = 0;
@@ -17,7 +21,7 @@ const useMenu = ({ navRef, curtainRef, listRef, device }) => {
       focusableElementsString
     );
 
-    if (!mql.matches) {
+    if (!mql.current.matches) {
       focusableElements.forEach((e) =>
         e.setAttribute('tabindex', FOCUSABLE_TABINDEX)
       );
@@ -26,15 +30,15 @@ const useMenu = ({ navRef, curtainRef, listRef, device }) => {
 
     const tabIndex = toggle ? FOCUSABLE_TABINDEX : DISABLE_FOCUS_TABINDEX;
     focusableElements.forEach((e) => e.setAttribute('tabindex', tabIndex));
-  }, [focusableElementsString, listRef, mql.matches, toggle]);
+  }, [focusableElementsString, listRef, toggle]);
 
   useEffect(() => {
     toggleKeyboardFocus();
   }, [toggleKeyboardFocus]);
 
   useEffect(() => {
-    mql.addEventListener('change', toggleKeyboardFocus);
-    return () => mql.removeEventListener('change', toggleKeyboardFocus);
+    mql.current.addEventListener('change', toggleKeyboardFocus);
+    return () => mql.current.removeEventListener('change', toggleKeyboardFocus);
   });
 
   useEffect(() => {
@@ -93,8 +97,8 @@ const useMenu = ({ navRef, curtainRef, listRef, device }) => {
       setToggle(false);
     };
 
-    mql.addEventListener('change', closeMenu);
-    return () => mql.removeEventListener('change', closeMenu);
+    mql.current.addEventListener('change', closeMenu);
+    return () => mql.current.removeEventListener('change', closeMenu);
   });
 
   return [toggle, setToggle, onClickHandler];
