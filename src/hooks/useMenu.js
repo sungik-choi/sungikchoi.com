@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import disableScroll from 'disable-scroll';
 
 const useMenu = ({ navRef, curtainRef, listRef, device }) => {
   const [toggle, setToggle] = useState(false);
@@ -66,6 +67,11 @@ const useMenu = ({ navRef, curtainRef, listRef, device }) => {
     window.addEventListener('keydown', trapTabKey);
     return () => window.removeEventListener('keydown', trapTabKey);
   }, [focusableElementsString, navRef, toggle, setToggle]);
+
+  useEffect(() => {
+    if (toggle) disableScroll.on();
+    else disableScroll.off();
+  }, [toggle]);
 
   useEffect(() => {
     const TIMER = 500;
