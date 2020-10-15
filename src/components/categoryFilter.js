@@ -8,7 +8,7 @@ const CategoryFilter = ({ categoryList }) => {
   const categoryRef = useRef(null);
   const ALL_CATEGORY_NAME = 'All';
   const isActive = ({ isCurrent }) =>
-    isCurrent ? { id: ACTIVE, tabindex: -1 } : {};
+    isCurrent ? { id: ACTIVE, tabIndex: -1 } : {};
 
   useLayoutEffect(() => {
     if (!categoryRef) return;
