@@ -1,7 +1,7 @@
 import React, { useRef, useContext, useEffect } from 'react';
 import { ThemeContext } from 'styled-components';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
-import { LIGHT } from 'constants/constants';
+import { DARK } from 'constants/constants';
 
 const src = 'https://utteranc.es';
 const utterancesSelector = 'iframe.utterances-frame';
@@ -10,13 +10,21 @@ const DARK_THEME = 'github-dark';
 
 const Comment = () => {
   const { theme } = useContext(ThemeContext);
-  const themeMode = theme === LIGHT ? LIGHT_THEME : DARK_THEME;
-
   const site = useSiteMetadata();
   const { repo } = site.siteMetadata.utterances;
   const containerRef = useRef(null);
+  const isUtterancesCreated = useRef(false);
 
   useEffect(() => {
+    let themeMode = null;
+
+    if (!isUtterancesCreated.current) {
+      themeMode =
+        document.querySelector('html').dataset.theme === DARK
+          ? DARK_THEME
+          : LIGHT_THEME;
+    } else themeMode = theme === DARK ? DARK_THEME : LIGHT_THEME;
+
     const createUtterancesEl = () => {
       const comment = document.createElement('script');
       const attributes = {
@@ -32,9 +40,13 @@ const Comment = () => {
         comment.setAttribute(key, value);
       });
       containerRef.current.appendChild(comment);
+      isUtterancesCreated.current = true;
     };
 
+    const utterancesEl = containerRef.current.querySelector(utterancesSelector);
+
     const postThemeMessage = () => {
+      if (!utterancesEl) return;
       const message = {
         type: 'set-theme',
         theme: themeMode,
@@ -42,9 +54,10 @@ const Comment = () => {
       utterancesEl.contentWindow.postMessage(message, src);
     };
 
-    const utterancesEl = containerRef.current.querySelector(utterancesSelector);
-    utterancesEl ? postThemeMessage(utterancesEl) : createUtterancesEl();
-  }, [repo, themeMode]);
+    isUtterancesCreated.current
+      ? postThemeMessage(utterancesEl)
+      : createUtterancesEl();
+  }, [repo, theme]);
 
   return <div ref={containerRef} />;
 };
