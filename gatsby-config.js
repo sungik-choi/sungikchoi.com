@@ -56,7 +56,7 @@ module.exports = {
               theme: {
                 default: 'Github Light Theme',
                 parentSelector: {
-                  'html[data-theme=dark]': 'Dark Github',
+                  'body[data-theme=dark]': 'Dark Github',
                 },
               },
               extensions: ['vscode-theme-github-light', 'dark-theme-github'],
