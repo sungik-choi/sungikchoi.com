@@ -91,7 +91,7 @@ const Home = ({ pageContext, data }) => {
 
 const Main = styled.main`
   min-width: var(--min-width);
-  min-height: calc(100vh - var(--nav-height)- var(--footer-height));
+  min-height: calc(100vh - var(--nav-height) - var(--footer-height));
   background-color: var(--color-background);
 `;
 
