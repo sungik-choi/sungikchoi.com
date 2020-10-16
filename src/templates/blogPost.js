@@ -73,7 +73,7 @@ const InnerWrapper = styled.div`
 
 const CommentWrap = styled.section`
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 var(--padding-sm);
   margin: 0 auto;
   margin-bottom: var(--sizing-xl);
 

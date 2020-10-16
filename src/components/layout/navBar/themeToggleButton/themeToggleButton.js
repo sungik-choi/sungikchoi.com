@@ -59,12 +59,12 @@ const Content = styled.div`
 
 const Text = styled.span`
   color: var(--color-floating-button-text);
-  margin-left: 0.375rem;
+  margin-left: 6px;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     color: var(--color-text);
     margin-left: 0;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     border-radius: 50%;
   }
 `;
@@ -81,10 +81,10 @@ const Button = styled.button`
   right: var(--sizing-md);
   bottom: var(--sizing-md);
   padding: var(--sizing-base);
-  padding-right: 1.25rem;
+  padding-right: 20px;
   border: 1px solid var(--color-floating-button-border);
   border-radius: var(--border-radius-lg);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 
   @media (min-width: ${({ theme }) => theme.device.sm}) {
     &:hover {

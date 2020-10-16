@@ -36,17 +36,22 @@ const GlobalStyle = createGlobalStyle`
     --text-lg: 1.5rem; 
     --text-xl: 3rem;
 
+    --device-xs-max-width: 419px;
     --device-sm-max-width: 767px;
     --device-md-max-width: 1023px;
     --device-lg-max-width: 1441px;
 
+    --device-xs-max-width-query: (max-width: 419px);
     --device-sm-max-width-query: (max-width: 767px);
     --device-md-max-width-query: (max-width: 1023px);
     --device-lg-max-width-query: (max-width: 1441px);
 
     --font-weight-regular: 400;
+    --font-weight-medium: 500;
     --font-weight-semi-bold: 600;
     --font-weight-extra-bold: 800;
+
+    --color-outline: rgba(0,125,250,0.6);
 
     body.light {
       --color-text: #1d1d1d;
@@ -129,7 +134,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans CJK KR', 'Noto Sans', Roboto, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    background-color: var(--color-background);
+    background-color: var(--color-post-background);
 
     * {
       color: var(--color-text);
@@ -158,7 +163,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :focus-visible {
-    outline: 4px solid rgba(0,125,250,0.6);
+    outline: 4px solid var(--color-outline);
     outline-offset: 1px;
   }
 

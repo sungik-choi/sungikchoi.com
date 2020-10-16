@@ -128,7 +128,7 @@ const LinkUl = styled.ul`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 2rem;
+    margin-left: 32px;
   }
 
   li:first-child,
@@ -157,7 +157,7 @@ const LinkUl = styled.ul`
       display: block;
       height: 100%;
       padding: 0.5rem 0;
-      font-weight: 500;
+      font-weight: var(--font-weight-medium);
     }
 
     li + li::before {
