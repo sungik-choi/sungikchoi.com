@@ -9,7 +9,6 @@ export const useSiteMetadata = () => {
             title
             description
             author
-            githubLink
             utterances {
               repo
             }

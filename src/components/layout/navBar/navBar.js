@@ -14,7 +14,7 @@ import useMenu from 'hooks/useMenu';
 
 const NavBar = ({ title, themeToggler }) => {
   const site = useSiteMetadata();
-  const { menuLinks, githubLink } = site.siteMetadata;
+  const { menuLinks } = site.siteMetadata;
   const { device } = useContext(ThemeContext);
   const navRef = useRef(null);
   const curtainRef = useRef(null);
@@ -26,6 +26,32 @@ const NavBar = ({ title, themeToggler }) => {
     listRef,
     device,
   });
+
+  const generateLink = (link, name) => {
+    const expression = /(https?:\/\/)?[\w\-~]+(\.[\w\-~]+)+(\/[\w\-~@:%]*)*(#[\w-]*)?(\?[^\s]*)?/gi;
+    const isExternalLink = expression.test(link);
+    if (link === '/') {
+      return (
+        <li key={name} onClick={() => setToggle(false)}>
+          <Link to={link}>{name}</Link>
+        </li>
+      );
+    }
+    if (isExternalLink) {
+      return (
+        <li>
+          <a target="_blank" rel="noreferrer" href={link}>
+            {name}
+          </a>
+        </li>
+      );
+    }
+    return (
+      <li key={name}>
+        <Link to={link}>{name}</Link>
+      </li>
+    );
+  };
 
   return (
     <Nav ref={navRef} aria-label="Global Navigation">
@@ -39,16 +65,7 @@ const NavBar = ({ title, themeToggler }) => {
           <LinkContent>
             <MenuIcon onClickHandler={onClickHandler} toggle={toggle} />
             <LinkUl ref={listRef} toggle={toggle}>
-              {menuLinks.map(({ link, name }) => (
-                <li key={name} onClick={() => link === '/' && setToggle(false)}>
-                  <Link to={link}>{name}</Link>
-                </li>
-              ))}
-              <li>
-                <a target="_blank" rel="noreferrer" href={githubLink}>
-                  Github
-                </a>
-              </li>
+              {menuLinks.map(({ link, name }) => generateLink(link, name))}
               <li>
                 <ThemeToggleButton themeToggler={themeToggler} />
               </li>

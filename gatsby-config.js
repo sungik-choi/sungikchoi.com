@@ -5,7 +5,6 @@ module.exports = {
     title: `Sungik Choi`,
     description: `Sungik Choi's Devlog`,
     author: `Sungik Choi`,
-    githubLink: `https://www.github.com/sungik-choi`,
     utterances: {
       repo: 'sungik-choi/blog-comment',
     },
@@ -18,6 +17,10 @@ module.exports = {
       {
         link: '/about/',
         name: '소개',
+      },
+      {
+        link: 'https://www.github.com/sungik-choi',
+        name: 'Github',
       },
     ],
   },
