@@ -1,5 +1,20 @@
 import { LIGHT, DARK } from 'constants/constants';
 
+// --r-globalnav-height: 44px;
+// --r-globalnav-segmentbar-height: 0;
+// --r-globalnav-viewport-large-min-width: 1024px;
+// --r-globalnav-viewport-large-max-width: 1441px;
+// --r-globalnav-viewport-large-query: (min-width: 1024px);
+// --r-globalnav-viewport-medium-min-width: 768px;
+// --r-globalnav-viewport-medium-max-width: 1023px;
+// --r-globalnav-viewport-medium-query: (max-width: 1023px);
+// --r-globalnav-viewport-small-min-width: 420px;
+// --r-globalnav-viewport-small-max-width: 767px;
+// --r-globalnav-viewport-small-query: (max-width: 767px);
+// --r-globalnav-viewport-xsmall-min-width: 320px;
+// --r-globalnav-viewport-xsmall-max-width: 419px;
+// --r-globalnav-viewport-xsmall-query: (max-width: 419px);
+
 const calcRem = (size) => `${size / 16}rem`;
 
 export const lightTheme = {
@@ -90,9 +105,9 @@ export const lightTheme = {
   },
 
   device: {
-    sm: calcRem(767),
-    md: calcRem(1023),
-    lg: calcRem(1441),
+    sm: '767px',
+    md: '1023px',
+    lg: '1441px',
   },
 };
 

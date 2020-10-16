@@ -32,8 +32,8 @@ const MenuIconButton = styled.button`
     position: absolute;
     top: 0;
     right: 0;
-    width: ${({ theme }) => theme.navHeight};
-    height: ${({ theme }) => theme.navHeight};
+    width: var(--nav-height);
+    height: var(--nav-height);
     border: none;
     background-color: transparent;
 
@@ -41,7 +41,7 @@ const MenuIconButton = styled.button`
       position: absolute;
       width: 18px;
       height: 1px;
-      right: ${({ theme }) => theme.padding.sm};
+      right: var(--padding-sm);
       opacity: 0.8;
       transition: opacity 0.3s ease,
         transform
@@ -51,7 +51,7 @@ const MenuIconButton = styled.button`
     & > div > div {
       width: 100%;
       height: 100%;
-      background-color: ${({ theme }) => theme.color.text};
+      background-color: var(--color-text);
       transition: transform
         ${({ toggle }) => (toggle === true ? '0.2s ease 0.1s' : '0.1s ease')};
     }

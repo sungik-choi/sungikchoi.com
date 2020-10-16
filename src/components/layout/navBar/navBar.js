@@ -61,12 +61,12 @@ const NavBar = ({ title, themeToggler }) => {
 };
 
 const Nav = styled.nav`
-  min-width: ${({ theme }) => theme.minWidth};
+  min-width: var(--min-width);
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  height: ${({ theme }) => theme.navHeight};
+  height: var(--nav-height);
   z-index: 10;
 
   a:hover {
@@ -78,8 +78,8 @@ const Content = styled.div`
   box-sizing: content-box;
   position: relative;
   margin: 0 auto;
-  max-width: ${({ theme }) => theme.width};
-  padding: 0 ${({ theme }) => theme.padding.lg};
+  max-width: var(--width);
+  padding: 0 var(--padding-lg);
   height: 100%;
   z-index: 2;
   display: flex;
@@ -92,7 +92,7 @@ const Content = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
-    padding: 0 ${({ theme }) => theme.padding.sm};
+    padding: 0 var(--padding-sm);
   }
 `;
 
@@ -100,16 +100,16 @@ const Title = styled.h1`
   z-index: 9999;
   padding: 0;
   border: none;
-  font-size: ${({ theme }) => theme.text.title};
-  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
-  color: ${({ theme }) => theme.color.text};
+  font-size: var(--text-title);
+  font-weight: var(--font-weight-semi-bold);
+  color: var(--color-text);
 
   a {
     color: inherit;
   }
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
-    font-size: ${({ theme }) => theme.text.md};
+    font-size: var(--text-md);
   }
 `;
 
@@ -117,11 +117,11 @@ const LinkUl = styled.ul`
   display: flex;
 
   a {
-    font-weight: ${({ theme }) => theme.fontWeight.regular};
+    font-weight: var(--font-weight-regular);
   }
 
   a:hover, a:focus {
-    color: ${({ theme }) => theme.color.blue};
+    color: var(--color-blue);
   }
 
   li {
@@ -140,16 +140,16 @@ const LinkUl = styled.ul`
     ${({ toggle }) => listAnimationCSS(toggle)}
     pointer-events: ${({ toggle }) => (toggle ? 'auto' : 'none')};
     flex-direction: column;
-    padding: 0 ${({ theme }) => theme.sizing.lg};
+    padding: 0 var(--sizing-lg);
 
     li {
       display: block;
       margin-left: 0;
-      font-size: ${({ theme }) => theme.text.md};
-      transform: ${({ toggle, theme }) =>
+      font-size: var(--text-md);
+      transform: ${({ toggle }) =>
         toggle
-          ? `translateY(calc(${theme.navHeight} + ${theme.sizing.lg}))`
-          : `translateY(${theme.navHeight})`};
+          ? `translateY(calc(var(--nav-height) + var(--sizing-lg)))`
+          : `translateY(var(--nav-height))`};
       opacity: ${({ toggle }) => (toggle ? '1' : '0')};
     }
 
@@ -164,10 +164,10 @@ const LinkUl = styled.ul`
       content: '';
       display: block;
       position: absolute;
-      ${({ theme }) => `width: calc(100vw - ${theme.sizing.lg} * 2)`};
+      width: calc(100vw - var(--sizing-lg) * 2);
       height: 1px;
       transform: translateY(-2px);
-      background-color: ${({ theme }) => theme.color.divider};
+      background-color: var(--color-divider);
     }
   }
 `;
@@ -183,7 +183,7 @@ const NavBackground = styled(Background)`
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: ${({ theme }) => theme.color.postBackground};
+      background-color: var(--color-post-background);
     }
   }
 `;
@@ -195,11 +195,11 @@ const Curtain = styled.div`
     ${({ toggle }) => curtainAnimationCSS(toggle)}
     display: block;
     position: fixed;
-    ${({ theme }) => `top: calc(${theme.navHeight} - 1px)`};
+    top: calc(var(--nav-height) - 1px);
     left: 0;
     width: 100%;
-    ${({ theme }) => `height: calc(100% - ${theme.navHeight} + 1px)`};
-    background-color: ${({ theme }) => theme.color.postBackground};
+    height: calc(100% - var(--nav-height) + 1px);
+    background-color: var(--color-post-background);
   }
 `;
 
@@ -217,7 +217,7 @@ const LinkWrap = styled.div`
     top: 0;
     left: 0;
     width: 100%;
-    height: ${({ theme }) => theme.navHeight};
+    height: var(--nav-height);
   }
 `;
 

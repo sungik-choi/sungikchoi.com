@@ -7,28 +7,28 @@ const Markdown = styled.article`
   h4,
   h5,
   h6 {
-    font-weight: ${({ theme }) => theme.fontWeight.bold};
+    font-weight: var(--font-weight-bold);
   }
 
   td,
   th {
-    border-bottom: 1px solid ${({ theme }) => theme.color.gray3};
+    border-bottom: 1px solid var(--color-gray-3);
   }
 
   strong {
-    font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+    font-weight: var(--font-weight-semi-bold);
   }
 
   a,
   p {
-    font-weight: ${({ theme }) => theme.fontWeight.regular};
+    font-weight: var(--font-weight-regular);
   }
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.color.blue} !important;
+    color: var(--color-blue) !important;
     * {
-      color: ${({ theme }) => theme.color.blue} !important;
+      color: var(--color-blue) !important;
     }
     &:hover,
     &:active {
@@ -102,20 +102,20 @@ const Markdown = styled.article`
 
   p {
     line-height: 1.68;
-    margin-bottom: ${({ theme }) => theme.sizing.md};
+    margin-bottom: var(--sizing-md);
   }
 
   hr {
-    margin: ${({ theme }) => theme.sizing.lg} 0;
-    background: ${({ theme }) => theme.color.gray3};
+    margin: var(--sizing-lg) 0;
+    background: var(--color-gray-3);
   }
 
   blockquote {
-    border-left: 0.25rem solid ${({ theme }) => theme.color.gray2};
-    padding-left: ${({ theme }) => theme.sizing.base};
-    margin: ${({ theme }) => theme.sizing.md} 0;
+    border-left: 0.25rem solid var(--color-gray-2);
+    padding-left: var(--sizing-base);
+    margin: var(--sizing-md) 0;
     * {
-      color: ${({ theme }) => theme.color.gray6};
+      color: var(--color-gray-6);
     }
   }
 
@@ -126,25 +126,24 @@ const Markdown = styled.article`
   pre,
   code {
     font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-    background-color: ${({ theme }) => theme.color.codeBlock};
+    background-color: var(--color-code-block);
   }
 
   pre {
-    border: 1px solid ${({ theme }) => theme.color.gray3};
+    border: 1px solid var(--color-gray-3);
   }
 
   pre.grvsc-container {
-    margin: ${({ theme }) => theme.sizing.md} 0;
+    margin: var(--sizing-md) 0;
   }
 
   .grvsc-line-highlighted::before {
-    background-color: ${({ theme }) => theme.color.codeHighlight} !important;
-    box-shadow: inset 4px 0 0 0
-      ${({ theme }) => theme.color.codeHighlightBorder} !important;
+    background-color: var(--color-code-highlight) !important;
+    box-shadow: inset 4px 0 0 0 var(--color-code-highlight-border) !important;
   }
 
   *:not(pre) > code {
-    background-color: ${({ theme }) => theme.color.code};
+    background-color: var(--color-code);
     padding: 0.2rem 0.4rem;
     margin: 0;
     font-size: 85%;

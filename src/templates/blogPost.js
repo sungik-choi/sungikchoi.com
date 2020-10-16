@@ -54,17 +54,17 @@ const BlogPost = ({ data }) => {
 };
 
 const OuterWrapper = styled.div`
-  margin-top: ${({ theme }) => theme.sizing.xl};
+  margin-top: var(--sizing-xl);
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
-    margin-top: ${({ theme }) => theme.sizing.lg};
+    margin-top: var(--sizing-lg);
   }
 `;
 
 const InnerWrapper = styled.div`
-  width: ${({ theme }) => theme.postWidth};
+  width: var(--post-width);
   margin: 0 auto;
-  padding-bottom: ${({ theme }) => theme.sizing.lg};
+  padding-bottom: var(--sizing-lg);
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     width: 87.5%;
@@ -75,7 +75,7 @@ const CommentWrap = styled.section`
   width: 100%;
   padding: 0 1rem;
   margin: 0 auto;
-  margin-bottom: ${({ theme }) => theme.sizing.xl};
+  margin-bottom: var(--sizing-xl);
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     width: auto;
@@ -84,22 +84,22 @@ const CommentWrap = styled.section`
 
 const PostCategory = styled(Category)`
   font-size: 0.875rem;
-  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+  font-weight: var(--font-weight-semi-bold);
 `;
 
 const Info = styled.div`
-  margin-bottom: ${({ theme }) => theme.sizing.md};
+  margin-bottom: var(--sizing-md);
 `;
 
 const Time = styled(DateTime)`
   display: block;
-  margin-top: ${({ theme }) => theme.sizing.xs};
+  margin-top: var(--sizing-xs);
 `;
 
 const Desc = styled.p`
-  margin-top: ${({ theme }) => theme.sizing.lg};
+  margin-top: var(--sizing-lg);
   line-height: 1.5;
-  font-size: ${({ theme }) => theme.text.lg};
+  font-size: var(--text-lg);
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     line-height: 1.31579;
@@ -110,15 +110,15 @@ const Desc = styled.p`
 const Divider = styled.div`
   width: 100%;
   height: 1px;
-  background-color: ${({ theme }) => theme.color.gray3};
-  margin-top: ${({ theme }) => theme.sizing.lg};
-  margin-bottom: ${({ theme }) => theme.sizing.lg};
+  background-color: var(--color-gray-3);
+  margin-top: var(--sizing-lg);
+  margin-bottom: var(--sizing-lg);
 `;
 
 const Title = styled.h1`
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  font-weight: var(--font-weight-bold);
   line-height: 1.1875;
-  font-size: ${({ theme }) => theme.text.xl};
+  font-size: var(--text-xl);
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     line-height: 1.21875;

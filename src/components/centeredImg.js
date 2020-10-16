@@ -46,7 +46,7 @@ export const ThumbnailWrapper = styled.div`
     width: 100%;
     height: 100%;
     opacity: 0;
-    background-color: ${({ theme }) => theme.color.dimmed};
+    background-color: var(--color-dimmed);
     transition: 0.3s ease;
   }
 `;

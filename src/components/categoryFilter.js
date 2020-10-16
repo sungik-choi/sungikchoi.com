@@ -59,18 +59,18 @@ const CategoryFilter = ({ categoryList }) => {
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-  background-color: ${({ theme }) => theme.color.card};
-  margin-bottom: 3rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: ${({ theme }) => theme.borderRadius.base};
+  background-color: var(--color-card);
+  margin-bottom: 48px;
+  padding: 12px var(--sizing-md);
+  border-radius: var(--border-radius-base);
 
   a#active {
-    color: ${({ theme }) => theme.color.white};
-    background-color: ${({ theme }) => theme.color.blue};
+    color: var(--color-white);
+    background-color: var(--color-blue);
   }
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
-    padding: 0.75rem;
+    padding: 12px;
   }
 `;
 
@@ -82,10 +82,10 @@ const CategoryTitle = styled.em`
   white-space: auto;
 
   flex-shrink: 0;
-  font-size: ${({ theme }) => theme.text.base};
-  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semi-bold);
   font-style: initial;
-  margin-right: ${({ theme }) => theme.sizing.lg};
+  margin-right: var(--sizing-lg);
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     position: absolute;
@@ -100,33 +100,33 @@ const CategoryTitle = styled.em`
 const CategoryButton = styled(Link)`
   cursor: pointer;
   display: block;
-  background-color: ${({ theme }) => theme.color.categoryButton};
-  padding: ${({ theme }) => theme.sizing.sm} ${({ theme }) => theme.sizing.base};
-  border-radius: ${({ theme }) => theme.borderRadius.base};
+  background-color: var(--color-category-button);
+  padding: var(--sizing-sm) var(--sizing-base);
+  border-radius: var(--border-radius-base);
   font-size: 0.875rem;
-  font-weight: ${({ theme }) => theme.fontWeight.semiBold};
+  font-weight: var(--font-weight-semi-bold);
 
   :focus {
     outline: none;
   }
 
   &:hover {
-    color: ${({ theme }) => theme.color.white};
-    background-color: ${({ theme }) => theme.color.blue};
+    color: var(--color-white);
+    background-color: var(--color-blue);
   }
 
   &:focus-visible {
-    color: ${({ theme }) => theme.color.white};
-    background-color: ${({ theme }) => theme.color.blue};
+    color: var(--color-white);
+    background-color: var(--color-blue);
   }
 `;
 
 const Divider = styled.div`
   width: 1px;
   height: 2rem;
-  margin: 0 ${({ theme }) => theme.sizing.sm};
+  margin: 0 var(--sizing-sm);
   transform: translateX(-50%);
-  background-color: ${({ theme }) => theme.color.divider};
+  background-color: var(--color-divider);
 `;
 
 const CategoryUl = styled.ul`

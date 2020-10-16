@@ -32,22 +32,22 @@ const Layout = ({ children }) => {
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  ${({ theme }) => `min-height: calc(100vh - ${theme.footerHeight})`};
-  background-color: ${({ theme }) => theme.color.postBackground};
+  min-height: calc(100vh - var(--footer-height));
+  background-color: var(--color-post-background);
 `;
 
 const Footer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: ${({ theme }) => theme.footerHeight};
-  background-color: ${({ theme }) => theme.color.gray1};
+  height: var(--footer-height);
+  background-color: var(--color-gray-1);
 `;
 
 const Copyright = styled.span`
-  font-size: ${({ theme }) => theme.text.sm};
-  font-weight: 400;
-  color: ${({ theme }) => theme.color.gray4};
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-gray-4);
 `;
 
 export default Layout;

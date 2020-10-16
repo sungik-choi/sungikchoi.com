@@ -8,8 +8,8 @@ const Background = styled.div`
   height: 100%;
   z-index: 1;
   backdrop-filter: saturate(180%) blur(20px);
-  background-color: ${({ theme }) => theme.color.navBar};
-  border-bottom: 1px solid ${({ theme }) => theme.color.navBorder};
+  background-color: var(--color-nav-bar);
+  border-bottom: 1px solid var(--color-nav-border);
 `;
 
 export default Background;
