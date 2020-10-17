@@ -1,94 +1,110 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import * as THREE from 'three';
 import SEO from 'components/seo';
 import Layout from 'components/layout/layout';
-import ThemeContext from 'components/themeContext';
-import { DARK } from 'constants/constants';
+import GlowParticle from 'utils/glowParticle';
+
+const COLORS = [
+  { r: 0, g: 122, b: 255 }, // blue
+  { r: 52, g: 199, b: 89 }, // green
+  { r: 88, g: 86, b: 214 }, // indigo
+  { r: 255, g: 149, b: 0 }, // orange
+  { r: 255, g: 45, b: 85 }, // pink
+  { r: 175, g: 82, b: 222 }, // purple
+  { r: 255, g: 59, b: 48 }, // red
+  { r: 90, g: 200, b: 250 }, // teal
+  { r: 255, g: 204, b: 0 }, //yellow
+];
 
 const NotFound = () => {
   const canvasRef = useRef(null);
-  const theme = useContext(ThemeContext);
+  const [particles, setParticles] = useState([]);
+  const isCreated = useRef(false);
 
   useEffect(() => {
-    const NAV_N_FOOTER_HEIGHT = 114;
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / (window.innerHeight - NAV_N_FOOTER_HEIGHT),
-      0.1,
-      1000
-    );
+    const canvasObj = canvasRef.current;
+    const ctx = canvasObj.getContext('2d');
+    let stageWidth = canvasObj.clientWidth;
+    let stageHeight = canvasObj.clientHeight;
+    const pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    const totalParticles = 1;
+    const maxRadius = 90;
+    const minRadius = 40;
 
-    renderer.setSize(
-      window.innerWidth,
-      window.innerHeight - NAV_N_FOOTER_HEIGHT
-    );
-    canvasRef.current.appendChild(renderer.domElement);
+    const createParticles = () => {
+      let colorIndex = 0;
+      setParticles([]);
 
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
+      for (let i = 0; i < totalParticles; i++) {
+        const newParticle = new GlowParticle({
+          x: Math.random() * stageWidth,
+          y: Math.random() * stageHeight,
+          radius: Math.random() * (maxRadius - minRadius) + minRadius,
+          rgb: COLORS[colorIndex],
+        });
 
-    const loader = new THREE.FontLoader();
+        if (++colorIndex >= COLORS.length) colorIndex = 0;
 
-    loader.load('fonts/helvetiker_regular.typeface.json', function (font) {
-      const geometry = new THREE.TextGeometry('404', {
-        font: font,
-        size: 80,
-        height: 5,
-        curveSegments: 12,
-        bevelEnabled: true,
-        bevelThickness: 10,
-        bevelSize: 8,
-        bevelOffset: 0,
-        bevelSegments: 5,
-      });
-    });
-
-    scene.background = null;
-    scene.add(cube);
-
-    camera.position.z = 5;
-
-    const animate = function () {
-      requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-      renderer.render(scene, camera);
+        setParticles((prevParticles) => [...prevParticles, newParticle]);
+      }
     };
 
-    const onResize = () => {
-      camera.aspect =
-        window.innerWidth / (window.innerHeight - NAV_N_FOOTER_HEIGHT);
-      camera.updateProjectionMatrix();
-      renderer.setSize(
-        window.innerWidth,
-        window.innerHeight - NAV_N_FOOTER_HEIGHT
-      );
+    let requestId;
+    const render = () => {
+      ctx.clearRect(0, 0, stageWidth, stageHeight);
+      for (let i = 0; i < totalParticles; i++) {
+        const item = particles[i];
+        if (!item) return;
+        item.animate(ctx, stageWidth, stageHeight);
+      }
+      requestId = requestAnimationFrame(render);
     };
 
-    animate();
+    const resize = () => {
+      stageWidth = canvasObj.clientWidth;
+      stageHeight = canvasObj.clientHeight;
 
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
+      canvasObj.width = stageWidth * pixelRatio;
+      canvasObj.height = stageHeight * pixelRatio;
+      ctx.scale(pixelRatio, pixelRatio);
+      ctx.clearRect(0, 0, stageWidth, stageHeight);
+
+      isCreated.current = true;
+      createParticles();
+    };
+
+    if (!isCreated.current) resize();
+    render();
+
+    window.addEventListener('resize', resize);
+
+    return () => {
+      window.removeEventListener('resize', resize);
+      window.cancelAnimationFrame(requestId);
+    };
+  });
 
   return (
     <Layout>
       <SEO title="Not found" />
-      <main>
-        {/* <h1>찾으시는 페이지가 없습니다</h1> */}
-        <CanvasWrap ref={canvasRef}></CanvasWrap>
-      </main>
+      <Container>
+        <Canvas ref={canvasRef} />
+      </Container>
     </Layout>
   );
 };
 
-const CanvasWrap = styled.div`
-  display: flex;
+const Container = styled.main`
+  min-height: calc(100vh - var(--nav-height) - var(--footer-height));
+`;
+
+const Canvas = styled.canvas`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 export default NotFound;
