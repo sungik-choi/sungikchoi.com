@@ -20,6 +20,7 @@ const NotFound = () => {
   const canvasRef = useRef(null);
   const [particles, setParticles] = useState([]);
   const isCreated = useRef(false);
+  const requestRef = useRef(null);
 
   useEffect(() => {
     const canvasObj = canvasRef.current;
@@ -50,7 +51,6 @@ const NotFound = () => {
       }
     };
 
-    let requestId;
     const render = () => {
       ctx.clearRect(0, 0, stageWidth, stageHeight);
       for (let i = 0; i < totalParticles; i++) {
@@ -58,7 +58,7 @@ const NotFound = () => {
         if (!item) return;
         item.animate(ctx, stageWidth, stageHeight);
       }
-      requestId = requestAnimationFrame(render);
+      requestRef.current = requestAnimationFrame(render);
     };
 
     const resize = () => {
@@ -75,14 +75,17 @@ const NotFound = () => {
       createParticles();
     };
 
-    if (!isCreated.current) resize();
-    render();
+    const init = () => {
+      if (!isCreated.current) resize();
+      else render();
+    };
 
+    init();
     window.addEventListener('resize', resize);
 
     return () => {
       window.removeEventListener('resize', resize);
-      window.cancelAnimationFrame(requestId);
+      window.cancelAnimationFrame(requestRef.current);
     };
   });
 
