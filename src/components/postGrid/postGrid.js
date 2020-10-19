@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Card from './card';
@@ -6,55 +6,13 @@ import { ThumbnailWrapper } from './centeredImg';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
 import convertToKorDate from 'utils/convertToKorDate';
 
-const MAX_POST_NUM = 10;
-
 const PostGrid = ({ posts }) => {
-  const [hasMore, setHasMore] = useState(false);
-  const [currentList, setCurrentList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [observerLoading, setObserverLoading] = useState(false);
-
-  const observer = useRef(null);
   const scrollEdgeRef = useRef(null);
-
-  useLayoutEffect(() => {
-    if (!posts.length || isLoading) return;
-    setHasMore(posts.length > MAX_POST_NUM);
-    setCurrentList([...posts.slice(0, MAX_POST_NUM)]);
-    setIsLoading(true);
-  }, [isLoading, posts]);
-
-  useEffect(() => {
-    const loadEdges = () => {
-      const currentLength = currentList.length;
-      const more = currentLength < posts.length;
-      const nextEdges = more
-        ? posts.slice(currentLength, currentLength + MAX_POST_NUM)
-        : [];
-      setHasMore(more);
-      setCurrentList([...currentList, ...nextEdges]);
-    };
-
-    const scrollEdgeElem = scrollEdgeRef.current;
-
-    const option = {
-      rootMargin: '0px 0px 400px 0px',
-      threshold: [0],
-    };
-
-    observer.current = new IntersectionObserver((entries) => {
-      if (!hasMore) return;
-      entries.forEach((entry) => {
-        if (!observerLoading) {
-          setObserverLoading(true);
-          return;
-        }
-        if (entry.isIntersecting) loadEdges();
-      });
-    }, option);
-
-    observer.current.observe(scrollEdgeElem);
-    return () => observer.current && observer.current.disconnect();
+  const currentList = useInfiniteScroll({
+    posts,
+    scrollEdgeRef,
+    maxPostNum: 10,
+    offsetY: 200,
   });
 
   return (
