@@ -1,6 +1,7 @@
 import React, { useRef, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { Link } from 'gatsby';
+import LinkList from './linkList';
 import ThemeToggleButton from './themeToggleButton/themeToggleButton';
 import MenuIcon from './menuIcon';
 import Background from 'styles/background';
@@ -27,32 +28,6 @@ const NavBar = ({ title, themeToggler }) => {
     device,
   });
 
-  const generateLink = (link, name) => {
-    const expression = /(https?:\/\/)?[\w\-~]+(\.[\w\-~]+)+(\/[\w\-~@:%]*)*(#[\w-]*)?(\?[^\s]*)?/gi;
-    const isExternalLink = expression.test(link);
-    if (link === '/') {
-      return (
-        <li key={name} onClick={() => setToggle(false)}>
-          <Link to={link}>{name}</Link>
-        </li>
-      );
-    }
-    if (isExternalLink) {
-      return (
-        <li key={name}>
-          <a target="__blank" rel="noreferrer" href={link}>
-            {name}
-          </a>
-        </li>
-      );
-    }
-    return (
-      <li key={name}>
-        <Link to={link}>{name}</Link>
-      </li>
-    );
-  };
-
   return (
     <Nav ref={navRef} aria-label="Global Navigation">
       <NavBackground toggle={toggle} />
@@ -65,7 +40,7 @@ const NavBar = ({ title, themeToggler }) => {
           <LinkContent>
             <MenuIcon onClickHandler={onClickHandler} toggle={toggle} />
             <LinkUl ref={listRef} toggle={toggle}>
-              {menuLinks.map(({ link, name }) => generateLink(link, name))}
+              <LinkList links={menuLinks} setToggle={setToggle} />
               <li>
                 <ThemeToggleButton themeToggler={themeToggler} />
               </li>
