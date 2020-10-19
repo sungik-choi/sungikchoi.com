@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
 import styled from 'styled-components';
 import SEO from 'components/seo';
 import Layout from 'components/layout/layout';
@@ -10,10 +10,6 @@ const COLORS = [
   { r: 175, g: 82, b: 222 }, // purple
   { r: 255, g: 59, b: 48 }, // red
   { r: 255, g: 204, b: 0 }, //yellow
-  // { r: 0, g: 122, b: 255 }, // blue
-  // { r: 52, g: 199, b: 89 }, // green
-  // { r: 88, g: 86, b: 214 }, // indigo
-  // { r: 90, g: 200, b: 250 }, // teal
 ];
 
 const NotFound = () => {
@@ -22,7 +18,7 @@ const NotFound = () => {
   const isCreated = useRef(false);
   const requestRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const canvasObj = canvasRef.current;
     const ctx = canvasObj.getContext('2d');
     let stageWidth = document.body.clientWidth;
