@@ -120,6 +120,11 @@ const Title = styled.h1`
   line-height: 1.1875;
   font-size: var(--text-xl);
 
+  @media (max-width: ${({ theme }) => theme.device.md}) {
+    line-height: 1.21875;
+    font-size: 2.5rem;
+  }
+
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     line-height: 1.21875;
     font-size: 2rem;

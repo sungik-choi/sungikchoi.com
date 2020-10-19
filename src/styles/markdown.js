@@ -61,6 +61,7 @@ const Markdown = styled.article`
 
   h3 {
     font-size: 1.31951rem;
+    line-height: 1.3;
     margin-bottom: ${({ rhythm }) => rhythm(1)};
     margin-top: ${({ rhythm }) => rhythm(1.5)};
 

@@ -45,6 +45,7 @@ const Container = styled.div`
 
 const Footer = styled.footer`
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
   height: var(--footer-height);

@@ -71,17 +71,20 @@ const Container = styled(Markdown).attrs({
 
   #skill ul {
     display: flex;
+    flex-wrap: wrap;
+    width: 100%;
     margin: 0;
     list-style: none;
     li {
+      margin-right: 6px;
       padding: var(--sizing-sm) var(--sizing-base);
       background-color: var(--color-category-button);
       border-radius: var(--border-radius-base);
       font-weight: 500;
     }
 
-    li + li {
-      margin-left: 6px;
+    li:last-child {
+      margin-right: 0;
     }
   }
 
