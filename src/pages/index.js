@@ -1,9 +1,9 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import Layout from 'components/layout/layout';
+import Layout from 'layout/layout';
 import SEO from 'components/seo';
-import PostGrid from 'components/postGrid';
+import PostGrid from 'components/postGrid/postGrid';
 import CategoryFilter from 'components/categoryFilter';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 

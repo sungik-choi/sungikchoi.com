@@ -40,7 +40,7 @@ const NavBar = ({ title, themeToggler }) => {
     if (isExternalLink) {
       return (
         <li key={name}>
-          <a target="_blank" rel="noreferrer" href={link}>
+          <a target="__blank" rel="noreferrer" href={link}>
             {name}
           </a>
         </li>

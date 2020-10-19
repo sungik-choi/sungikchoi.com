@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CenteredImg from 'components/centeredImg';
+import CenteredImg from './centeredImg';
 import Category from 'styles/category';
 import DateTime from 'styles/dateTime';
 

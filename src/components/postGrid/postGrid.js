@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import Card from 'components/card';
-import { ThumbnailWrapper } from 'components/centeredImg';
+import Card from './card';
+import { ThumbnailWrapper } from './centeredImg';
 import convertToKorDate from 'utils/convertToKorDate';
 
 const MAX_POST_NUM = 10;

@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect, useRef } from 'react';
 import styled from 'styled-components';
 import SEO from 'components/seo';
-import Layout from 'components/layout/layout';
+import Layout from 'layout/layout';
 import GlowParticle from 'utils/glowParticle';
 
 const COLORS = [
