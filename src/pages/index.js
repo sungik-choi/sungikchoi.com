@@ -5,7 +5,7 @@ import Layout from 'layout/layout';
 import SEO from 'components/seo';
 import PostGrid from 'components/postGrid/postGrid';
 import CategoryFilter from 'components/categoryFilter';
-import { useSiteMetadata } from 'hooks/useSiteMetadata';
+import useSiteMetadata from 'hooks/useSiteMetadata';
 
 const Home = ({ pageContext, data }) => {
   const [posts, setPosts] = useState([]);

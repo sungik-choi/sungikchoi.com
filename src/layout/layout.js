@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import NavBar from 'components/navBar/navBar';
 import ThemeContext from 'store/themeContext';
 import useTheme from 'hooks/useTheme';
-import { useSiteMetadata } from 'hooks/useSiteMetadata';
+import useSiteMetadata from 'hooks/useSiteMetadata';
 import styledTheme from 'styles/theme';
 import GlobalStyle from 'styles/globalStyle';
 

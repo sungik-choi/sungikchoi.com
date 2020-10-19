@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Card from './card';
 import { ThumbnailWrapper } from './centeredImg';
+import useInfiniteScroll from 'hooks/useInfiniteScroll';
 import convertToKorDate from 'utils/convertToKorDate';
 
 const MAX_POST_NUM = 10;

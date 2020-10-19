@@ -9,7 +9,7 @@ import {
   navBackgroundAnimationCSS,
   curtainAnimationCSS,
 } from 'styles/navBarAnimation';
-import { useSiteMetadata } from 'hooks/useSiteMetadata';
+import useSiteMetadata from 'hooks/useSiteMetadata';
 import useMenu from 'hooks/useMenu';
 
 const NavBar = ({ title, themeToggler }) => {

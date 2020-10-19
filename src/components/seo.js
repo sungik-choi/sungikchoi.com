@@ -1,15 +1,15 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { useSiteMetadata } from 'hooks/useSiteMetadata';
+import useSiteMetadata from 'hooks/useSiteMetadata';
 
-const SEO = ({ description = '', lang = 'ko', meta = [], title }) => {
+const SEO = ({ description = '', meta = [], title }) => {
   const site = useSiteMetadata();
   const metaDescription = description || site.siteMetadata.description;
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: site.siteMetadata.lang,
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
