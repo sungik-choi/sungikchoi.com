@@ -38,7 +38,6 @@
     "react-typography": "^0.16.19",
     "styled-components": "^5.2.0",
     "styled-reset": "^4.2.3",
-    "three": "^0.121.1",
     "typography": "^0.16.19",
     "vscode-theme-github-light": "github:chuling/vscode-theme-github-light"
   },
