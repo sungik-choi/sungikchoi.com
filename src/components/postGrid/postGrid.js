@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Card from './card';
@@ -16,7 +16,7 @@ const PostGrid = ({ posts }) => {
   const observer = useRef(null);
   const scrollEdgeRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!posts.length || isLoading) return;
     setHasMore(posts.length > MAX_POST_NUM);
     setCurrentList([...posts.slice(0, MAX_POST_NUM)]);
