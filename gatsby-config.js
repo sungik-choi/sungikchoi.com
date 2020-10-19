@@ -5,6 +5,7 @@ module.exports = {
     title: meta.title,
     description: meta.description,
     author: meta.author,
+    lang: meta.lang,
     utterances: {
       repo: meta.utterances,
     },
