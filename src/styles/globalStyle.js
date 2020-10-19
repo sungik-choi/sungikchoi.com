@@ -49,6 +49,7 @@ const GlobalStyle = createGlobalStyle`
     --font-weight-regular: 400;
     --font-weight-medium: 500;
     --font-weight-semi-bold: 600;
+    --font-weight-bold: 700;
     --font-weight-extra-bold: 800;
 
     --color-outline: rgba(0,125,250,0.6);
@@ -86,8 +87,6 @@ const GlobalStyle = createGlobalStyle`
       --color-floating-button-shadow-hover: rgba(0, 0, 0, 0.4);
       --color-blue: #0066cc;
       --color-icon: #2c2c2c;
-
-      --font-weight-bold: 700;
     }
 
     body.dark {
@@ -124,7 +123,7 @@ const GlobalStyle = createGlobalStyle`
       --color-blue: #0a84ff;
       --color-icon: #d1d1d1;
 
-      --font-weight-bold: 600;
+      /* --font-weight-bold: 600; */
     }
   }
 
@@ -135,6 +134,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans CJK KR', 'Noto Sans', Roboto, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     background-color: var(--color-post-background);
+    -webkit-font-smoothing: antialiased;
 
     * {
       color: var(--color-text);
