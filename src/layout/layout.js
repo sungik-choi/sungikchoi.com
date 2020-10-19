@@ -55,7 +55,7 @@ const Footer = styled.footer`
 const Copyright = styled.span`
   font-size: var(--text-sm);
   font-weight: var(--font-weight-regular);
-  color: var(--color-gray-4);
+  color: var(--color-gray-6);
 `;
 
 const RepoLink = styled.a`
