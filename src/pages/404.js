@@ -26,8 +26,8 @@ const NotFound = () => {
     const pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
 
     const totalParticles = 5;
-    const maxRadius = 900;
-    const minRadius = 500;
+    const maxRadius = Math.max(Math.floor(stageWidth / 3), 600);
+    const minRadius = Math.max(Math.floor(stageWidth / 5), 300);
 
     const createParticles = () => {
       let colorIndex = 0;
