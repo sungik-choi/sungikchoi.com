@@ -38,19 +38,21 @@ const CategoryFilter = ({ categoryList }) => {
       </CategoryButton>
       <Divider />
       <CategoryUl ref={categoryRef} className="invisible-scrollbar">
-        {categoryList.map((category) => {
-          const { fieldValue } = category;
-          return (
-            <li key={fieldValue}>
-              <CategoryButton
-                getProps={isActive}
-                to={`/category/${kebabCase(fieldValue)}/`}
-              >
-                {fieldValue}
-              </CategoryButton>
-            </li>
-          );
-        })}
+        {categoryList
+          .sort((a, b) => b.totalCount - a.totalCount)
+          .map((category) => {
+            const { fieldValue } = category;
+            return (
+              <li key={fieldValue}>
+                <CategoryButton
+                  getProps={isActive}
+                  to={`/category/${kebabCase(fieldValue)}/`}
+                >
+                  {fieldValue}
+                </CategoryButton>
+              </li>
+            );
+          })}
       </CategoryUl>
     </Nav>
   );
