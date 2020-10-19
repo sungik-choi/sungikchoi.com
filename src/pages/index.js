@@ -90,29 +90,29 @@ const Home = ({ pageContext, data }) => {
 };
 
 const Main = styled.main`
-  min-width: ${({ theme }) => theme.minWidth};
-  ${({ theme }) =>
-    `min-height: calc(100vh - ${theme.navHeight} - ${theme.footerHeight})`};
-  background-color: ${({ theme }) => theme.color.background};
+  min-width: var(--min-width);
+  min-height: calc(100vh - var(--nav-height) - var(--footer-height));
+  background-color: var(--color-background);
 `;
 
 const Content = styled.div`
   box-sizing: content-box;
   width: 87.5%;
-  max-width: ${({ theme }) => theme.width};
-  padding-top: ${({ theme }) => theme.sizing.lg};
+  max-width: var(--width);
+  padding-top: var(--sizing-lg);
+  padding-bottom: var(--sizing-lg);
   margin: 0 auto;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
-    padding-top: ${({ theme }) => theme.gridGap.lg};
+    padding-top: var(--grid-gap-lg);
     width: 87.5%;
   }
 `;
 
 const PostTitle = styled.h2`
   font-size: 2rem;
-  font-weight: ${({ theme }) => theme.fontWeight.extraBold};
-  margin-bottom: 1.5rem;
+  font-weight: var(--font-weight-extra-bold);
+  margin-bottom: var(--sizing-md);
   line-height: 1.21875;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
@@ -122,7 +122,7 @@ const PostTitle = styled.h2`
 
 const Grid = styled.ul`
   display: grid;
-  grid-gap: ${({ theme }) => theme.gridGap.xl};
+  grid-gap: var(--grid-gap-xl);
   grid-template-columns: repeat(2, 1fr);
   list-style: none;
 
@@ -131,7 +131,7 @@ const Grid = styled.ul`
   }
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
-    grid-gap: ${({ theme }) => theme.gridGap.lg};
+    grid-gap: var(--grid-gap-lg);
   }
 `;
 
@@ -167,6 +167,7 @@ const List = styled.li`
 export const query = graphql`
   query {
     allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/(posts/blog)/" } }
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
@@ -191,7 +192,6 @@ export const query = graphql`
           fields {
             slug
           }
-          excerpt
         }
       }
     }

@@ -3,7 +3,7 @@ title: "styled-components로 디자인 시스템 따라해보기 - 1"
 category: "CSS"
 date: "2020-09-24 15:00:00 +09:00"
 desc: "styled-components로 디자인 시스템을 간단하게 따라해봅니다"
-thumbnail: "../images/galaxy.jpg"
+thumbnail: "./images/galaxy.jpg"
 ---
 
 styled-components의 기초적인 내용을 숙지한다면 더 편하게 읽을 수 있는 내용입니다. 기초적인 내용을 알고 싶은 분들은 styled-components 공식 사이트의 [Getting Started 문서](https://styled-components.com/docs/basics#getting-started)를 참고해주세요.

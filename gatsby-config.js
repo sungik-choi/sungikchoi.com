@@ -5,7 +5,6 @@ module.exports = {
     title: `Sungik Choi`,
     description: `Sungik Choi's Devlog`,
     author: `Sungik Choi`,
-    githubLink: `https://www.github.com/sungik-choi`,
     utterances: {
       repo: 'sungik-choi/blog-comment',
     },
@@ -18,6 +17,10 @@ module.exports = {
       {
         link: '/about/',
         name: '소개',
+      },
+      {
+        link: 'https://www.github.com/sungik-choi',
+        name: 'Github',
       },
     ],
   },
@@ -56,7 +59,7 @@ module.exports = {
               theme: {
                 default: 'Github Light Theme',
                 parentSelector: {
-                  'html[data-theme=dark]': 'Dark Github',
+                  'body[data-theme=dark]': 'Dark Github',
                 },
               },
               extensions: ['vscode-theme-github-light', 'dark-theme-github'],
@@ -74,13 +77,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `GatsbyJS`,
-        short_name: `GatsbyJS`,
+        name: `Sungik Choi`,
+        short_name: `Sungik Choi`,
         start_url: `/`,
-        background_color: `#6b37bf`,
-        theme_color: `#6b37bf`,
+        background_color: `#1c1c1c`,
+        theme_color: `#1c1c1c`,
         display: `standalone`,
-        icon: `src/images/icon.png`,
+        icon: `src/images/icon.svg`,
       },
     },
     `gatsby-plugin-offline`,

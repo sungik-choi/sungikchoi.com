@@ -1,36 +1,24 @@
-import { useState, useLayoutEffect } from 'react';
-import { LIGHT, DARK, THEME } from 'constants/constants';
-
-const THEME_MEDIA_QUERY = '(prefers-color-scheme: dark)';
+import { useState, useCallback, useEffect } from 'react';
+import { LIGHT, DARK } from 'constants/constants';
 
 const useTheme = () => {
   const [theme, setTheme] = useState(null);
 
-  const changeTheme = (theme) => {
-    document.querySelector('html').dataset.theme = theme;
-    setTheme(theme);
-  };
+  const themeToggler = useCallback(() => {
+    const nextTheme = theme === LIGHT ? DARK : LIGHT;
+    setTheme(nextTheme);
+    window.__setPreferredTheme(nextTheme);
+  }, [theme]);
 
-  const toggleTheme = (mode) => {
-    localStorage.setItem(THEME, mode);
-    changeTheme(mode);
-  };
-
-  useLayoutEffect(() => {
-    const localTheme = localStorage.getItem(THEME);
-    if (localTheme) {
-      changeTheme(localTheme);
-      return;
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setTheme(window.__theme);
     }
-    const prefersColorScheme = window.matchMedia(THEME_MEDIA_QUERY).matches
-      ? DARK
-      : LIGHT;
-    changeTheme(prefersColorScheme);
-  }, []);
 
-  const themeToggler = () => {
-    theme === LIGHT ? toggleTheme(DARK) : toggleTheme(LIGHT);
-  };
+    window.__onThemeChange = (newTheme) => {
+      setTheme(newTheme);
+    };
+  }, []);
 
   return [theme, themeToggler];
 };

@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
 import styled from 'styled-components';
+import ThemeContext from 'components/themeContext';
 import ThemeIcon from './themeIcon';
 import Background from 'styles/background';
 import { DARK } from 'constants/constants';
 
 const ThemeToggleButton = ({ themeToggler }) => {
-  const { theme } = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   const LABEL_TEXT = theme === DARK ? '라이트 모드로 보기' : '다크 모드로 보기';
 
   return (
@@ -25,7 +25,7 @@ const ThemeToggleButton = ({ themeToggler }) => {
 const Icon = styled.svg`
   width: 1.125rem;
   height: 1.125rem;
-  fill: ${({ theme }) => theme.color.icon};
+  fill: var(--color-icon);
   transform: translateY(-1px);
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
@@ -37,9 +37,9 @@ const Icon = styled.svg`
 
 const ButtonBackground = styled(Background)`
   border: none;
-  background-color: ${({ theme }) => theme.color.floatingButton};
-  border-radius: ${({ theme }) => theme.borderRadius.lg};
-  box-shadow: 0 3px 15px ${({ theme }) => theme.color.floatingButtonShadow};
+  background-color: var(--color-floating-button);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 3px 15px var(--color-floating-button-shadow);
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     visibility: hidden;
@@ -58,13 +58,13 @@ const Content = styled.div`
 `;
 
 const Text = styled.span`
-  color: ${({ theme }) => theme.color.floatingButtonText};
-  margin-left: 0.375rem;
+  color: var(--color-floating-button-text);
+  margin-left: 6px;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
-    color: ${({ theme }) => theme.color.text};
+    color: var(--color-text);
     margin-left: 0;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     border-radius: 50%;
   }
 `;
@@ -78,28 +78,28 @@ const Button = styled.button`
   align-items: center;
   background-color: transparent;
   z-index: 100;
-  right: ${({ theme }) => theme.sizing.md};
-  bottom: ${({ theme }) => theme.sizing.md};
-  padding: ${({ theme }) => theme.sizing.base};
-  padding-right: 1.25rem;
-  border: 1px solid ${({ theme }) => theme.color.floatingButtonBorder};
-  border-radius: ${({ theme }) => theme.borderRadius.lg};
-  font-weight: 500;
+  right: var(--sizing-md);
+  bottom: var(--sizing-md);
+  padding: var(--sizing-base);
+  padding-right: 20px;
+  border: 1px solid var(--color-floating-button-border);
+  border-radius: var(--border-radius-lg);
+  font-weight: var(--font-weight-medium);
 
   @media (min-width: ${({ theme }) => theme.device.sm}) {
     &:hover {
       outline: none;
-      border: 1px solid ${({ theme }) => theme.color.floatingButtonBorderHover};
+      border: 1px solid var(--color-floating-button-border-hover);
 
-      ${Icon}, ${Text} {
-        color: ${({ theme }) => theme.color.floatingButtonTextHover};
-        fill: ${({ theme }) => theme.color.floatingButtonTextHover};
+      ${Icon},
+      ${Text} {
+        color: var(--color-floating-button-text-hover);
+        fill: var(--color-floating-button-text-hover);
       }
 
       ${ButtonBackground} {
-        background-color: ${({ theme }) => theme.color.floatingButtonHover};
-        box-shadow: 0 3px 15px
-          ${({ theme }) => theme.color.floatingButtonShadowHover};
+        background-color: var(--color-floating-button-hover);
+        box-shadow: 0 3px 15px var(--color-floating-button-shadow-hover);
       }
     }
   }
@@ -114,8 +114,8 @@ const Button = styled.button`
 
     &:hover {
       ${Icon}, ${Text} {
-        fill: ${({ theme }) => theme.color.blue};
-        color: ${({ theme }) => theme.color.blue};
+        fill: var(--color-blue);
+        color: var(--color-blue);
       }
       ${Icon} {
         width: 1rem;
@@ -125,8 +125,8 @@ const Button = styled.button`
 
     &:focus-visible {
       ${Icon}, ${Text} {
-        fill: ${({ theme }) => theme.color.blue};
-        color: ${({ theme }) => theme.color.blue};
+        fill: var(--color-blue);
+        color: var(--color-blue);
       }
       ${Icon} {
         width: 1rem;

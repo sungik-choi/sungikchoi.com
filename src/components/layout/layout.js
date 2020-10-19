@@ -1,30 +1,37 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import NavBar from './navBar/navBar';
+import ThemeContext from 'components/themeContext';
 import useTheme from 'hooks/useTheme';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
-import { lightTheme, darkTheme } from 'styles/theme';
+import styledTheme from 'styles/theme';
 import GlobalStyle from 'styles/globalStyle';
-import { DARK } from 'constants/constants';
 
 const Layout = ({ children }) => {
   const [theme, themeToggler] = useTheme();
-  const themeMode = theme === DARK ? darkTheme : lightTheme;
-
   const site = useSiteMetadata();
-  const { title, description, author } = site.siteMetadata;
-  const copyrightStr = `${description}. Copyright © ${author}.`;
+  const { title, author } = site.siteMetadata;
+  const copyrightStr = `Copyright © ${author}. Built with `;
+  const repoName = 'gatsby-starter-apple';
+  const repoSrc = 'https://github.com/sungik-choi/gatsby-starter-apple';
 
   return (
-    <ThemeProvider theme={themeMode}>
-      <GlobalStyle />
-      <Container>
-        <NavBar title={title} themeToggler={themeToggler} />
-        {children}
+    <ThemeProvider theme={styledTheme}>
+      <ThemeContext.Provider value={theme}>
+        <GlobalStyle />
+        <Container>
+          <NavBar title={title} themeToggler={themeToggler} />
+          {children}
+        </Container>
         <Footer role="contentinfo">
-          <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
+          <Copyright aria-label="Copyright">
+            {copyrightStr}
+            <RepoLink href={repoSrc} target="__blank">
+              {repoName}
+            </RepoLink>
+          </Copyright>
         </Footer>
-      </Container>
+      </ThemeContext.Provider>
     </ThemeProvider>
   );
 };
@@ -32,22 +39,30 @@ const Layout = ({ children }) => {
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  ${({ theme }) => `min-height: calc(100vh - ${theme.footerHeight})`};
-  background-color: ${({ theme }) => theme.color.postBackground};
+  min-height: calc(100vh - var(--footer-height));
+  background-color: var(--color-post-background);
 `;
 
 const Footer = styled.footer`
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
-  height: ${({ theme }) => theme.footerHeight};
-  background-color: ${({ theme }) => theme.color.gray1};
+  height: var(--footer-height);
+  background-color: var(--color-gray-1);
 `;
 
 const Copyright = styled.span`
-  font-size: ${({ theme }) => theme.text.sm};
-  font-weight: 400;
-  color: ${({ theme }) => theme.color.gray4};
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-gray-4);
+`;
+
+const RepoLink = styled.a`
+  color: var(--color-blue);
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export default Layout;

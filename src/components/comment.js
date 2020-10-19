@@ -1,5 +1,5 @@
 import React, { useRef, useContext, useEffect } from 'react';
-import { ThemeContext } from 'styled-components';
+import ThemeContext from 'components/themeContext';
 import { useSiteMetadata } from 'hooks/useSiteMetadata';
 import { DARK } from 'constants/constants';
 
@@ -9,7 +9,7 @@ const LIGHT_THEME = 'github-light';
 const DARK_THEME = 'github-dark';
 
 const Comment = () => {
-  const { theme } = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   const site = useSiteMetadata();
   const { repo } = site.siteMetadata.utterances;
   const containerRef = useRef(null);
@@ -20,9 +20,7 @@ const Comment = () => {
 
     if (!isUtterancesCreated.current) {
       themeMode =
-        document.querySelector('html').dataset.theme === DARK
-          ? DARK_THEME
-          : LIGHT_THEME;
+        document.body.dataset.theme === DARK ? DARK_THEME : LIGHT_THEME;
     } else themeMode = theme === DARK ? DARK_THEME : LIGHT_THEME;
 
     const createUtterancesEl = () => {
