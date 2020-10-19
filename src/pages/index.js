@@ -100,6 +100,7 @@ const Content = styled.div`
   width: 87.5%;
   max-width: var(--width);
   padding-top: var(--sizing-lg);
+  padding-bottom: var(--sizing-lg);
   margin: 0 auto;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {

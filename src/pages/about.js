@@ -37,17 +37,64 @@ const Container = styled(Markdown).attrs({
 })`
   width: var(--post-width);
   margin: 0 auto;
-  margin-top: var(--sizing-xl);
+  margin-top: 80px;
   margin-bottom: 6rem;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
-    margin-top: var(--sizing-lg);
+    margin-top: var(--sizing-xl);
     width: 87.5%;
   }
 
   h1 {
-    margin-top: 1rem;
     margin-bottom: 2rem;
+  }
+
+  h2 {
+    margin-top: var(--sizing-lg);
+
+    @media (max-width: ${({ theme }) => theme.device.sm}) {
+      font-size: 1.75rem;
+    }
+  }
+
+  h3 {
+    @media (max-width: ${({ theme }) => theme.device.sm}) {
+      font-size: 1.25rem;
+    }
+  }
+
+  #project {
+    h3 + h3 {
+      margin-top: var(--sizing-lg);
+    }
+  }
+
+  #skill ul {
+    display: flex;
+    margin: 0;
+    list-style: none;
+    li {
+      padding: var(--sizing-sm) var(--sizing-base);
+      background-color: var(--color-category-button);
+      border-radius: var(--border-radius-base);
+      font-weight: 500;
+    }
+
+    li + li {
+      margin-left: 6px;
+    }
+  }
+
+  #education {
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h3 + p {
+      margin-bottom: 0;
+      font-size: 0.875rem;
+    }
   }
 `;
 

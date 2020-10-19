@@ -40,6 +40,14 @@ const Markdown = styled.article`
     margin-top: 0;
   }
 
+  h1 {
+    font-size: 2.5rem;
+
+    @media (max-width: ${({ theme }) => theme.device.sm}) {
+      font-size: 2rem;
+    }
+  }
+
   h2 {
     font-size: 1.75rem;
     line-height: 1.3;
@@ -102,6 +110,7 @@ const Markdown = styled.article`
 
   p {
     line-height: 1.68;
+    text-align: left;
     margin-bottom: var(--sizing-md);
   }
 

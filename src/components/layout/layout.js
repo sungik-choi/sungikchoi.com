@@ -10,8 +10,10 @@ import GlobalStyle from 'styles/globalStyle';
 const Layout = ({ children }) => {
   const [theme, themeToggler] = useTheme();
   const site = useSiteMetadata();
-  const { title, description, author } = site.siteMetadata;
-  const copyrightStr = `${description}. Copyright © ${author}.`;
+  const { title, author } = site.siteMetadata;
+  const copyrightStr = `Copyright © ${author}. Built with `;
+  const repoName = 'gatsby-starter-apple';
+  const repoSrc = 'https://github.com/sungik-choi/gatsby-starter-apple';
 
   return (
     <ThemeProvider theme={styledTheme}>
@@ -22,7 +24,12 @@ const Layout = ({ children }) => {
           {children}
         </Container>
         <Footer role="contentinfo">
-          <Copyright aria-label="Copyright">{copyrightStr}</Copyright>
+          <Copyright aria-label="Copyright">
+            {copyrightStr}
+            <RepoLink href={repoSrc} target="__blank">
+              {repoName}
+            </RepoLink>
+          </Copyright>
         </Footer>
       </ThemeContext.Provider>
     </ThemeProvider>
@@ -48,6 +55,13 @@ const Copyright = styled.span`
   font-size: var(--text-sm);
   font-weight: var(--font-weight-regular);
   color: var(--color-gray-4);
+`;
+
+const RepoLink = styled.a`
+  color: var(--color-blue);
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export default Layout;
