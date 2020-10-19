@@ -77,13 +77,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `GatsbyJS`,
-        short_name: `GatsbyJS`,
+        name: `Sungik Choi`,
+        short_name: `Sungik Choi`,
         start_url: `/`,
-        background_color: `#6b37bf`,
-        theme_color: `#6b37bf`,
+        background_color: `#1c1c1c`,
+        theme_color: `#1c1c1c`,
         display: `standalone`,
-        icon: `src/images/icon.png`,
+        icon: `src/images/icon.svg`,
       },
     },
     `gatsby-plugin-offline`,
