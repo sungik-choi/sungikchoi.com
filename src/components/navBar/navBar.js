@@ -139,9 +139,7 @@ const LinkUl = styled.ul`
       margin-left: 0;
       font-size: var(--text-md);
       transform: ${({ toggle }) =>
-        toggle
-          ? `translateY(calc(var(--nav-height) + var(--sizing-lg)))`
-          : `translateY(var(--nav-height))`};
+        toggle ? `translateY(var(--sizing-lg))` : `translateY(0)`};
       opacity: ${({ toggle }) => (toggle ? '1' : '0')};
     }
 
