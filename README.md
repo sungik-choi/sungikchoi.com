@@ -4,4 +4,4 @@
 
 Built with [🍎 gatsby-starter-apple](https://github.com/sungik-choi/gatsby-starter-apple)
 
-<p align="center"><img src="./mockup.png"></p>
+<p align="center"><img src="./.github/mockup.png"></p>
