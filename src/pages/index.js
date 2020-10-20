@@ -28,14 +28,23 @@ const Home = ({ pageContext, data }) => {
           desc,
           date,
           category,
-          thumbnail: { base },
+          thumbnail: { childImageSharp },
           alt,
         },
       } = node;
 
       setPosts((prevPost) => [
         ...prevPost,
-        { id, slug, title, desc, date, category, thumbnail: base, alt },
+        {
+          id,
+          slug,
+          title,
+          desc,
+          date,
+          category,
+          thumbnail: childImageSharp.id,
+          alt,
+        },
       ]);
     });
   }, [currentCategory, postData]);
@@ -109,6 +118,9 @@ export const query = graphql`
             date(formatString: "YYYY-MM-DD")
             desc
             thumbnail {
+              childImageSharp {
+                id
+              }
               base
             }
             alt

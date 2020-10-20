@@ -9,6 +9,7 @@ const CenteredImg = ({ src, alt }) => {
       allImageSharp {
         edges {
           node {
+            id
             fluid {
               ...GatsbyImageSharpFluid
               originalName
@@ -19,9 +20,7 @@ const CenteredImg = ({ src, alt }) => {
     }
   `);
 
-  const image = data.allImageSharp.edges.find(
-    (edge) => edge.node.fluid.originalName === src
-  );
+  const image = data.allImageSharp.edges.find((edge) => edge.node.id === src);
 
   if (!alt) alt = 'Thumbnail Image';
 
