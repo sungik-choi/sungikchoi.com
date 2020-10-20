@@ -9,6 +9,7 @@ const useSiteMetadata = () => {
             title
             description
             author
+            siteUrl
             lang
             utterances {
               repo

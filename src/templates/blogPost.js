@@ -13,16 +13,17 @@ import convertToKorDate from 'utils/convertToKorDate';
 const BlogPost = ({ data }) => {
   const {
     markdownRemark: {
-      frontmatter: { title, desc, date, category },
+      frontmatter: { title, desc, thumbnail, date, category },
       html,
     },
   } = data;
 
+  const ogImagePath = thumbnail && thumbnail.childImageSharp.fixed.src;
   const korDate = convertToKorDate(date);
 
   return (
     <Layout>
-      <SEO title={title} description={desc} />
+      <SEO title={title} description={desc} image={ogImagePath} />
       <main>
         <article>
           <OuterWrapper>
@@ -138,6 +139,13 @@ export const query = graphql`
       frontmatter {
         title
         desc
+        thumbnail {
+          childImageSharp {
+            fixed {
+              src
+            }
+          }
+        }
         date(formatString: "YYYY-MM-DD")
         category
       }
