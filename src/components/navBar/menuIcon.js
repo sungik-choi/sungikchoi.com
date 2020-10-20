@@ -29,7 +29,7 @@ const MenuIconButton = styled.button`
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     display: block;
     cursor: pointer;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     width: var(--nav-height);
