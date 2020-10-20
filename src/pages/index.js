@@ -1,16 +1,14 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import Layout from 'components/layout/layout';
+import Layout from 'layout/layout';
 import SEO from 'components/seo';
+import PostGrid from 'components/postGrid/postGrid';
 import CategoryFilter from 'components/categoryFilter';
-import Card from 'components/card';
-import { ThumbnailWrapper } from 'components/centeredImg';
-import { useSiteMetadata } from 'hooks/useSiteMetadata';
-import convertToKorDate from 'utils/convertToKorDate';
+import useSiteMetadata from 'hooks/useSiteMetadata';
 
 const Home = ({ pageContext, data }) => {
-  const [post, setPost] = useState([]);
+  const [posts, setPosts] = useState([]);
   const currentCategory = pageContext.category;
   const postData = data.allMarkdownRemark.edges;
 
@@ -30,14 +28,23 @@ const Home = ({ pageContext, data }) => {
           desc,
           date,
           category,
-          thumbnail: { base },
+          thumbnail: { childImageSharp },
           alt,
         },
       } = node;
 
-      setPost((prevPost) => [
+      setPosts((prevPost) => [
         ...prevPost,
-        { id, slug, title, desc, date, category, thumbnail: base, alt },
+        {
+          id,
+          slug,
+          title,
+          desc,
+          date,
+          category,
+          thumbnail: childImageSharp.id,
+          alt,
+        },
       ]);
     });
   }, [currentCategory, postData]);
@@ -52,37 +59,7 @@ const Home = ({ pageContext, data }) => {
         <Content>
           <CategoryFilter categoryList={data.allMarkdownRemark.group} />
           <PostTitle>{postTitle}</PostTitle>
-          <Grid role="list">
-            {post.map((data) => {
-              const {
-                id,
-                slug,
-                title,
-                desc,
-                date,
-                category,
-                thumbnail,
-                alt,
-              } = data;
-              const korDate = convertToKorDate(date);
-              const ariaLabel = `${title} - ${category} - Posted on ${korDate}`;
-              return (
-                <List key={id} role="listitem">
-                  <Link to={slug} aria-label={ariaLabel}>
-                    <Card
-                      thumbnail={thumbnail}
-                      alt={alt}
-                      category={category}
-                      title={title}
-                      desc={desc}
-                      date={date}
-                      korDate={korDate}
-                    />
-                  </Link>
-                </List>
-              );
-            })}
-          </Grid>
+          <PostGrid posts={posts} />
         </Content>
       </Main>
     </Layout>
@@ -120,50 +97,6 @@ const PostTitle = styled.h2`
   }
 `;
 
-const Grid = styled.ul`
-  display: grid;
-  grid-gap: var(--grid-gap-xl);
-  grid-template-columns: repeat(2, 1fr);
-  list-style: none;
-
-  & > li {
-    margin-bottom: 0;
-  }
-
-  @media (max-width: ${({ theme }) => theme.device.sm}) {
-    grid-gap: var(--grid-gap-lg);
-  }
-`;
-
-const List = styled.li`
-  box-sizing: border-box;
-  grid-column: span 1;
-
-  a {
-    display: block;
-    height: 100%;
-  }
-
-  a:hover ${ThumbnailWrapper}::after, a:focus ${ThumbnailWrapper}::after {
-    opacity: 1;
-  }
-
-  & .gatsby-image-wrapper {
-    transition: opacity 1s ease-out, transform 0.5s ease;
-  }
-
-  a:hover,
-  a:focus {
-    .gatsby-image-wrapper {
-      transform: scale(1.03);
-    }
-  }
-
-  @media (max-width: ${({ theme }) => theme.device.sm}) {
-    grid-column: span 2;
-  }
-`;
-
 export const query = graphql`
   query {
     allMarkdownRemark(
@@ -185,6 +118,9 @@ export const query = graphql`
             date(formatString: "YYYY-MM-DD")
             desc
             thumbnail {
+              childImageSharp {
+                id
+              }
               base
             }
             alt

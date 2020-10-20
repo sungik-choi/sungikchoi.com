@@ -1,7 +1,8 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
+import useScrollCenter from 'hooks/useScrollCenter';
 import { ACTIVE } from 'constants/constants';
 
 const CategoryFilter = ({ categoryList }) => {
@@ -10,25 +11,7 @@ const CategoryFilter = ({ categoryList }) => {
   const isActive = ({ isCurrent }) =>
     isCurrent ? { id: ACTIVE, tabIndex: -1 } : {};
 
-  useLayoutEffect(() => {
-    if (!categoryRef) return;
-    const categoryWrapEl = categoryRef.current;
-
-    const isScrollActivated =
-      categoryWrapEl.scrollWidth >= categoryWrapEl.offsetWidth;
-    if (!isScrollActivated) return;
-
-    const activeCategoryEl = categoryWrapEl.querySelector(`#${ACTIVE}`);
-    if (!activeCategoryEl) return;
-
-    const offsetX = activeCategoryEl.offsetLeft - categoryWrapEl.offsetLeft;
-    categoryWrapEl.scrollTo(
-      offsetX -
-        categoryWrapEl.offsetWidth / 2 +
-        activeCategoryEl.offsetWidth / 2,
-      0
-    );
-  }, []);
+  useScrollCenter({ ref: categoryRef, targetId: ACTIVE });
 
   return (
     <Nav aria-label="Category Filter">
@@ -38,19 +21,21 @@ const CategoryFilter = ({ categoryList }) => {
       </CategoryButton>
       <Divider />
       <CategoryUl ref={categoryRef} className="invisible-scrollbar">
-        {categoryList.map((category) => {
-          const { fieldValue } = category;
-          return (
-            <li key={fieldValue}>
-              <CategoryButton
-                getProps={isActive}
-                to={`/category/${kebabCase(fieldValue)}/`}
-              >
-                {fieldValue}
-              </CategoryButton>
-            </li>
-          );
-        })}
+        {categoryList
+          .sort((a, b) => b.totalCount - a.totalCount)
+          .map((category) => {
+            const { fieldValue } = category;
+            return (
+              <li key={fieldValue}>
+                <CategoryButton
+                  getProps={isActive}
+                  to={`/category/${kebabCase(fieldValue)}/`}
+                >
+                  {fieldValue}
+                </CategoryButton>
+              </li>
+            );
+          })}
       </CategoryUl>
     </Nav>
   );

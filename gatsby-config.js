@@ -1,12 +1,13 @@
-/* eslint-disable no-undef */
+const meta = require('./gatsby-meta-config');
 
 module.exports = {
   siteMetadata: {
-    title: `Sungik Choi`,
-    description: `Sungik Choi's Devlog`,
-    author: `Sungik Choi`,
+    title: meta.title,
+    description: meta.description,
+    author: meta.author,
+    lang: meta.lang,
     utterances: {
-      repo: 'sungik-choi/blog-comment',
+      repo: meta.utterances,
     },
     postTitle: '전체 포스트',
     menuLinks: [
@@ -19,14 +20,12 @@ module.exports = {
         name: '소개',
       },
       {
-        link: 'https://www.github.com/sungik-choi',
+        link: meta.links.github,
         name: 'Github',
       },
     ],
   },
   plugins: [
-    `gatsby-plugin-styled-components`,
-    `gatsby-alias-imports`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -41,8 +40,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
@@ -53,6 +50,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-copy-linked-files`,
           {
             resolve: `gatsby-remark-vscode`,
             options: {
@@ -77,17 +75,20 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Sungik Choi`,
-        short_name: `Sungik Choi`,
+        name: meta.name,
+        short_name: meta.name,
         start_url: `/`,
         background_color: `#1c1c1c`,
         theme_color: `#1c1c1c`,
         display: `standalone`,
-        icon: `src/images/icon.svg`,
+        icon: meta.icon,
       },
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-alias-imports`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
   ],
 };
-``;

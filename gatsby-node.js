@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 const path = require(`path`);
 const _ = require('lodash');
 const { createFilePath } = require(`gatsby-source-filesystem`);
@@ -40,6 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
       categoriesGroup: allMarkdownRemark(limit: 2000) {
         group(field: frontmatter___category) {
           fieldValue
+          totalCount
         }
       }
     }

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import NavBar from './navBar/navBar';
-import ThemeContext from 'components/themeContext';
+import NavBar from 'components/navBar/navBar';
+import ThemeContext from 'store/themeContext';
 import useTheme from 'hooks/useTheme';
-import { useSiteMetadata } from 'hooks/useSiteMetadata';
+import useSiteMetadata from 'hooks/useSiteMetadata';
 import styledTheme from 'styles/theme';
 import GlobalStyle from 'styles/globalStyle';
 
@@ -55,7 +55,7 @@ const Footer = styled.footer`
 const Copyright = styled.span`
   font-size: var(--text-sm);
   font-weight: var(--font-weight-regular);
-  color: var(--color-gray-4);
+  color: var(--color-gray-6);
 `;
 
 const RepoLink = styled.a`

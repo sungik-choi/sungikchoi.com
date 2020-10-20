@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import SEO from 'components/seo';
-import Layout from 'components/layout/layout';
+import Layout from 'layout/layout';
 import Markdown from 'styles/markdown';
 import { rhythm } from 'styles/typography';
 

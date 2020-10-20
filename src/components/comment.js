@@ -1,6 +1,6 @@
 import React, { useRef, useContext, useEffect } from 'react';
-import ThemeContext from 'components/themeContext';
-import { useSiteMetadata } from 'hooks/useSiteMetadata';
+import ThemeContext from 'store/themeContext';
+import useSiteMetadata from 'hooks/useSiteMetadata';
 import { DARK } from 'constants/constants';
 
 const src = 'https://utteranc.es';

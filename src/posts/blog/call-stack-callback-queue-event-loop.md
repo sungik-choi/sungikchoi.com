@@ -1,19 +1,11 @@
 ---
 title: "콜 스택, 콜백 큐, 이벤트 루프"
-category: "React"
-date: "2020-08-11 15:00:00 +09:00"
+category: "JavaScript"
+date: "2020-02-18 15:00:00 +09:00"
 desc: "비동기 프로그래밍의 기초에 대해 간단하게 정리해봅니다."
-thumbnail: "./images/galaxy.jpg"
+thumbnail: "./images/call-stack-callback-queue-event-loop/thumbnail.png"
+alt: ""
 ---
-
----
-
-| 값         |                  의미                  |   기본값 |
-| ---------- | :------------------------------------: | -------: |
-| `static`   |     유형(기준) 없음 / 배치 불가능      | `static` |
-| `relative` |       요소 자신을 기준으로 배치        |          |
-| `absolute` | 위치 상 부모(조상)요소를 기준으로 배치 |          |
-| `fixed`    |      브라우저 창을 기준으로 배치       |          |
 
 ## 자바스크립트는 싱글 스레드 언어
 

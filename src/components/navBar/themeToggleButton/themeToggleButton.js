@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import ThemeContext from 'components/themeContext';
+import ThemeContext from 'store/themeContext';
 import ThemeIcon from './themeIcon';
 import Background from 'styles/background';
 import { DARK } from 'constants/constants';
