@@ -1,4 +1,4 @@
-# [Sungikchoi.com](https://sungikchoi.com)
+# [sungikchoi.com](https://sungikchoi.com)
 
 Built with [🍎 gatsby-starter-apple](https://github.com/sungik-choi/gatsby-starter-apple)
 
