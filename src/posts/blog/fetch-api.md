@@ -3,10 +3,9 @@ title: "Fetch API"
 category: "JavaScript"
 date: "2020-02-25 15:00:00 +09:00"
 desc: "Fetch API 개념정리"
-thumbnail: "./images/galaxy.jpg"
+thumbnail: "./images/fetch-api/thumbnail.png"
 alt: ""
 ---
-
 
 > Fetch의 핵심은 인터페이스의 추상화입니다. HTTP Request, Response, Headers, Body의 Payload, 그리고 비동기 리소스 Request의 초기화를 위한global fetch메서드가 이 대상입니다. HTTP의 주요 컴포넌트가 자바스크립트 오브젝트로써 추상화되어있기 때문에 다른 API에서 이러한 기능들을 사용하기 쉽게 해줍니다.
 >

@@ -3,7 +3,7 @@ title: "콜 스택, 콜백 큐, 이벤트 루프"
 category: "JavaScript"
 date: "2020-02-18 15:00:00 +09:00"
 desc: "비동기 프로그래밍의 기초에 대해 간단하게 정리해봅니다."
-thumbnail: "./images/galaxy.jpg"
+thumbnail: "./images/call-stack-callback-queue-event-loop/thumbnail.png"
 alt: ""
 ---
 
