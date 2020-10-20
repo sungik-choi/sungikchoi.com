@@ -203,7 +203,7 @@ const LinkContent = styled.div`
 const LinkWrap = styled.div`
   display: flex;
   @media (max-width: ${({ theme }) => theme.device.sm}) {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
