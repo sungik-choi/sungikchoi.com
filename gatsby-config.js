@@ -5,6 +5,7 @@ module.exports = {
     title: meta.title,
     description: meta.description,
     author: meta.author,
+    siteUrl: meta.siteUrl,
     lang: meta.lang,
     utterances: {
       repo: meta.utterances,
@@ -24,6 +25,7 @@ module.exports = {
         name: 'Github',
       },
     ],
+    plugins: ['gatsby-plugin-robots-txt', `gatsby-plugin-sitemap`],
   },
   plugins: [
     {
