@@ -45,8 +45,30 @@ const Container = styled(Markdown).attrs({
     width: 87.5%;
   }
 
-  h1 {
+  #title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: end;
     margin-bottom: 2rem;
+  }
+
+  #time {
+    font-size: var(--text-sm);
+    color: var(--color-text-3);
+    time {
+      color: var(--color-text-3);
+    }
+  }
+
+  #eng-title {
+    margin-top: auto;
+    margin-left: 0.5rem;
+    font-size: 30px;
+
+    @media (max-width: ${({ theme }) => theme.device.sm}) {
+      font-size: 1.75rem;
+    }
   }
 
   h2 {
@@ -61,6 +83,10 @@ const Container = styled(Markdown).attrs({
     @media (max-width: ${({ theme }) => theme.device.sm}) {
       font-size: 1.25rem;
     }
+  }
+
+  li {
+    line-height: 1.5;
   }
 
   #project {
@@ -98,6 +124,24 @@ const Container = styled(Markdown).attrs({
       margin-bottom: 0;
       font-size: 0.875rem;
     }
+  }
+
+  thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: no-wrap;
+  }
+
+  tbody {
+    border-top: 1px solid var(--color-gray-3);
+  }
+
+  li ul {
+    margin-top: 0.435rem;
+    margin-bottom: 0.435rem;
   }
 `;
 
