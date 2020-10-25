@@ -46,19 +46,7 @@ const Container = styled(Markdown).attrs({
   }
 
   #title {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    align-content: end;
     margin-bottom: 2rem;
-  }
-
-  #time {
-    font-size: var(--text-sm);
-    color: var(--color-text-3);
-    time {
-      color: var(--color-text-3);
-    }
   }
 
   #eng-title {

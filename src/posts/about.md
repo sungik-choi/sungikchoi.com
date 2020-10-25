@@ -1,7 +1,7 @@
 <section id ="title">
 
 <h1>최성익<span lang="en" id="eng-title">Sungik Choi</span></h1>
-<span id="time">Updated <time datetime="2020-10-26">2020.10.26</time></span>
+<!-- <span id="time">Updated <time datetime="2020-10-26">2020.10.26</time></span> -->
 
 </section>
 
@@ -11,8 +11,8 @@
 
 <p>아름다운 UI, 인터랙션 디자인을 좋아합니다. 기술과 예술은 하나라고 생각합니다.</p>
 
-- Github : <a href="https://github.com/sungik-choi" target="_blank">https://github.com/sungik-choi</a>
-- Blog : <a href="https://sungikchoi.com" target="_blank">https://sungikchoi.com</a>
+- Github : <a href="https://github.com/sungik-choi" target="_blank">github.com/sungik-choi</a>
+- Blog : <a href="https://sungikchoi.com" target="_blank">sungikchoi.com</a>
 - Email : <a href="mailto:sungik.dev@gmail.com" target="_blank">sungik.dev@gmail.com</a>
 
 </section>
@@ -25,11 +25,11 @@
 
 <h3>Gatsby Starter Apple</h3>
 
-| 제목       | 내용                                                                                                                                  |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| **Github** | <a href="https://github.com/sungik-choi/gatsby-starter-apple" target="_blank">https://github.com/sungik-choi/gatsby-starter-apple</a> |
-| **Period** | 2020.08 ~ *Current*                                                                                                                   |
-| **Skill**  | React.js, Gatsby.js, GraphQL, styled-components, canvas, Netlify                                                                      |
+| 제목       | 내용                                                                                                   |
+| ---------- | ------------------------------------------------------------------------------------------------------ |
+| **Github** | <a href="https://github.com/sungik-choi/gatsby-starter-apple" target="_blank">gatsby-starter-apple</a> |
+| **Period** | 2020.08 ~ *Current*                                                                                    |
+| **Skill**  | React.js, Gatsby.js, GraphQL, styled-components, canvas, Netlify                                       |
 
 - React기반의 정적 사이트 생성기인 Gatsby로 제작한 블로그 스타터 템플릿 
 - 현재 블로그에 사용 중. 다른 사람도 사용하기 쉽게 템플릿으로 만들어 오픈소스로 배포
@@ -43,7 +43,7 @@
   - 토글 상태에 따른 애니메이션 구현
   - 메뉴가 오픈된 상태일 때 Focus Trapping 및 스크롤 제한 기능 구현
   - 메뉴가 오픈된 상태일 때만 키보드로 접근 가능: `MediaQueryList` 객체의 `change` 이벤트와 `tabindex` 를 통해 구현
-  - 메뉴를 Esc Key로 닫을 수 있는 기능 구현
+  - 메뉴를 Esc키로 닫을 수 있도록 구현
 - 다이내믹 테마 구현 ([관련 블로그 포스트](https://www.sungikchoi.com/blog/gatsby-dark-mode/))
   - `prefers-color-scheme` 미디어 속성을 사용해 사용자 선호 테마 적용
   - `localStorage` 를 사용해 테마 설정 저장
@@ -55,11 +55,11 @@
 
 ### 이슈 트래커 서비스
 
-| 제목       | 내용                                                                                                                                    |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| **Github** | <a href="https://github.com/sungik-choi/issue-tracker-project" target="_blank">https://github.com/sungik-choi/issue-tracker-project</a> |
-| **Period** | 3 WEEK (2020.06.08 ~ 2020.06.26)                                                                                                        |
-| **Skill**  | React.js, Material UI, Webpack, React Router                                                                                            |
+| 제목       | 내용                                                                                                     |
+| ---------- | -------------------------------------------------------------------------------------------------------- |
+| **Github** | <a href="https://github.com/sungik-choi/issue-tracker-project" target="_blank">issue-tracker-project</a> |
+| **Period** | 3 WEEK (2020.06.08 ~ 2020.06.26)                                                                         |
+| **Skill**  | React.js, Material UI, Webpack, React Router                                                             |
 
 - Github Issue를 바탕으로 제작한 이슈 트래커 서비스
 - 이슈 목록 화면, 레이블 목록 화면을 맡아 구현
@@ -91,11 +91,11 @@
 
 ### 온라인 야구 게임
 
-| 제목       | 내용                                                                                                                          |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **Github** | <a href="https://github.com/sungik-choi/baseball-project" target="_blank">https://github.com/sungik-choi/baseball-project</a> |
-| **Period** | 2 WEEK (2020.05.04 ~ 2020.05.15)                                                                                              |
-| **Skill**  | React.js, styled-components, Webpack, React Router, canvas                                                                    |
+| 제목       | 내용                                                                                           |
+| ---------- | ---------------------------------------------------------------------------------------------- |
+| **Github** | <a href="https://github.com/sungik-choi/baseball-project" target="_blank">baseball-project</a> |
+| **Period** | 2 WEEK (2020.05.04 ~ 2020.05.15)                                                               |
+| **Skill**  | React.js, styled-components, Webpack, React Router, canvas                                     |
 
 - 온라인 1:1 대결 야구 게임 서비스
 - 원활한 페어 프로그래밍을 위해 Adobe Xd로 UI를 직접 디자인하고, Zeplin을 통해 페어와 공유
@@ -106,11 +106,11 @@
 
 ### TODO 리스트 서비스
 
-| 제목       | 내용                                                                                                                  |
-| ---------- | --------------------------------------------------------------------------------------------------------------------- |
-| **Github** | <a href="https://github.com/sungik-choi/todo-project" target="_blank">https://github.com/sungik-choi/todo-project</a> |
-| **Period** | 2 WEEK (2020.04.06 ~ 2020.04.17)                                                                                      |
-| **Skill**  | JavaScript, TypeScript, Webpack, Tailwind CSS                                                                         |
+| 제목       | 내용                                                                                   |
+| ---------- | -------------------------------------------------------------------------------------- |
+| **Github** | <a href="https://github.com/sungik-choi/todo-project" target="_blank">todo-project</a> |
+| **Period** | 2 WEEK (2020.04.06 ~ 2020.04.17)                                                       |
+| **Skill**  | JavaScript, TypeScript, Webpack, Tailwind CSS                                          |
 
 - Github Project Page의 칸반 보드를 바탕으로 제작한 할 일 관리 프로젝트
 - 별도의 프레임워크 없이 Vanilla JavaScript(TypeScript)로 구현
