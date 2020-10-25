@@ -25,7 +25,11 @@ module.exports = {
         name: 'Github',
       },
     ],
-    plugins: ['gatsby-plugin-robots-txt', `gatsby-plugin-sitemap`, `gatsby-plugin-feed`],
+    plugins: [
+      'gatsby-plugin-robots-txt',
+      `gatsby-plugin-sitemap`,
+      `gatsby-plugin-feed`,
+    ],
   },
   plugins: [
     {
@@ -77,13 +81,18 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: meta.name,
-        short_name: meta.name,
+        name: meta.title,
+        short_name: meta.title,
+        description: meta.description,
+        lang: meta.lang,
         start_url: `/`,
-        background_color: `#1c1c1c`,
-        theme_color: `#1c1c1c`,
+        background_color: `#ffffff`,
+        theme_color: `#ffffff`,
         display: `standalone`,
         icon: meta.icon,
+        icon_options: {
+          purpose: `any maskable`,
+        },
       },
     },
     `gatsby-plugin-sharp`,
