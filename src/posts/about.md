@@ -42,7 +42,7 @@
 - 모바일 버거 메뉴 구현
   - 토글 상태에 따른 애니메이션 구현
   - 메뉴가 오픈된 상태일 때 Focus Trapping 및 스크롤 제한 기능 구현
-  - 메뉴가 오픈된 상태일 때만 키보드로 접근 가능: `MediaQueryList` 객체의 `change` 이벤트와 `tabindex` 사용
+  - 메뉴가 오픈된 상태일 때만 키보드로 접근 가능: `MediaQueryList` 객체의 `change` 이벤트와 `tabindex` 를 통해 구현
   - 메뉴를 Esc Key로 닫을 수 있는 기능 구현
 - 다이내믹 테마 구현 ([관련 블로그 포스트](https://www.sungikchoi.com/blog/gatsby-dark-mode/))
   - `prefers-color-scheme` 미디어 속성을 사용해 사용자 선호 테마 적용
