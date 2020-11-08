@@ -1,6 +1,6 @@
 <section id ="title">
 
-<h1>최성익<span lang="en" id="eng-title">Sungik Choi</span></h1>
+<h1>최성익 <span lang="en" id="eng-title">Sungik Choi</span></h1>
 <!-- <span id="time">Updated <time datetime="2020-10-26">2020.10.26</time></span> -->
 
 </section>
