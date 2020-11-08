@@ -51,7 +51,6 @@ const Container = styled(Markdown).attrs({
 
   #eng-title {
     margin-top: auto;
-    margin-left: 0.5rem;
     font-size: 30px;
 
     @media (max-width: ${({ theme }) => theme.device.sm}) {
