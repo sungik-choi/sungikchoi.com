@@ -17,7 +17,7 @@ const PostGrid = ({ posts }) => {
   });
 
   return (
-    <Grid role="list">
+    <Grid role="list" columns={2}>
       {currentList.map((data) => {
         const { id, slug, title, desc, date, category, thumbnail, alt } = data;
         const korDate = convertToKorDate(date);
@@ -55,7 +55,7 @@ const PostGrid = ({ posts }) => {
 const Grid = styled.ul`
   display: grid;
   grid-gap: var(--grid-gap-xl);
-  grid-template-columns: repeat(2, 1fr);
+  ${({ columns }) => `grid-template-columns: repeat(${columns}, 1fr);`}
   list-style: none;
 
   & > li {
