@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Card from './card';
+import PostList from './postList';
 import { ThumbnailWrapper } from './centeredImg';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
 import convertToKorDate from 'utils/convertToKorDate';
@@ -24,7 +25,16 @@ const PostGrid = ({ posts }) => {
         return (
           <List key={id} role="listitem">
             <Link to={slug} aria-label={ariaLabel}>
-              <Card
+              {/* <Card
+                thumbnail={thumbnail}
+                alt={alt}
+                category={category}
+                title={title}
+                desc={desc}
+                date={date}
+                korDate={korDate}
+              /> */}
+              <PostList
                 thumbnail={thumbnail}
                 alt={alt}
                 category={category}
