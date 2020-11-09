@@ -100,7 +100,8 @@ const Markdown = styled.article`
   }
 
   li {
-    margin-bottom: ${({ rhythm }) => rhythm(0.3)};
+    line-height: 1.68;
+    margin-bottom: ${({ rhythm }) => rhythm(0.5)};
   }
 
   p,

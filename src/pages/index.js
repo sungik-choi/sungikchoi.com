@@ -1,54 +1,15 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import Layout from 'layout/layout';
 import SEO from 'components/seo';
 import PostGrid from 'components/postGrid/postGrid';
 import CategoryFilter from 'components/categoryFilter';
+import usePosts from 'hooks/usePosts';
 import useSiteMetadata from 'hooks/useSiteMetadata';
 
 const Home = ({ pageContext, data }) => {
-  const [posts, setPosts] = useState([]);
-  const currentCategory = pageContext.category;
-  const postData = data.allMarkdownRemark.edges;
-
-  useLayoutEffect(() => {
-    const filteredPostData = currentCategory
-      ? postData.filter(
-          ({ node }) => node.frontmatter.category === currentCategory
-        )
-      : postData;
-
-    filteredPostData.forEach(({ node }) => {
-      const {
-        id,
-        fields: { slug },
-        frontmatter: {
-          title,
-          desc,
-          date,
-          category,
-          thumbnail: { childImageSharp },
-          alt,
-        },
-      } = node;
-
-      setPosts((prevPost) => [
-        ...prevPost,
-        {
-          id,
-          slug,
-          title,
-          desc,
-          date,
-          category,
-          thumbnail: childImageSharp.id,
-          alt,
-        },
-      ]);
-    });
-  }, [currentCategory, postData]);
-
+  const { posts, currentCategory } = usePosts(data, pageContext);
   const site = useSiteMetadata();
   const postTitle = currentCategory || site.siteMetadata.postTitle;
 
