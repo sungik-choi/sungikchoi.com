@@ -25,16 +25,7 @@ const PostGrid = ({ posts }) => {
         return (
           <List key={id} role="listitem">
             <Link to={slug} aria-label={ariaLabel}>
-              {/* <Card
-                thumbnail={thumbnail}
-                alt={alt}
-                category={category}
-                title={title}
-                desc={desc}
-                date={date}
-                korDate={korDate}
-              /> */}
-              <PostList
+              <Card
                 thumbnail={thumbnail}
                 alt={alt}
                 category={category}
@@ -43,6 +34,15 @@ const PostGrid = ({ posts }) => {
                 date={date}
                 korDate={korDate}
               />
+              {/* <PostList
+                thumbnail={thumbnail}
+                alt={alt}
+                category={category}
+                title={title}
+                desc={desc}
+                date={date}
+                korDate={korDate}
+              /> */}
             </Link>
           </List>
         );
