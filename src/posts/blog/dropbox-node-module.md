@@ -39,7 +39,7 @@ xattr -w com.dropbox.ignored 1 */node_modules
 
 ![node_modules 파일 무시 성공](images/dropbox-node-module/1.png)
 
-node_modules만 동기화 목록에서 제거된 걸 확인할 수 있다. 휴지통에 node_modules 관련된 스냅샷도 한번에 모두 사라졌다. 용량은 2GB에서 27MB로 감소했다.
+`node_modules` 만 동기화 목록에서 제거된 걸 확인할 수 있다. 휴지통에 `node_modules` 관련된 스냅샷도 한번에 모두 사라졌다. 용량은 2GB에서 27MB로 감소했다.
 
 ## 참고자료
 
