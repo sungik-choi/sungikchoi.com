@@ -94,6 +94,10 @@ const Container = styled(Markdown).attrs({
       background-color: var(--color-category-button);
       border-radius: var(--border-radius-base);
       font-weight: 500;
+      @media (max-width: ${({ theme }) => theme.device.sm}) {
+        font-size: var(--text-base);
+        padding: 6px 12px;
+      }
     }
 
     li:last-child {

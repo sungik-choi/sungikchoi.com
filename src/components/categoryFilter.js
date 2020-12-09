@@ -118,8 +118,7 @@ const CategoryUl = styled.ul`
   display: flex;
   list-style: none;
   overflow-x: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  overflow-y: hidden;
 
   li + li {
     margin-left: 6px;
