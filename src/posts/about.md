@@ -136,7 +136,8 @@
 <h2>Skill</h2>
 
 - JavaScript
-- React.js
+- TypeScript
+- React
 - HTML
 - CSS
 - UI/UX Design
