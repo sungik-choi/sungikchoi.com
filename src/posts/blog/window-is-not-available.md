@@ -2,7 +2,7 @@
 title: "빌드 에러 'window is not available...' 해결법"
 category: "React"
 date: "2020-10-15 15:00:00 +09:00"
-desc: "빌드 에러 'window is not available...' 해결법 공유"
+desc: "SSR 관련한 빌드 에러 'window is not available...' 해결법을 공유합니다."
 thumbnail: "./images/window-is-not-available/thumbnail.png"
 alt: ""
 ---

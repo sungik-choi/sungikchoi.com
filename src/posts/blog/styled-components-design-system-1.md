@@ -2,7 +2,7 @@
 title: "styled-components로 디자인 시스템 따라해보기 - 1"
 category: "CSS"
 date: "2020-09-24 15:00:00 +09:00"
-desc: "styled-components로 디자인 시스템을 간단하게 따라해봅니다"
+desc: "styled-components로 디자인 시스템을 간단하게 따라해봅시다."
 thumbnail: "./images/styled-components-design-system-1/thumbnail.png"
 alt: ""
 ---
