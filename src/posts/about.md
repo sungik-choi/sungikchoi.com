@@ -13,6 +13,7 @@
 
 - Github : <a href="https://github.com/sungik-choi" target="_blank">github.com/sungik-choi</a>
 - Blog : <a href="https://sungikchoi.com" target="_blank">sungikchoi.com</a>
+- TIL : <a href="https://sungik-dev.gitbook.io/til/" target="_blank">sungik-dev.gitbook.io/til</a>
 - Email : <a href="mailto:sungik.dev@gmail.com" target="_blank">sungik.dev@gmail.com</a>
 
 </section>
@@ -31,7 +32,7 @@
 | **Period** | 2020.08 ~ *Current*                                                                                    |
 | **Skill**  | React.js, Gatsby.js, GraphQL, styled-components, canvas, Netlify                                       |
 
-- React기반의 정적 사이트 생성기인 Gatsby로 제작한 블로그 스타터 템플릿 
+- React기반의 정적 사이트 생성기인 Gatsby로 제작한 블로그 스타터 템플릿
 - 현재 블로그에 사용 중. 다른 사람도 사용하기 쉽게 템플릿으로 만들어 오픈소스로 배포
 - 별도의 UI Framework를 사용하지 않고 직접 UI 디자인 / CSS 스타일링
 - Lighthouse 100점 (Desktop 기준)
