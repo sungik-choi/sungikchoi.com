@@ -1,7 +1,7 @@
 ---
 title: "Node.js Worker Threads"
 category: "JavaScript"
-date: "2020-01-19 15:00:00 +09:00"
+date: "2020-01-19"
 desc: "'Understanding Worker Threads in Node.js' 번역"
 thumbnail: "./images/worker-thread/thumbnail.png"
 alt: ""

@@ -1,7 +1,7 @@
 ---
 title: "Fetch API"
 category: "JavaScript"
-date: "2020-02-25 15:00:00 +09:00"
+date: "2020-02-25"
 desc: "Fetch API 개념정리"
 thumbnail: "./images/fetch-api/thumbnail.png"
 alt: ""

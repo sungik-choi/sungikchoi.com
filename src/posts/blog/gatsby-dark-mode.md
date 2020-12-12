@@ -1,7 +1,7 @@
 ---
 title: "Gatsby Blog 다크 모드 적용기"
 category: "React"
-date: "2020-10-02 15:00:00 +09:00"
+date: "2020-10-02"
 desc: "Gatsby Blog에 다크 모드를 적용하며 느낀 경험담을 공유합니다."
 thumbnail: "./images/gatsby-dark-mode/thumbnail.png"
 alt: ""

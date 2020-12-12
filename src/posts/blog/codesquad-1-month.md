@@ -1,7 +1,7 @@
 ---
 title: "코드스쿼드 1개월 차 회고"
 category: "Review"
-date: "2020-02-02 15:00:00 +09:00"
+date: "2020-02-02"
 desc: "코드스쿼드에서 1개월을 보내고 난 후 느낀점"
 thumbnail: "./images/codesquad/thumbnail.png"
 alt: ""
