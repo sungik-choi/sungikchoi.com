@@ -117,7 +117,6 @@ const Divider = styled.div`
 const CategoryUl = styled.ul`
   display: flex;
   list-style: none;
-  overflow-x: scroll;
   overflow-y: hidden;
 
   li + li {
