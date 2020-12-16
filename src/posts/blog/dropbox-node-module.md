@@ -2,9 +2,9 @@
 title: "Dropbox node_modules 동기화 무시하기"
 category: "ETC"
 date: "2020-12-05"
-desc: "[Mac] 드롭박스 동기화 과정에서 node_modules 파일 동기화를 무시하는 간단한 팁을 공유합니다."
+desc: "[Mac] 드롭박스 동기화 과정에서 node_modules 파일 동기화를 무시하는 간단한 팁을 공유합니다"
 thumbnail: "./images/dropbox-node-module/thumbnail.png"
-alt: ""
+alt: "드롭박스 로고"
 ---
 
 ## 문제
