@@ -2,7 +2,7 @@
 title: "자바스크립트 프로토타입 알아보기"
 category: "JavaScript"
 date: "2020-02-25"
-desc: "자바스크립트의 프로토타입에 대해 알아봅시다!"
+desc: "자바스크립트의 프로토타입에 대해 알아봅시다"
 thumbnail: "./images/prototype/thumbnail.png"
 alt: ""
 ---

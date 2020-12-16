@@ -4,7 +4,7 @@ category: "JavaScript"
 date: "2020-01-19"
 desc: "'Understanding Worker Threads in Node.js' 번역"
 thumbnail: "./images/worker-thread/thumbnail.png"
-alt: ""
+alt: "Node.js Worker Threads"
 ---
 
 워커 스레드를 공부해보려고 하는데, 한국어로 된 자료가 거의 없었습니다. 어쩔 수 없이(?) 부족한 영어 실력이지만, 있는 힘껏 [Understanding Worker Threads in Node.js](https://nodesource.com/blog/worker-threads-nodejs) 글을 번역해봤습니다.

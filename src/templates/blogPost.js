@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Layout from 'layout/layout';
 import SEO from 'components/seo';
 import Comment from 'components/comment';
+import CenteredImg from '../components/postGrid/centeredImg';
 import { rhythm } from 'styles/typography';
 import Category from 'styles/category';
 import DateTime from 'styles/dateTime';
@@ -13,7 +14,7 @@ import convertToKorDate from 'utils/convertToKorDate';
 const BlogPost = ({ data }) => {
   const {
     markdownRemark: {
-      frontmatter: { title, desc, thumbnail, date, category },
+      frontmatter: { title, desc, thumbnail, alt, date, category },
       html,
     },
   } = data;
@@ -38,6 +39,9 @@ const BlogPost = ({ data }) => {
                   <Desc>{desc}</Desc>
                 </header>
                 <Divider />
+                <ImageWrapper>
+                  <CenteredImg src={thumbnail.childImageSharp.id} alt={alt} />
+                </ImageWrapper>
                 <Markdown
                   dangerouslySetInnerHTML={{ __html: html }}
                   rhythm={rhythm}
@@ -53,6 +57,12 @@ const BlogPost = ({ data }) => {
     </Layout>
   );
 };
+
+const ImageWrapper = styled.div`
+  margin-bottom: var(--sizing-xl);
+  border-radius: var(--border-radius-base);
+  overflow: hidden;
+`;
 
 const OuterWrapper = styled.div`
   margin-top: var(--sizing-xl);
@@ -141,11 +151,13 @@ export const query = graphql`
         desc
         thumbnail {
           childImageSharp {
+            id
             fixed {
               src
             }
           }
         }
+        alt
         date(formatString: "YYYY-MM-DD")
         category
       }
