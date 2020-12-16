@@ -14,7 +14,7 @@ const Card = ({ thumbnail, alt, category, title, desc, date, korDate }) => {
           <Title>{title}</Title>
           <Desc>{desc}</Desc>
         </div>
-        <DateTime dateTime={date}>{korDate}</DateTime>
+        <StyledDateTime dateTime={date}>{korDate}</StyledDateTime>
       </Text>
     </Wrapper>
   );
@@ -63,7 +63,6 @@ const Title = styled.h3`
 const Desc = styled.p`
   line-height: 1.5;
   margin-top: 8px;
-  padding-bottom: var(--sizing-sm);
   color: var(--color-text-2);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -71,6 +70,10 @@ const Desc = styled.p`
   word-break: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+
+const StyledDateTime = styled(DateTime)`
+  margin-top: 20px;
 `;
 
 export default Card;
