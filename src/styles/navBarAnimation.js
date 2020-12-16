@@ -35,7 +35,7 @@ export const listAnimationCSS = (toggle) => {
 };
 
 export const navBackgroundAnimationCSS = (toggle) => {
-  const TRANSITION = toggle ? '0.3s ease' : '0.4s ease-in-out 0.48s';
+  const TRANSITION = toggle ? '0.3s ease' : '0.4s ease-in-out 0.4s';
   const OPACITY = toggle ? 1 : 0;
   return css`
     transition: opacity ${TRANSITION};
@@ -46,7 +46,7 @@ export const navBackgroundAnimationCSS = (toggle) => {
 export const curtainAnimationCSS = (toggle) => {
   const SCALE = toggle ? 'scaleY(1)' : 'scaleY(0)';
   return css`
-    transition: transform 0.6s cubic-bezier(0.41, 0.06, 0.05, 1) 0.1s;
+    transition: transform 0.5s cubic-bezier(0.41, 0.06, 0.05, 1) 0.1s;
     transform: ${SCALE};
     transform-origin: top;
   `;

@@ -63,7 +63,6 @@ const GlobalStyle = createGlobalStyle`
       --color-nav-border: rgba(200, 200, 200, 0.7);
       --color-category-button: #f2f2f2;
       --color-background: #f2f2f2;
-      /* --color-background: #ffffff; */
       --color-post-background: #ffffff;
       --color-card: #ffffff;
       --color-code: #f2f2f2;
@@ -123,8 +122,6 @@ const GlobalStyle = createGlobalStyle`
       --color-floating-button-shadow-hover: rgba(0, 0, 0, 0.4);
       --color-blue: #0a84ff;
       --color-icon: #d1d1d1;
-
-      /* --font-weight-bold: 600; */
     }
   }
 
