@@ -160,6 +160,20 @@ const Markdown = styled.article`
     font-size: 85%;
     border-radius: 3px;
   }
+
+  figure {
+    img {
+      margin: 0 auto;
+      margin-bottom: 0;
+    }
+  }
+
+  figcaption {
+    color: var(--color-gray-6);
+    text-align: center;
+    font-size: 14px;
+    margin-top: 12px;
+  }
 `;
 
 export default Markdown;
