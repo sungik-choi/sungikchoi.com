@@ -1,8 +1,8 @@
 ---
-title: '사파리 overflow, border-radius 관련 이슈 해결법'
+title: '사파리 overflow:hidden + border-radius 관련 이슈 해결법'
 category: 'CSS'
 date: '2020-12-18'
-desc: '사파리에서 overflow, border-radius 관련 문제를 해결했던 과정을 공유합니다'
+desc: '사파리에서 overflow:hidden + border-radius 관련 문제를 해결했던 과정을 공유합니다'
 thumbnail: './images/safari-overflow-border-radius/thumbnail.png'
 alt: ''
 ---
