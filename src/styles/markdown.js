@@ -101,7 +101,7 @@ const Markdown = styled.article`
 
   li {
     line-height: 1.68;
-    margin-bottom: ${({ rhythm }) => rhythm(0.5)};
+    margin-bottom: ${({ rhythm }) => rhythm(0.4)};
   }
 
   p,
@@ -162,6 +162,7 @@ const Markdown = styled.article`
   }
 
   figure {
+    margin: var(--sizing-lg) 0;
     img {
       margin: 0 auto;
       margin-bottom: 0;

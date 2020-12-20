@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   background-color: var(--color-card);
 
   /* Fix Safari overflow:hidden with border radius not working error */
-  transform: translateZ(0);
+  z-index: 0;
 `;
 
 const Text = styled.div`
