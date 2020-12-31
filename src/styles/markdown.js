@@ -70,6 +70,10 @@ const Markdown = styled.article`
     }
   }
 
+  h4 {
+    font-size: 1.125rem;
+  }
+
   h4,
   h5,
   h6 {
