@@ -132,6 +132,7 @@ const Markdown = styled.article`
 
   img {
     display: block;
+    border-radius: var(--border-radius-base);
   }
 
   pre,
