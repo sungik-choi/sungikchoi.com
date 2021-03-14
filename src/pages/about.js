@@ -105,7 +105,7 @@ const Container = styled(Markdown).attrs({
     }
   }
 
-  #education {
+  #education, #career {
     h3 {
       font-size: 1.25rem;
       margin-bottom: 0.5rem;

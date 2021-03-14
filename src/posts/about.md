@@ -13,12 +13,21 @@
 
 - Github : <a href="https://github.com/sungik-choi" target="_blank">github.com/sungik-choi</a>
 - Blog : <a href="https://sungikchoi.com" target="_blank">sungikchoi.com</a>
-- TIL : <a href="https://sungik-dev.gitbook.io/til/" target="_blank">sungik-dev.gitbook.io/til</a>
 - Email : <a href="mailto:sungik.dev@gmail.com" target="_blank">sungik.dev@gmail.com</a>
 
 </section>
 
 ---
+
+<section id="career">
+
+<h2>Career</h2>
+
+<h3>채널 코퍼레이션</h3>
+
+2021.01 ~ 현재 | 프론트엔드 엔지니어
+
+</section>
 
 <section id="project">
 
