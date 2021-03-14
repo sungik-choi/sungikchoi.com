@@ -161,6 +161,14 @@ isolation: isolate
 - `--webkit-overflow-scrolling: touch`
 - `contain: paint` or `contain: layout`
 
+### 3/14 추가
+
+```css
+-webkit-mask-image: -webkit-radial-gradient(white, black);
+```
+
+`mask-image` 속성을 통해 동일하게 쌓임 맥락을 생성해서 문제를 해결합니다.
+
 ## 참고자료
 
 - [MDN 쌓임 맥락(Stacking Context)](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context)
