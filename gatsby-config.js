@@ -21,10 +21,6 @@ module.exports = {
         name: '소개',
       },
       {
-        link: 'https://sungik-dev.gitbook.io/til/',
-        name: 'TIL',
-      },
-      {
         link: meta.links.github,
         name: 'Github',
       },
