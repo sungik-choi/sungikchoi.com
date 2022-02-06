@@ -3,7 +3,7 @@ title: '늦은 2021년 회고'
 category: 'Review'
 date: '2022-02-07'
 desc: '2개월이나 늦어버린 2021년 회고'
-thumbnail: './images/2021-review/thumbnail.png'
+thumbnail: './images/2021-review/thumbnail.jpg'
 alt: 'Sea'
 ---
 
