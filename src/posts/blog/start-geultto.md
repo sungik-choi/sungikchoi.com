@@ -3,8 +3,8 @@ title: '글또 7기를 시작하며'
 category: 'Review'
 date: '2022-05-15'
 desc: '글 쓰는 개발자 모임, 글또 7기에 가입했다. 올해 10월까지, 2주에 블로그 포스트 한 편을 쓰려고 한다. 처음 포스트는 마지막에 포스트를 쓸 즈음 자신을 돌이켜볼 수 있도록, 지금 나의 상태를 정리해보는 글로 시작해보려 한다.'
-thumbnail: './images/2021-review/thumbnail.jpg'
-alt: 'Sea'
+thumbnail: './images/start-geultto/thumbnail.jpg'
+alt: 'A store with a neon sign that says, "What is your story?"'
 ---
 
 글 쓰는 개발자 모임, 글또 7기에 가입했다. 올해 10월까지, 2주에 블로그 포스트 한 편을 쓰려고 한다. 처음 포스트는 마지막에 포스트를 쓸 즈음 자신을 돌이켜볼 수 있도록, 지금 나의 상태를 정리해보는 글로 시작해보려 한다.
