@@ -1,6 +1,21 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
+
+const fontFace = css`
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+  @font-face {
+    font-family: 'Pretendard Variable';
+    font-weight: 45 920;
+    font-style: normal;
+    font-display: swap;
+    src: local('Pretendard Variable'),
+      url('./images/PretendardVariable.woff2') format('woff2-variations');
+  }
+`;
 
 const GlobalStyle = createGlobalStyle`
+  ${fontFace}
+
   :root {
     font-size: 100%;
 
@@ -130,7 +145,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans CJK KR', 'Noto Sans', Roboto, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     background-color: var(--color-post-background);
     -webkit-font-smoothing: antialiased;
 
