@@ -45,20 +45,18 @@ const Container = styled(Markdown).attrs({
     width: 87.5%;
   }
 
-  #title {
-    margin-bottom: 2rem;
+  h1,
+  h2 {
+    font-weight: var(--font-weight-extra-bold);
   }
 
-  #eng-title {
-    margin-top: auto;
-    font-size: 30px;
-
-    @media (max-width: ${({ theme }) => theme.device.sm}) {
-      font-size: 1.75rem;
-    }
+  h1 {
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
   }
 
   h2 {
+    letter-spacing: -0.02em;
     margin-top: var(--sizing-lg);
 
     @media (max-width: ${({ theme }) => theme.device.sm}) {
@@ -67,6 +65,8 @@ const Container = styled(Markdown).attrs({
   }
 
   h3 {
+    letter-spacing: -0.02em;
+
     @media (max-width: ${({ theme }) => theme.device.sm}) {
       font-size: 1.25rem;
     }
@@ -76,63 +76,69 @@ const Container = styled(Markdown).attrs({
     line-height: 1.5;
   }
 
-  #project {
-    h3 + h3 {
-      margin-top: var(--sizing-lg);
-    }
+  #title {
+    margin-bottom: 2rem;
   }
 
-  #skill ul {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    margin: 0;
-    list-style: none;
-    li {
-      margin-right: 6px;
-      padding: var(--sizing-sm) var(--sizing-base);
-      background-color: var(--color-category-button);
-      border-radius: var(--border-radius-base);
-      font-weight: 500;
-      @media (max-width: ${({ theme }) => theme.device.sm}) {
-        font-size: var(--text-base);
-        padding: 6px 12px;
-      }
-    }
-
-    li:last-child {
-      margin-right: 0;
-    }
+  #eng-title {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-title);
   }
 
-  #education, #career {
+  #project,
+  #education,
+  #career {
     h3 {
       font-size: 1.25rem;
       margin-bottom: 0.5rem;
     }
-
-    h3 + p {
-      margin-bottom: 0;
-      font-size: 0.875rem;
-    }
   }
 
-  thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    white-space: no-wrap;
-  }
-
-  tbody {
-    border-top: 1px solid var(--color-gray-3);
+  .datetime {
+    color: var(--color-text-3);
+    font-weight: var(--font-weight-semi-bold);
+    font-size: 0.875rem;
   }
 
   li ul {
     margin-top: 0.435rem;
     margin-bottom: 0.435rem;
+  }
+
+  .contacts {
+    display: flex;
+    margin: 0;
+    line-height: 0;
+    list-style: none;
+  }
+
+  .contact {
+    flex: 0 0 auto;
+    cursor: pointer;
+    margin: 0;
+    line-height: 0;
+
+    &:hover {
+      path {
+        color: var(--color-blue) !important;
+      }
+    }
+
+    path {
+      transition: color 150ms ease-in-out;
+      color: var(--color-text-3) !important;
+    }
+  }
+
+  .footnotes {
+    * {
+      font-size: 0.875rem;
+    }
+
+    p,
+    .footnote-backref {
+      display: inline;
+    }
   }
 `;
 

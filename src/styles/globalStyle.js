@@ -145,6 +145,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    letter-spacing: -0.01em;
     background-color: var(--color-post-background);
     -webkit-font-smoothing: antialiased;
 

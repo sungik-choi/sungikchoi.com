@@ -22,7 +22,7 @@ module.exports = {
       },
       {
         link: meta.links.github,
-        name: 'Github',
+        name: 'GitHub',
       },
     ],
     plugins: [
