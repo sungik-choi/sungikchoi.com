@@ -1,21 +1,6 @@
-import { createGlobalStyle, css } from 'styled-components';
-
-const fontFace = css`
-  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
-
-  @font-face {
-    font-family: 'Pretendard Variable';
-    font-weight: 45 920;
-    font-style: normal;
-    font-display: swap;
-    src: local('Pretendard Variable'),
-      url('./images/PretendardVariable.woff2') format('woff2-variations');
-  }
-`;
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  ${fontFace}
-
   :root {
     font-size: 100%;
 

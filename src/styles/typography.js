@@ -2,6 +2,7 @@ import Typography from 'typography';
 
 const fontFamily = [
   'Pretendard Variable',
+  'Pretendard',
   '-apple-system',
   'BlinkMacSystemFont',
   'Noto Sans CJK KR',

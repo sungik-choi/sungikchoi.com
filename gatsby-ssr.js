@@ -1,6 +1,18 @@
 const React = require('react');
 
-exports.onRenderBody = ({ setPreBodyComponents }) => {
+exports.onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
+  setHeadComponents([
+    <link
+      rel="stylesheet"
+      href="./pretendardvariable-dynamic-subset.css"
+      key="pretendardVariableFont"
+    />,
+    <link
+      rel="stylesheet"
+      href="./pretendard-subset.css"
+      key="pretendardFont"
+    />,
+  ]);
   setPreBodyComponents([
     React.createElement('script', {
       dangerouslySetInnerHTML: {
