@@ -1,14 +1,16 @@
 <span class="datetime">마지막 업데이트: 2023.06.04</span>
 
 <section id ="title">
-<h1>최성익</h1>
+
+# 최성익
+
 <p lang="en" id="eng-title">Sungik Choi (Ed)</p>
 
 </section>
 
 <section id="introduce">
 
-<p>메이커들이 일하는 방식을 개선하는 데 관심이 많은 프론트엔드 엔지니어입니다. 사용자의 긍정적인 피드백을 원동력으로 제품을 만들고 있습니다. 기술과 예술은 하나라고 생각합니다. 훌륭한 사용자 경험과 그에 맞는 아름다운 유저 인터페이스를 추구하고 있습니다.</p>
+메이커들이 일하는 방식을 개선하는 데 관심이 많은 프론트엔드 엔지니어입니다. 사용자의 긍정적인 피드백을 원동력으로 제품을 만들고 있습니다. 기술과 예술은 하나라고 생각합니다. 훌륭한 사용자 경험과 그에 맞는 아름다운 사용자 인터페이스를 추구하고 있습니다.
 
 <ul class="contacts">
 <li>
@@ -53,11 +55,33 @@
 
 <section id="career">
 
-<h2>Work Experience</h2>
+## Work Experience
 
-<h3>채널코퍼레이션</h3>
+### 채널코퍼레이션
 
-<span class="datetime">2021.01 ~ 현재 | 프론트엔드 엔지니어</span>
+<span class="datetime">2021.01 ~ 현재 | 프론트엔드 엔지니어 (IC)</span>
+
+#### 디자인 시스템 라이브러리
+
+사내 디자인 시스템, Bezier의 React 구현체이자 오픈 소스 라이브러리인 [bezier-react](https://github.com/channel-io/bezier-react)의 메인 컨트리뷰터입니다. 라이브러리 전반을 운영 및 유지보수하고 개발하는 일을 담당하고 있습니다. 또한, 디자이너와 함께 디자인 시스템을 개선하는 일도 진행하고 있습니다.
+
+- **재사용 가능한 컴포넌트 설계 및 구현**.
+- **피그마 플러그인 구현**: 별도의 커뮤니케이션 없이 디자이너가 직접 GitHub 레포지토리에 아이콘 업데이트를 할 수 있도록 팀의 워크플로우를 개선. [사내 기술 블로그 포스트](https://channel.io/ko/blog/figma-icon-plugin) 작성.
+- **svg 아이콘 패키지 구현**: 트리 쉐이킹이 가능하도록 구현하여 애플리케이션의 번들 사이즈 감소 및 컴포넌트 라이브러리와의 관심사 분리. [npm 패키지](https://www.npmjs.com/package/@channel.io/bezier-icons).
+- **마이그레이션 CLI 툴 구현**: 대규모 마이그레이션을 소스 코드 정적 분석을 통해 자동화하여 브레이킹 체인지에 대한 비용 감소. [npm 패키지](https://www.npmjs.com/package/@channel.io/bezier-codemod).
+- **스토리북 자동 배포 구현**: GitHub Action 사용, Pull Request 별로 변경사항에 대한 스토리북 링크를 코멘트로 제공하여 다른 엔지니어/디자이너 간 커뮤니케이션 비용 감소.
+- **테스트 코드 작성**: 사용자 인터랙션 기반 단위 테스트 작성으로 제품의 안정성 향상. (테스트 커버리지 43% → 84%.)[^1]
+- **모노레포 구조 도입**: 패키지 관리 방식 및 배포 프로세스 개선.
+
+#### 채널 데스크 애플리케이션
+
+채널 데스크는 상담사가 고객을 응대하는 데 사용하는 올인원 B2B 애플리케이션입니다. 채팅, 마케팅, 객관식 챗봇, 통계 등 애플리케이션 전반의 기능을 유지보수하고 개발하는 일을 담당하고 있습니다. 자세한 릴리즈 노트는 [채널톡 업데이트 소식](https://update-kr.channel.io/)에서 확인하실 수 있습니다.
+
+- **권한 세분화 TF 웹 팀 리드**: 스크럼 진행, 문서화 및 문서 기반의 커뮤니케이션, 태스크 상세 분석 및 할당 & 추적하여 프로젝트의 가시성을 높임.
+- **z-index 개선**: 애플리케이션 전반에서 많은 버그를 발생시키던 350개가량의 z-index 매직 넘버를 디자인 시스템 사용 및 쌓임 맥락을 정리하여 모두 제거.
+- **서포트봇 폼 릴리즈**: 채널 데스크 애플리케이션과 채널 프론트(B2C) 애플리케이션에서 함께 사용할 수 있는 최초의 공용 폼 컴포넌트 설계 및 구현.
+- **다크모드 릴리즈**: 채널톡 데스크탑 앱의 Cross-platform vibrancy effect, Tray icon 및 Splash 페이지를 포함한 완성도 높은 다이내믹 테마 구현.
+- **상담통계 리뉴얼 릴리즈**: 라이브러리를 커스텀하여 요구사항에 맞는 다양한 형태의 차트 구현.
 
 </section>
 
@@ -65,24 +89,39 @@
 
 <section id="project">
 
-<h2>Personal Project</h2>
+## Personal Project
 
-<h3>Gatsby Starter Apple</h3>
+### Gatsby Starter Apple
 
 <span class="datetime">2020.08 ~ 현재 | 메인 컨트리뷰터</span>
 
-정적 사이트 생성기인 Gatsby 기반의 [오픈 소스](https://github.com/sungik-choi/gatsby-starter-apple) 블로그 스타터 템플릿입니다. 접근성 및 성능 관련 모범 사례와 설치 및 기여에 대한 문서를 잘 포함하고 있다고 판단되어[^1] [Gatsby Offical Community Starter Library](https://www.gatsbyjs.com/starters/sungik-choi/gatsby-starter-apple)에 등록되었습니다.[^2]
+정적 사이트 생성기인 Gatsby 기반의 [오픈 소스](https://github.com/sungik-choi/gatsby-starter-apple) 블로그 스타터 템플릿입니다. 접근성 및 성능 관련 모범 사례와 설치 및 기여에 대한 문서를 잘 포함하고 있다고 판단되어[^2] [Gatsby Offical Community Starter Library](https://www.gatsbyjs.com/starters/sungik-choi/gatsby-starter-apple)에 등록되었습니다.[^3]
 
-- Google Lighthouse score 100[^3]
-- 웹 접근성을 준수하고, 키보드 네비게이션이 잘 동작하도록 구현했습니다.
-- 디테일을 고려한 [다이내믹 테마](https://www.sungikchoi.com/blog/gatsby-dark-mode/)를 구현했습니다.
-- 별도의 UI Framework를 사용하지 않고 직접 디자인하여 구현했습니다.
+- **Google Lighthouse score 100**.[^4]
+- **접근성**: 웹 접근성을 준수하고, 키보드 네비게이션이 잘 동작하도록 구현.
+- **다이내믹 테마**: 디테일을 고려한 [다이내믹 테마](https://www.sungikchoi.com/blog/gatsby-dark-mode/)를 구현.
+- **디자인**: 별도의 UI Framework를 사용하지 않고 직접 디자인하여 구현.
+
+---
+
+<section id="skill">
+
+## Skill
+
+- HTML/CSS
+- TypeScript
+- React
+- GitHub Actions
+- Figma
+- UI/UX
+
+</section>
 
 ---
 
 <section id="education">
 
-<h2>Education</h2>
+## Education
 
 ### 코드스쿼드
 
@@ -94,6 +133,7 @@
 
 </section>
 
-[^1]: Gatsby Starter Community Submissions . (n.d.). <https://www.gatsbyjs.com/starters/submissions>.
-[^2]: 문서 최상단의 마지막 업데이트일 기준.
-[^3]: v1.0.0, 데스크탑 기준.
+[^1]: Codecov Coverage | next-v1 branch, from May 21, 2021 to Jun 01, 2023. (n.d.). <https://app.codecov.io/gh/channel-io/bezier-react/tree/next-v1?trend=all%20time>.
+[^2]: Gatsby Starter Community Submissions. (n.d.). <https://www.gatsbyjs.com/starters/submissions>.
+[^3]: 문서 최상단의 마지막 업데이트일 기준.
+[^4]: v1.0.0, 데스크탑 기준.

@@ -46,7 +46,9 @@ const Container = styled(Markdown).attrs({
   }
 
   h1,
-  h2 {
+  h2,
+  h3,
+  h4 {
     font-weight: var(--font-weight-extra-bold);
   }
 
@@ -72,6 +74,11 @@ const Container = styled(Markdown).attrs({
     }
   }
 
+  h4 {
+    font-size: var(--text-md);
+    margin-top: 2rem;
+  }
+
   li {
     line-height: 1.5;
   }
@@ -90,7 +97,7 @@ const Container = styled(Markdown).attrs({
   #career {
     h3 {
       font-size: 1.25rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
     }
   }
 
@@ -136,9 +143,36 @@ const Container = styled(Markdown).attrs({
     }
   }
 
+  #skill ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    list-style: none;
+    li {
+      margin-right: 6px;
+      padding: var(--sizing-sm) var(--sizing-base);
+      background-color: var(--color-category-button);
+      border-radius: var(--border-radius-base);
+      font-weight: 500;
+      @media (max-width: ${({ theme }) => theme.device.sm}) {
+        font-size: var(--text-base);
+        padding: 6px 12px;
+      }
+    }
+    li:last-child {
+      margin-right: 0;
+    }
+  }
+
   .footnotes {
     * {
       font-size: 0.875rem;
+    }
+
+    li,
+    p {
+      color: var(--color-text-3);
     }
 
     p,
