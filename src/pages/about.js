@@ -110,15 +110,21 @@ const Container = styled(Markdown).attrs({
     margin: 0;
     line-height: 0;
     list-style: none;
+
+    li {
+      flex: 0 0 auto;
+      margin: 0;
+      line-height: 0;
+    }
   }
 
   .contact {
-    flex: 0 0 auto;
     cursor: pointer;
-    margin: 0;
-    line-height: 0;
+    display: block;
+    padding: 8px;
 
-    &:hover {
+    &:hover,
+    &:focus {
       path {
         color: var(--color-blue) !important;
       }
