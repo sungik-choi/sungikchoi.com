@@ -62,6 +62,7 @@ const GlobalStyle = createGlobalStyle`
       --color-nav-bar: rgba(255, 255, 255, 0.7);
       --color-nav-border: rgba(200, 200, 200, 0.7);
       --color-category-button: #f2f2f2;
+      --color-theme-color: #ffffff;
       --color-background: #f2f2f2;
       --color-post-background: #ffffff;
       --color-card: #ffffff;
@@ -97,6 +98,7 @@ const GlobalStyle = createGlobalStyle`
       --color-nav-bar: rgba(29, 29, 29, 0.7);
       --color-nav-border: rgba(255, 255, 255, 0.2);
       --color-category-button: #484848;
+      --color-theme-color: #1c1c1c;
       --color-background: #1c1c1c;
       --color-post-background: #1c1c1c;
       --color-card: #2c2c2c;
