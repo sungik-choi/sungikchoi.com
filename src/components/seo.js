@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
+import ThemeContext from 'store/themeContext';
 import useSiteMetadata from 'hooks/useSiteMetadata';
 import defaultOpenGraphImage from '../images/og-default.png';
 
@@ -8,6 +9,15 @@ const SEO = ({ description = '', meta = [], image = null, title }) => {
   const metaDescription = description || site.siteMetadata.description;
   const ogImageUrl =
     site.siteMetadata.siteUrl + (image || defaultOpenGraphImage);
+
+  const theme = useContext(ThemeContext);
+
+  const backgroundColor = useMemo(
+    () =>
+      getComputedStyle(document.body).getPropertyValue('--color-background'),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [theme]
+  );
 
   return (
     <Helmet
@@ -60,6 +70,10 @@ const SEO = ({ description = '', meta = [], image = null, title }) => {
         {
           property: 'twitter:image',
           content: ogImageUrl,
+        },
+        {
+          property: 'theme-color',
+          content: backgroundColor,
         },
       ].concat(meta)}
     />
