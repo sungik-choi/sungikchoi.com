@@ -13,8 +13,15 @@ const SEO = ({ description = '', meta = [], image = null, title }) => {
   const theme = useContext(ThemeContext);
 
   const themeColor = useMemo(
-    () =>
-      getComputedStyle(document.body).getPropertyValue('--color-theme-color'),
+    () => {
+      if (typeof window === 'undefined') {
+        return '#FFFFFF';
+      }
+
+      return window
+        .getComputedStyle(document.body)
+        .getPropertyValue('--color-theme-color');
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [theme]
   );
