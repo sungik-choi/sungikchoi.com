@@ -1,10 +1,84 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import SEO from 'components/seo';
 import Layout from 'layout/layout';
+import ThemeContext from 'store/themeContext';
 import Markdown from 'styles/markdown';
 import { rhythm } from 'styles/typography';
+
+function initializeChannelIO() {
+  (function () {
+    var w = window;
+    if (w.ChannelIO) {
+      return w.console.error('ChannelIO script included twice.');
+    }
+    var ch = function () {
+      ch.c(arguments);
+    };
+    ch.q = [];
+    ch.c = function (args) {
+      ch.q.push(args);
+    };
+    w.ChannelIO = ch;
+    function l() {
+      if (w.ChannelIOInitialized) {
+        return;
+      }
+      w.ChannelIOInitialized = true;
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+      var x = document.getElementsByTagName('script')[0];
+      if (x.parentNode) {
+        x.parentNode.insertBefore(s, x);
+      }
+    }
+    if (document.readyState === 'complete') {
+      l();
+    } else {
+      w.addEventListener('DOMContentLoaded', l);
+      w.addEventListener('load', l);
+    }
+  })();
+
+  window.ChannelIO('boot', {
+    // eslint-disable-next-line no-undef
+    pluginKey: process.env.CHANNEL_PLUGIN_KEY,
+  });
+
+  return () => {
+    window.ChannelIO('shutdown');
+  };
+}
+
+function setAppearanceOfChannelIO(theme) {
+  if (!window.ChannelIO) {
+    return;
+  }
+  window.ChannelIO('setAppearance', theme);
+}
+
+const ChannelIO = () => {
+  const theme = useContext(ThemeContext);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    return initializeChannelIO();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    setAppearanceOfChannelIO(theme);
+  }, [theme]);
+
+  return null;
+};
 
 const About = () => {
   const data = useStaticQuery(graphql`
@@ -24,6 +98,7 @@ const About = () => {
   return (
     <Layout>
       <SEO title="About" />
+      <ChannelIO />
       <Container
         dangerouslySetInnerHTML={{ __html: md }}
         rhythm={rhythm}
