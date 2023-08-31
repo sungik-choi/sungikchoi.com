@@ -91,6 +91,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body.dark {
+      color-scheme: dark;
+
       --color-text: #e6e6e6;
       --color-text-2: #d1d1d1;
       --color-text-3: #8c8c8c;
