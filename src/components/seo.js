@@ -2,6 +2,7 @@ import React, { useContext, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
 import ThemeContext from 'store/themeContext';
 import useSiteMetadata from 'hooks/useSiteMetadata';
+import { LIGHT } from 'constants/constants';
 import defaultOpenGraphImage from '../images/og-default.png';
 
 const SEO = ({ description = '', meta = [], image = null, title }) => {
@@ -12,19 +13,13 @@ const SEO = ({ description = '', meta = [], image = null, title }) => {
 
   const theme = useContext(ThemeContext);
 
-  const themeColor = useMemo(
-    () => {
-      if (typeof window === 'undefined') {
-        return '#FFFFFF';
-      }
+  const themeColor = useMemo(() => {
+    if (typeof window === 'undefined') {
+      return '#FFFFFF';
+    }
 
-      return window
-        .getComputedStyle(document.body)
-        .getPropertyValue('--color-theme-color');
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [theme]
-  );
+    return theme === LIGHT ? '#ffffff' : '#1c1c1c';
+  }, [theme]);
 
   return (
     <Helmet
