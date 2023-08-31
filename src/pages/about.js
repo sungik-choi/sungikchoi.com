@@ -45,7 +45,7 @@ function initializeChannelIO() {
 
   window.ChannelIO('boot', {
     // eslint-disable-next-line no-undef
-    pluginKey: process.env.CHANNEL_PLUGIN_KEY,
+    pluginKey: process.env.GATSBY_CHANNEL_PLUGIN_KEY,
   });
 
   return () => {
