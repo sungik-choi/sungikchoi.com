@@ -1,4 +1,4 @@
-<span class="datetime">마지막 업데이트: 2023.06.04</span>
+<span class="datetime">마지막 업데이트: 2023.09.17</span>
 
 <section id ="title">
 
